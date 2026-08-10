@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Case study: turning prior-art research into a structured, reviewable AI-assisted workflow." />
+  <title>Case 01 | Prior-Art Research Workflow</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="index.html"><span class="brand-mark">DS</span><span>Dan Sleeter</span></a>
+    <button class="menu-button" aria-label="Open navigation" aria-expanded="false">&#9776;</button>
+    <div class="nav-links"><a href="index.html">Portfolio</a><a href="case-agentic-prior-art.html" aria-current="page">Case 01</a><a href="case-ip-navigator.html">Case 02</a><a href="case-automation.html">Case 03</a><a class="nav-cta" href="mailto:daniel.d.sleeter@gmail.com">Contact</a></div>
+  </nav>
+</header>
+<main id="main">
+  <section class="case-hero">
+    <div class="container">
+      <div class="eyebrow">Case 01 / Research workflow</div>
+      <h1>Turning prior-art research into a reviewable workflow</h1>
+      <p class="lede">I wanted the speed of AI-assisted research without asking a reviewer to trust a polished answer they could not trace. The answer was to redesign the work around evidence and checkpoints, not around one long prompt.</p>
+      <div class="case-meta">
+        <div class="meta-item"><span class="meta-label">My role</span><span class="meta-value">AI lead / workflow designer</span></div>
+        <div class="meta-item"><span class="meta-label">Domain</span><span class="meta-value">Patent analysis and reverse engineering</span></div>
+        <div class="meta-item"><span class="meta-label">Working materials</span><span class="meta-value">Structured workbook, LLMs, Python-assisted research</span></div>
+        <div class="meta-item"><span class="meta-label">Main constraint</span><span class="meta-value">Every material conclusion had to be reviewable by a person</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">The problem</div><p>A good answer was not enough. The reviewer needed to see how the answer was built.</p></aside>
+      <div class="case-content">
+        <h2>The first thing I changed was the one-big-prompt approach.</h2>
+        <p>Prior-art work is really several jobs tied together. You have to lock the claim scope, break the claim into elements, search patent and non-patent sources, map evidence to each element, prove that the source predates the priority date, and then make a judgment about how strong the record actually is.</p>
+        <p>If all of that happens inside one free-form model response, the result can look complete even when one of those steps is weak. I separated the work into stages and gave each stage a fixed output. That made missing evidence easier to spot and made review much faster to reason about.</p>
+        <div class="working-note"><strong>What I was optimizing for</strong><p>A reviewer should be able to move from recommendation to claim element to quote to source to publication date without trusting the model's memory.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">The workflow</div><p>Each step has a job, a defined output, and a reason to stop if the record is not ready.</p></aside>
+      <div class="case-content">
+        <h2>I turned the research into six visible steps.</h2>
+        <div class="workflow" aria-label="Prior art workflow stages">
+          <div class="workflow-row"><div class="workflow-index">01</div><div class="workflow-stage">Lock the scope</div><div class="workflow-detail">Patent, claims, priority date, search scope, and the expected endpoint.</div></div>
+          <div class="workflow-row"><div class="workflow-index">02</div><div class="workflow-stage">Break the claim down</div><div class="workflow-detail">Create labeled elements while preserving the exact claim language in a separate field.</div></div>
+          <div class="workflow-row"><div class="workflow-index">03</div><div class="workflow-stage">Map the evidence</div><div class="workflow-detail">For each element, capture the source, exact location, short supporting quote, support type, and notes.</div></div>
+          <div class="workflow-row"><div class="workflow-index">04</div><div class="workflow-stage">Prove the date</div><div class="workflow-detail">Every material reference gets its own date-proof record showing that it predates the priority date.</div></div>
+          <div class="workflow-row"><div class="workflow-index">05</div><div class="workflow-stage">Make the call</div><div class="workflow-detail">Record the recommendation, confidence, basis, unresolved gaps, and what still needs to happen.</div></div>
+          <div class="workflow-row"><div class="workflow-index">06</div><div class="workflow-stage">Strengthen and review</div><div class="workflow-detail">Add independent support, tighten the citations, narrow the gaps, and hand the package to the human reviewer.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">One important decision</div><p>The original source and my interpretation never live in the same field.</p></aside>
+      <div class="case-content">
+        <h2>Keep the evidence harder to distort than the explanation.</h2>
+        <p>I kept verbatim claim text separate from the plain-language gloss. I did the same thing with prior art: the source, pin, and short quote stay distinct from the note explaining why the evidence matters.</p>
+        <p>That seems small, but it changes the review experience. A reviewer can disagree with an interpretation without first having to reconstruct the underlying evidence.</p>
+        <div class="artifact">
+          <div class="artifact-head"><strong>Element_Mapping_Matrix</strong><span>sanitized structure</span></div>
+          <div class="artifact-body">
+            <div class="sheet">
+              <div class="sheet-row header"><div class="sheet-cell">Claim element</div><div class="sheet-cell">Source</div><div class="sheet-cell">Pin + direct quote</div><div class="sheet-cell">Support / notes</div></div>
+              <div class="sheet-row"><div class="sheet-cell">17[b]</div><div class="sheet-cell">Source A</div><div class="sheet-cell">Sec. 4.2, p. 8 - supporting excerpt</div><div class="sheet-cell">Strong - maps core behavior</div></div>
+              <div class="sheet-row"><div class="sheet-cell">17[c]</div><div class="sheet-cell">Source B</div><div class="sheet-cell">Fig. 3, col. 5 - supporting excerpt</div><div class="sheet-cell">Support - one gap remains</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="pattern-grid">
+          <div class="pattern-card"><div class="pattern-symbol">1</div><div class="pattern-name">Original text stays original</div><p>Claim language and source quotes remain separate from my interpretation.</p></div>
+          <div class="pattern-card"><div class="pattern-symbol">2</div><div class="pattern-name">Dates get their own proof</div><p>Chronology is checked as a separate requirement, not assumed from a citation.</p></div>
+          <div class="pattern-card"><div class="pattern-symbol">3</div><div class="pattern-name">Gaps have a place to live</div><p>Unresolved issues are recorded where the decision is made, not buried at the end.</p></div>
+          <div class="pattern-card"><div class="pattern-symbol">4</div><div class="pattern-name">Review is part of the workflow</div><p>The output is a package for expert review, not an automated legal conclusion.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">Decision behavior</div><p>I do not want a low-confidence result to move through the workflow the same way a strong one does.</p></aside>
+      <div class="case-content">
+        <h2>When the evidence changes, the next action changes too.</h2>
+        <p>Confidence is useful only if it affects behavior. Strong support can move forward for human review. Mixed support should stop and name the blocking gap. Weak or unverified support should return control instead of trying to write around the problem.</p>
+        <div class="decision-demo" data-decision-demo>
+          <div class="demo-controls" aria-label="Select evidence state">
+            <button class="demo-button active" data-demo-state="high">Strong record</button>
+            <button class="demo-button" data-demo-state="mixed">Mixed record</button>
+            <button class="demo-button" data-demo-state="low">Weak record</button>
+          </div>
+          <div class="demo-state">
+            <div class="state-card highlight"><strong>Status</strong><p data-demo-confidence>Strong record</p></div>
+            <div class="state-card"><strong>What I can support</strong><p data-demo-evidence>Multiple independent sources line up with pinned evidence and date proof.</p></div>
+            <div class="state-card"><strong>Next step</strong><p data-demo-action>Advance the package to human review with a concise basis.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">Reflection</div><p>The fixed structure solved one problem and created the next design question.</p></aside>
+      <div class="case-content">
+        <h2>What worked, and what I would change next.</h2>
+        <div class="outcomes">
+          <div class="outcome"><strong>What worked</strong><span>The same inputs, fields, and review gates made the work more consistent from matter to matter.</span></div>
+          <div class="outcome"><strong>What stayed human</strong><span>Interpretation, legal significance, and the final professional judgment stayed outside the model's authority.</span></div>
+          <div class="outcome"><strong>What I would build next</strong><span>A reviewer view that drills from recommendation to element to source, records overrides, and makes evidence gaps visible without opening several files.</span></div>
+        </div>
+        <h3>The larger lesson</h3>
+        <p>For me, the interesting design problem was not how to get a smarter answer. It was how to make the system easier to question. That is the pattern I would carry into other agent-assisted products.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="next-case"><div class="container"><a class="next-card" href="case-ip-navigator.html"><div><span class="next-label">Next case</span><strong>Writing the rules before giving an AI more authority</strong></div><span class="next-arrow" aria-hidden="true">&rarr;</span></a></div></section>
+</main>
+<footer class="site-footer"><div class="container footer-grid"><span>&copy; 2026 Dan Sleeter. Selected work is sanitized.</span><span><a href="index.html">Portfolio home</a> &middot; <a href="mailto:daniel.d.sleeter@gmail.com">Email</a></span></div></footer>
+<script src="script.js"></script>
+</body>
+</html>

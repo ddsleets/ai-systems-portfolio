@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Case study: a supervised AI engineering layer operating a Keysight FieldFox RF measurement workflow with bounded autonomy, human control, verification, recovery, and sanitized field results." />
+  <title>Case 04 | Agentic RF Measurement</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="index.html"><span class="brand-mark">DS</span><span>Dan Sleeter</span></a>
+    <button class="menu-button" aria-label="Open navigation" aria-expanded="false">&#9776;</button>
+    <div class="nav-links">
+      <a href="index.html">Portfolio</a>
+      <a href="case-agentic-prior-art.html">Case 01</a>
+      <a href="case-ip-navigator.html">Case 02</a>
+      <a href="case-automation.html">Case 03</a>
+      <a href="case-agentic-rf.html" aria-current="page">Case 04</a>
+      <a class="nav-cta" href="mailto:daniel.d.sleeter@gmail.com">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="case-hero">
+    <div class="container">
+      <div class="eyebrow">Case 04 / Physical-world agent</div>
+      <h1>Giving an AI engineer supervised control of a real RF measurement workflow</h1>
+      <p class="lede">I first built the Python GUI and instrument-control layer around a Keysight FieldFox for repeatable CW field collection. Once that was stable, I extended the workflow with an AI engineering supervisor that could run an approved collection, watch the instrument and data, recover routine problems, explain what it was seeing, and keep the engineer in control.</p>
+      <div class="case-meta">
+        <div class="meta-item"><span class="meta-label">My role</span><span class="meta-value">RF systems engineer / AI workflow designer / developer</span></div>
+        <div class="meta-item"><span class="meta-label">System</span><span class="meta-value">Keysight FieldFox + Python GUI + GPS + AI supervisor</span></div>
+        <div class="meta-item"><span class="meta-label">Field use</span><span class="meta-value">CW drive-test acquisition and post-processing</span></div>
+        <div class="meta-item"><span class="meta-label">Main constraint</span><span class="meta-value">Useful autonomy without hiding state or removing engineer authority</span></div>
+      </div>
+      <div class="working-note"><strong>Public-portfolio note</strong><p>The GUI and RF plots below are sanitized from real engineering work. Architecture graphics and the agent trace are public abstractions. Production code, prompts, exact thresholds, raw test data, coordinates, and customer details are intentionally omitted.</p></div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">The problem</div><p>Automating the Start button was not the hard part. The workflow had to stay trustworthy while the instrument, RF environment, GPS, files, and human operator were all changing.</p></aside>
+      <div class="case-content">
+        <h2>A field measurement is a live system, not a script that runs once.</h2>
+        <p>The collection depended on instrument state, center frequency, span, RBW/VBW, sweep timing, GPS quality, capture health, RF behavior, file integrity, and post-processing. A useful agent had to know what it could observe, what it was allowed to change, what counted as a healthy run, and when the right engineering decision was to leave the measurement alone.</p>
+        <p>I kept the fast acquisition loop deterministic and put the AI above it as a slower supervisor. That separation mattered. The model could reason about the mission and the RF state, while ordinary software still owned the timing-sensitive instrument control.</p>
+        <div class="callout"><strong>One example:</strong> a sudden level change does not automatically mean the analyzer should retune. If the carrier remains centered and acquisition is healthy, the better decision may be to preserve the configuration and let the engineer study the fading.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">What I actually changed</div><p>I separated reasoning, authority, instrument control, and verification instead of giving the model a direct path to raw SCPI.</p></aside>
+      <div class="case-content">
+        <h2>The agent worked through engineering actions, not unrestricted instrument commands.</h2>
+        <p>The model could choose from a small set of meaningful actions such as observe, connect, configure a mission, start or stop a capture, recover acquisition, tune an approved measurement, validate the data, generate a KMZ, or hand control back. A deterministic authority layer checked whether the action was allowed before anything touched the instrument.</p>
+        <div class="artifact">
+          <div class="artifact-head"><strong>System architecture</strong><span>Sanitized public abstraction</span></div>
+          <div class="artifact-body"><img class="case04-art-image" src="assets/case04/diagrams/architecture_overview.svg" alt="Architecture showing human engineer, AI RF engineer, authority governor, Python RF control plane, FieldFox and engineering outputs." /></div>
+        </div>
+        <div class="working-note"><strong>Why I did it this way</strong><p>If the model makes a bad suggestion, the governor can reject it. If the model is unavailable, the deterministic acquisition and watchdog logic still have a known state. The LLM is the engineering supervisor, not the timing loop and not the safety interlock.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">The control plane</div><p>The same GUI gave the field engineer visibility into what the system was doing and gave the agent a structured environment to operate.</p></aside>
+      <div class="case-content">
+        <h2>The human never had to wonder whether the agent had taken over the instrument.</h2>
+        <p>The application exposed the measurement configuration, SA/RTSA mode, presets, sweep cadence, reference level, markers, GPS state, live spectrum, calibration workflows, output files, and post-processing. That made the agent's actions observable in the same place the engineer already worked.</p>
+        <div class="artifact">
+          <div class="artifact-head"><strong>FieldFox drive-test GUI</strong><span>Portfolio-sanitized view</span></div>
+          <div class="artifact-body"><img class="case04-art-image" src="assets/case04/gui/fieldfox_gui_sanitized.png" alt="Sanitized Python GUI for Keysight FieldFox drive testing with instrument controls, GPS, live spectrum and output monitoring." /></div>
+        </div>
+        <p>The field collection still belonged to the engineer. The AI could work inside the approved mission, but the person could pause it, change the GUI directly, issue a natural-language nudge, or take control at any time.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">Agent interaction</div><p>Observe, decide, act, verify, recover. The useful part is the verification step and the ability to choose no action.</p></aside>
+      <div class="case-content">
+        <h2>I wanted the agent to behave more like a junior engineer than a macro recorder.</h2>
+        <div class="artifact">
+          <div class="artifact-head"><strong>Agent control loop</strong><span>Reasoning above deterministic control</span></div>
+          <div class="artifact-body"><img class="case04-art-image" src="assets/case04/diagrams/agent_control_loop.svg" alt="Observe, decide, act, verify and recover agent control loop with human handback." /></div>
+        </div>
+        <div class="workflow" aria-label="Agent workflow">
+          <div class="workflow-row"><div class="workflow-index">01</div><div class="workflow-stage">Observe</div><div class="workflow-detail">Read instrument connection, measurement configuration, capture progress, GPS health, peak behavior, frequency stability, and local RF summaries.</div></div>
+          <div class="workflow-row"><div class="workflow-index">02</div><div class="workflow-stage">Decide</div><div class="workflow-detail">Determine whether to continue, investigate, make an approved adjustment, recover a fault, or ask the engineer for direction.</div></div>
+          <div class="workflow-row"><div class="workflow-index">03</div><div class="workflow-stage">Act</div><div class="workflow-detail">Use only approved semantic engineering tools. The model has no general-purpose raw-SCPI tool.</div></div>
+          <div class="workflow-row"><div class="workflow-index">04</div><div class="workflow-stage">Verify</div><div class="workflow-detail">Confirm that the real system state changed as intended and that acquisition or file output is actually advancing.</div></div>
+          <div class="workflow-row"><div class="workflow-index">05</div><div class="workflow-stage">Recover / hand back</div><div class="workflow-detail">Attempt bounded recovery. If the problem is outside the approved authority or recovery budget, return control with context.</div></div>
+        </div>
+        <div class="artifact">
+          <div class="artifact-head"><strong>Approved tool surface</strong><span>Names shown; implementation withheld</span></div>
+          <div class="artifact-body"><img class="case04-art-image" src="assets/case04/diagrams/semantic_tool_surface.svg" alt="Diagram of approved semantic engineering tools available to the AI agent." /></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">Human parent</div><p>The engineer sets the mission and authority envelope, spends most of the time analyzing the spectrum, and can step in whenever judgment matters.</p></aside>
+      <div class="case-content">
+        <h2>Autonomy was a setting, not an all-or-nothing decision.</h2>
+        <div class="artifact">
+          <div class="artifact-head"><strong>Human-parent authority model</strong><span>Monitor, mission autonomy, adaptive RF</span></div>
+          <div class="artifact-body"><img class="case04-art-image" src="assets/case04/diagrams/human_parent_authority.svg" alt="Human parent authority model with monitor-only, mission-autonomous and adaptive RF modes." /></div>
+        </div>
+        <div class="pattern-grid">
+          <div class="pattern-card"><div class="pattern-symbol">M</div><div class="pattern-name">Monitor only</div><p>The agent can inspect and explain. It cannot change the system.</p></div>
+          <div class="pattern-card"><div class="pattern-symbol">A</div><div class="pattern-name">Mission autonomous</div><p>The agent can run the approved collection, monitor health, recover routine failures, validate the output, and finish the mission.</p></div>
+          <div class="pattern-card"><div class="pattern-symbol">RF</div><div class="pattern-name">Adaptive RF</div><p>The agent may change approved RF parameters inside engineer-defined limits and with configuration provenance preserved.</p></div>
+          <div class="pattern-card"><div class="pattern-symbol">H</div><div class="pattern-name">Human nudge</div><p>The engineer can say things like “hold this configuration and watch the fading” or “widen the span if the carrier stays near the edge.”</p></div>
+        </div>
+        <p>I also treated a manual GUI change as parent authority. If the engineer changes the span or center frequency directly, the agent should notice the new state and work from it, not immediately change the instrument back to what the AI wanted.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">Recovery and evidence</div><p>A good autonomous run needed an audit trail and a clean way to recover without silently changing the measurement.</p></aside>
+      <div class="case-content">
+        <h2>Recovery preserved the last verified measurement state.</h2>
+        <p>If communications failed after an approved measurement change, reconnecting to the original preset would be wrong. The recovery path instead preserved the current verified configuration, reconnected, reapplied it, verified it, and resumed in a new data segment so the change remained traceable.</p>
+        <div class="code-window case04-log" aria-label="Representative synthetic agent decision trace">
+          <div class="code-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <pre>REPRESENTATIVE / SYNTHETIC AGENT DECISION TRACE
+This is a portfolio illustration, not an actual field or customer log.
+
+14:00:03  OBSERVE  preflight_snapshot
+14:00:04  ACT      connect_instrument
+14:00:05  VERIFY   instrument_connected
+14:00:13  ACT      start_capture
+14:03:42  EVENT    rapid_level_variation
+14:03:43  DECIDE   no_retune — carrier and acquisition remained stable
+14:05:10  HUMAN    nudge — hold configuration; focus on fading behavior
+14:07:31  EVENT    capture_stale
+14:07:32  RECOVER  reconnect, restore verified state, resume new segment
+14:07:35  VERIFY   capture_resumed
+14:14:02  VERIFY   capture accepted
+14:14:05  VERIFY   post-processing complete
+14:14:06  COMPLETE control returned to engineer</pre>
+        </div>
+        <p class="muted-note">A text version of this representative trace is included with the public assets. Real field logs and exact recovery thresholds are not published.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">Real-world output</div><p>The acquisition system was used for real CW drive testing. The public plots below are sanitized examples of the post-processing pipeline.</p></aside>
+      <div class="case-content">
+        <h2>The workflow continued past collection into RF analysis.</h2>
+        <p>GPS- and UTC-aligned measurements fed higher-level engineering products such as fade behavior, carrier-frequency stability versus distance, sensitivity-versus-speed trade studies, and geospatial KMZ-compatible outputs. The agent could supervise that pipeline, but the RF interpretation remained visible to the engineer.</p>
+        <div class="case04-figure-grid">
+          <figure class="case04-figure"><img src="assets/case04/results/fade_rate_3475_sanitized.png" alt="Sanitized fade-rate versus time plot for a 3.475 GHz CW field run." /><figcaption><strong>3.475 GHz field run.</strong> Fade-rate behavior derived from the captured measurement series.</figcaption></figure>
+          <figure class="case04-figure"><img src="assets/case04/results/fade_rate_7601_sanitized.png" alt="Sanitized fade-rate versus time plot for a 7.601 GHz CW field run." /><figcaption><strong>7.601 GHz field run.</strong> A second collection showing a different time-varying RF environment.</figcaption></figure>
+          <figure class="case04-figure"><img src="assets/case04/results/frequency_offset_distance_3475_sanitized.png" alt="Sanitized carrier frequency offset versus distance to an abstracted transmitter." /><figcaption><strong>Frequency stability versus distance.</strong> Transmitter identity and route details have been generalized.</figcaption></figure>
+          <figure class="case04-figure"><img src="assets/case04/results/sensitivity_sweep_tradeoff.png" alt="Sensitivity versus sweep speed trade-off for a 200 kHz span." /><figcaption><strong>Measurement trade-off.</strong> The selected RBW balanced useful sensitivity with field-sampling speed.</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">What stayed private</div><p>The portfolio shows enough to explain the design without publishing a deployable copy of the system.</p></aside>
+      <div class="case-content">
+        <h2>I wanted to show the engineering, not hand out the implementation.</h2>
+        <div class="outcomes">
+          <div class="outcome"><strong>Public</strong><span>Architecture, interaction model, sanitized GUI, abstract tool names, synthetic decision trace, and sanitized RF results.</span></div>
+          <div class="outcome"><strong>Private</strong><span>Production Python, full prompts, raw SCPI, exact tool schemas, authority thresholds, recovery implementation, raw CSV/KMZ, coordinates, and real audit logs.</span></div>
+          <div class="outcome"><strong>Human-owned</strong><span>Mission intent, physical RF actions, unusual measurement judgment, override authority, and final interpretation of consequential results.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">What worked / what is next</div><p>The biggest win was separating fast control from slower reasoning. The next useful step is more event-driven supervision, not more constant model chatter.</p></aside>
+      <div class="case-content">
+        <h2>The agent became more useful when it knew when not to act.</h2>
+        <p>Keeping the measurement loop deterministic made the system easier to reason about. Giving the agent compact RF summaries instead of every raw sample made the reasoning layer more focused. Keeping the GUI visible meant the engineer could analyze the spectrum instead of babysitting routine acquisition state.</p>
+        <h3>What I would add next</h3>
+        <ul>
+          <li>Local event triggers that wake the reasoning layer only when something meaningful changes.</li>
+          <li>Automatic bookmarking of RF events with pre- and post-event trace windows.</li>
+          <li>Rules for persistent carrier drift or repeated span-edge behavior before allowing an adaptive change.</li>
+          <li>Run-to-run comparisons that tell the engineer when the propagation environment is materially different from an earlier route.</li>
+          <li>More bench validation of adaptive decisions before allowing broader autonomous tuning on physical hardware.</li>
+        </ul>
+        <div class="working-note"><strong>The larger lesson</strong><p>Giving an AI authority over a physical engineering workflow is mostly a state-and-control problem. The model matters, but so do bounded tools, visible state, verification, recovery, configuration provenance, and a clean handoff back to the person responsible for the measurement.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="next-case">
+    <div class="container">
+      <a class="next-card" href="index.html#work"><div><span class="next-label">Back to portfolio</span><strong>View all four case studies</strong></div><span class="next-arrow">&larr;</span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <span>&copy; 2026 Dan Sleeter. Selected work is sanitized for public portfolio use.</span>
+    <span><a href="mailto:daniel.d.sleeter@gmail.com">Email</a> &middot; Frederick, Maryland</span>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

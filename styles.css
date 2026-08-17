@@ -453,3 +453,46 @@ h1 {
 @media (max-width: 900px) {
   .concept-wrap { grid-template-columns: 1fr; gap: 34px; }
 }
+
+
+/* Case 04 / physical-world agent integration */
+.case-grid.four-up {
+  grid-template-columns: repeat(6, 1fr);
+}
+.case-grid.four-up .case-card {
+  grid-column: span 2;
+}
+.case-grid.four-up .case-card.featured {
+  grid-column: 1 / -1;
+  min-height: 340px;
+  background: linear-gradient(135deg, #ffffff 0%, #eef2ff 100%);
+  border-color: #bfcaf0;
+}
+.case-grid.four-up .case-card.featured h3 { max-width: 820px; font-size: clamp(31px, 4vw, 48px); }
+.case-grid.four-up .case-card.featured p { max-width: 850px; font-size: 16px; }
+.case04-art-image { width: 100%; display: block; height: auto; }
+.case04-figure-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 30px 0 0;
+}
+.case04-figure {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: 0 8px 28px rgba(13,22,36,.05);
+}
+.case04-figure img { width: 100%; height: auto; display: block; background: white; }
+.case04-figure figcaption { padding: 14px 16px 16px; color: var(--ink-2); font-size: 13px; }
+.case04-figure figcaption strong { color: var(--ink); }
+.case04-log { margin: 30px 0 18px; }
+.case04-log pre { font-size: 11px; }
+@media (max-width: 900px) {
+  .case-grid.four-up { grid-template-columns: 1fr; }
+  .case-grid.four-up .case-card,
+  .case-grid.four-up .case-card.featured { grid-column: auto; }
+  .case04-figure-grid { grid-template-columns: 1fr; }
+}

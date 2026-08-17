@@ -1,0 +1,26 @@
+REPRESENTATIVE / SYNTHETIC AGENT DECISION TRACE
+This is a portfolio illustration, not an actual field or customer log.
+
+14:00:02  STATE    mission_received
+14:00:03  OBSERVE  preflight_snapshot
+14:00:04  ACT      connect_instrument
+14:00:05  VERIFY   instrument_connected
+14:00:06  ACT      configure_mission
+14:00:07  VERIFY   configuration_verified
+14:00:08  ACT      enable_gps
+14:00:12  VERIFY   gps_state
+14:00:13  ACT      start_capture
+14:00:20  OBSERVE  capture_health
+14:03:42  EVENT    rapid_level_variation
+14:03:43  DECIDE   no_retune — Level variation increased, but carrier frequency and acquisition health remained stable; preserve measurement configuration.
+14:05:10  HUMAN    nudge
+14:05:11  DECIDE   acknowledge_parent_direction
+14:07:31  EVENT    capture_stale — Acquisition output stopped advancing.
+14:07:32  RECOVER  recover_acquisition — Reconnect, restore last verified configuration, resume in a new capture segment.
+14:07:35  VERIFY   capture_resumed
+14:14:00  EVENT    mission_duration_reached
+14:14:01  ACT      stop_capture
+14:14:02  VERIFY   validate_capture — Files closed cleanly and contained usable measurement records.
+14:14:03  ACT      generate_kmz
+14:14:05  VERIFY   post_processing_complete
+14:14:06  COMPLETE mission_complete — Collection completed with one bounded communications recovery; RF variation observed without unnecessary retuning; control returned to engineer.

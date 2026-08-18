@@ -30,11 +30,11 @@
     <div class="container">
       <div class="eyebrow">Case 05 / RFML + persistent RF memory</div>
       <h1>Building an AI RF investigator that learns from what it measures</h1>
-      <p class="lede">Case04 taught the AI how to participate in an RF measurement workflow. Case05 gave it memory: deterministic signal analysis, RF machine learning, hierarchical recognition, uncertainty handling, similarity search, and a controlled path from human-verified captures to future model improvement.</p>
+      <p class="lede">Case 04 taught the AI how to participate in an RF measurement workflow. Case 05 gave it memory: deterministic signal analysis, RF machine learning, hierarchical recognition, uncertainty handling, similarity search, and a controlled path from human-verified captures to future model improvement.</p>
       <div class="case-meta">
         <div class="meta-item"><span class="meta-label">My role</span><span class="meta-value">RF systems engineer / AI workflow designer / RFML developer</span></div>
         <div class="meta-item"><span class="meta-label">Stack</span><span class="meta-value">Python + PyTorch + TorchSig + WiSig + local RF evidence catalog</span></div>
-        <div class="meta-item"><span class="meta-label">Best confirmed result</span><span class="meta-value">81% external signal-class accuracy; 91% external RF-family accuracy</span></div>
+        <div class="meta-item"><span class="meta-label">Confirmed result</span><span class="meta-value">81% external signal-class accuracy; 91% external RF-family accuracy</span></div>
         <div class="meta-item"><span class="meta-label">Design principle</span><span class="meta-value">Predictions stay hypotheses until a human verifies them</span></div>
       </div>
       <div class="working-note"><strong>Public-portfolio note</strong><p>This page shows sanitized architecture and benchmark results. Raw third-party data, FieldFox control implementation, SCPI, prompts, exact thresholds, field coordinates, customer details, and private captures are intentionally omitted. All RFML models described here remain research candidates rather than production models.</p></div>
@@ -79,6 +79,13 @@
         <h2>The strongest classifier combined RF engineering with learned I/Q features.</h2>
         <p>I built a 43-feature deterministic representation covering amplitude behavior, normalized complex moments, phase-difference statistics, autocorrelation, spectral entropy, flatness, occupied bandwidth, symmetry, and related RF characteristics. I then trained a 1D CNN to learn a separate 192-dimensional representation directly from normalized I/Q windows.</p>
         <p>The standalone raw-I/Q network reached 61% external signal-class accuracy. The best result came from fusing the two views into a 235-dimensional engineered + learned representation.</p>
+
+        <div class="artifact">
+          <div class="artifact-head"><strong>RF signal identification performance progression</strong><span>Candidate-model benchmark progression</span></div>
+          <div class="artifact-body"><img class="case04-art-image" src="assets/case05/results/rf_signal_identification_progression.svg" alt="Bar chart showing Case 05 RF signal identification accuracy progressing from a 36.7 percent baseline to 81 percent external accuracy with the engineered plus I/Q fusion representation." /></div>
+        </div>
+        <p class="muted-note"><strong>Model progression.</strong> Combining RF-domain feature engineering with a learned I/Q representation improved external signal identification from the initial 36.7% baseline to 81.0% on a fresh synthetic test population.</p>
+
         <div class="pattern-grid">
           <div class="pattern-card"><div class="pattern-symbol">43</div><div class="pattern-name">Engineered RF features</div><p>Physics-informed deterministic evidence describing amplitude, phase, autocorrelation, bandwidth, and spectral structure.</p></div>
           <div class="pattern-card"><div class="pattern-symbol">192</div><div class="pattern-name">Learned I/Q embedding</div><p>A compact representation learned directly from signal windows by a convolutional neural network.</p></div>
@@ -95,6 +102,13 @@
       <div class="case-content">
         <h2>UNKNOWN became part of the architecture, not a failure state.</h2>
         <p>An unseen OFDM or PSK subtype should not automatically be treated as a completely novel RF family. I therefore moved from flat classification to a hierarchy: identify the RF family, decide whether that family is supportable, then classify the subtype and make a second acceptance decision.</p>
+
+        <div class="artifact">
+          <div class="artifact-head"><strong>Open-set and hierarchical RF reasoning</strong><span>Operational performance beyond exact-class accuracy</span></div>
+          <div class="artifact-body"><img class="case04-art-image" src="assets/case05/results/hierarchical_rf_reasoning.svg" alt="Dashboard comparing open-set exact-class recognition, hierarchical RF-family reasoning, accepted-family accuracy, and novel-family rejection across Case 05 model stages." /></div>
+        </div>
+        <p class="muted-note"><strong>What changed.</strong> Flat UNKNOWN gating was weak. Family-first reasoning preserved useful partial knowledge: the system could often identify the correct RF family even when the exact subtype had never appeared in training.</p>
+
         <div class="workflow" aria-label="Hierarchical RF classification">
           <div class="workflow-row"><div class="workflow-index">F</div><div class="workflow-stage">RF family</div><div class="workflow-detail">PSK, FSK, QAM, OFDM, AM, FM, tone, radar/chirp, or another learned family.</div></div>
           <div class="workflow-row"><div class="workflow-index">?</div><div class="workflow-stage">Family acceptance</div><div class="workflow-detail">If the evidence is insufficient or novel, the system returns UNKNOWN FAMILY instead of forcing a match.</div></div>
@@ -103,7 +117,7 @@
         </div>
         <div class="pattern-grid">
           <div class="pattern-card"><div class="pattern-symbol">91%</div><div class="pattern-name">External RF-family accuracy</div><p>Raw family-classification accuracy on the fresh external known-signal population.</p></div>
-          <div class="pattern-card"><div class="pattern-symbol">99.3%</div><div class="pattern-name">Accepted-family precision</div><p>Accuracy among external family predictions that passed the confidence gate.</p></div>
+          <div class="pattern-card"><div class="pattern-symbol">99.3%</div><div class="pattern-name">Accepted-family accuracy</div><p>Accuracy among external family predictions that passed the confidence gate.</p></div>
           <div class="pattern-card"><div class="pattern-symbol">76%</div><div class="pattern-name">Unseen subtype family accuracy</div><p>Family recognition on same-family signal subtypes excluded from the known training classes.</p></div>
           <div class="pattern-card"><div class="pattern-symbol">66.7%</div><div class="pattern-name">Novel-family rejection</div><p>Rejection of fresh signals drawn from RF families outside the known family model.</p></div>
         </div>
@@ -117,13 +131,13 @@
       <div class="case-content">
         <h2>WiSig exposed the difference between learning a fingerprint and trusting it across changing conditions.</h2>
         <p>I used a controlled ten-transmitter slice of the WiSig ManyTx benchmark and deliberately made the test harder than a random packet split: the model trained on the first two capture days and was evaluated on later days from the same receiver.</p>
-        <p>The initial chronological model reached 22% accuracy on the untouched fourth day versus a 10% random baseline. A follow-up diagnostic separated same-day learnability from cross-day generalization.</p>
-        <div class="pattern-grid">
-          <div class="pattern-card"><div class="pattern-symbol">10%</div><div class="pattern-name">Random baseline</div><p>Chance accuracy for ten transmitter identities.</p></div>
-          <div class="pattern-card"><div class="pattern-symbol">45%</div><div class="pattern-name">Seen-day holdout</div><p>The no-augmentation diagnostic showed clear transmitter-specific learning under similar capture conditions.</p></div>
-          <div class="pattern-card"><div class="pattern-symbol">18.8%</div><div class="pattern-name">Later Day 3</div><p>Accuracy dropped sharply when the same transmitter identities were observed on a later capture day.</p></div>
-          <div class="pattern-card"><div class="pattern-symbol">16%</div><div class="pattern-name">Later Day 4</div><p>The same pattern persisted on the second chronological holdout day, exposing substantial domain drift.</p></div>
+
+        <div class="artifact">
+          <div class="artifact-head"><strong>Cross-day transmitter fingerprinting diagnostic</strong><span>WiSig ManyTx chronological holdout</span></div>
+          <div class="artifact-body"><img class="case04-art-image" src="assets/case05/results/wisig_cross_day_fingerprinting.svg" alt="Bar chart showing ten-transmitter WiSig fingerprinting at 45 percent seen-day holdout accuracy, then 18.8 and 16 percent on later external days, compared with a 10 percent random baseline." /></div>
         </div>
+        <p class="muted-note"><strong>Domain-drift diagnostic.</strong> Transmitter-specific structure was clearly learnable under similar conditions, but performance dropped sharply on later days. That makes cross-day robustness an evidence and domain-adaptation problem, not something the system should hide behind a forced emitter label.</p>
+
         <div class="callout"><strong>Engineering conclusion:</strong> the model learned transmitter-specific information, but the observed fingerprint changed enough across days that a practical system cannot treat nearest-transmitter classification as ground truth. Emitter identification needs confidence, historical evidence, repeated observations, and human verification.</div>
       </div>
     </div>
@@ -184,7 +198,7 @@
       <div class="case-content">
         <h2>The next real-world step is verified FieldFox I/Q flowing through the same evidence architecture.</h2>
         <p>The operating concept is straightforward: the AI identifies an RF question, the FieldFox performs an approved measurement, deterministic DSP and RFML generate evidence, the system searches prior verified captures, and the agent decides whether it has enough support or whether another measurement is worth taking.</p>
-        <div class="callout"><strong>Case04 + Case05:</strong> supervised RF measurement control plus persistent RF recognition, confidence, evidence search, and a human-verified learning loop.</div>
+        <div class="callout"><strong>Case 04 + Case 05:</strong> supervised RF measurement control plus persistent RF recognition, confidence, evidence search, and a human-verified learning loop.</div>
         <p>That is the foundation I wanted to demonstrate: not an AI chatbot connected to a spectrum analyzer, but a governed AI-assisted RF investigation system that can measure, recognize, remember, challenge its own confidence, and improve from verified engineering evidence.</p>
         <div class="button-row"><a class="button" href="case-agentic-rf.html">Read Case 04 &larr;</a><a class="button secondary" href="index.html#work">Back to portfolio</a></div>
       </div>

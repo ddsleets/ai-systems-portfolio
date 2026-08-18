@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+<title id="title">RF signal identification performance progression</title>
+<desc id="desc">Bar chart showing model accuracy improving from 36.7 percent baseline to 81 percent external confirmation.</desc>
+<rect x="0" y="0" width="1200" height="720" rx="0" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+<text x="40" y="55" text-anchor="start" style="font-family:Arial,Helvetica,sans-serif;font-size:34px;font-weight:800;fill:#0d2f6f;">Case 05 — RF Signal Identification Performance Progression</text>
+<text x="40" y="90" text-anchor="start" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:400;fill:#6c7685;font-style:italic;">TorchSig 2.1.1 synthetic RF benchmark, 10 classes</text>
+<line x1="40" y1="112" x2="1160" y2="112" stroke="#2556d8" stroke-width="3"/>
+<line x1="70" y1="580.0" x2="830" y2="580.0" stroke="#cfd6e2" stroke-width="1" stroke-dasharray="5 6"/>
+<text x="55" y="586.0" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;fill:#344052;">0</text>
+<line x1="70" y1="496.0" x2="830" y2="496.0" stroke="#cfd6e2" stroke-width="1" stroke-dasharray="5 6"/>
+<text x="55" y="502.0" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;fill:#344052;">20</text>
+<line x1="70" y1="412.0" x2="830" y2="412.0" stroke="#cfd6e2" stroke-width="1" stroke-dasharray="5 6"/>
+<text x="55" y="418.0" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;fill:#344052;">40</text>
+<line x1="70" y1="328.0" x2="830" y2="328.0" stroke="#cfd6e2" stroke-width="1" stroke-dasharray="5 6"/>
+<text x="55" y="334.0" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;fill:#344052;">60</text>
+<line x1="70" y1="244.0" x2="830" y2="244.0" stroke="#cfd6e2" stroke-width="1" stroke-dasharray="5 6"/>
+<text x="55" y="250.0" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;fill:#344052;">80</text>
+<line x1="70" y1="160.0" x2="830" y2="160.0" stroke="#cfd6e2" stroke-width="1" stroke-dasharray="5 6"/>
+<text x="55" y="166.0" text-anchor="end" style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;fill:#344052;">100</text>
+<line x1="70" y1="160" x2="70" y2="580" stroke="#0d1624" stroke-width="2"/>
+<line x1="70" y1="580" x2="830" y2="580" stroke="#0d1624" stroke-width="2"/>
+<text x="25" y="385" transform="rotate(-90 25 385)" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700;fill:#0d1624;">Accuracy (%)</text>
+<rect x="109.16666666666666" y="425.86" width="105" height="154.14000000000001" rx="8" fill="#8fbaf5"/>
+<text x="161.66666666666666" y="413.86" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:800;fill:#0d2f6f;">36.7%</text>
+<text x="161.66666666666666" y="612" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:800;fill:#0d1624;">M2B</text>
+<text x="161.66666666666666" y="636" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:400;fill:#344052;"><tspan x="161.66666666666666" dy="0">Baseline engineered</tspan><tspan x="161.66666666666666" dy="16">features</tspan></text>
+<rect x="253.33333333333331" y="277.6" width="105" height="302.4" rx="8" fill="#6aa3ef"/>
+<text x="305.8333333333333" y="265.6" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:800;fill:#0d2f6f;">72.0%</text>
+<text x="305.8333333333333" y="612" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:800;fill:#0d1624;">M2D</text>
+<text x="305.8333333333333" y="636" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:400;fill:#344052;"><tspan x="305.8333333333333" dy="0">Enhanced engineered</tspan><tspan x="305.8333333333333" dy="16">features</tspan></text>
+<rect x="397.5" y="323.8" width="105" height="256.2" rx="8" fill="#558fe5"/>
+<text x="450.0" y="311.8" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:800;fill:#0d2f6f;">61.0%</text>
+<text x="450.0" y="612" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:800;fill:#0d1624;">M3A</text>
+<text x="450.0" y="636" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:400;fill:#344052;"><tspan x="450.0" dy="0">Direct I/Q CNN</tspan></text>
+<rect x="541.6666666666666" y="265.0" width="105" height="315.0" rx="8" fill="#2f6ed4"/>
+<text x="594.1666666666666" y="253.0" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:800;fill:#0d2f6f;">75.0%</text>
+<text x="594.1666666666666" y="612" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:800;fill:#0d1624;">M3B</text>
+<text x="594.1666666666666" y="636" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:400;fill:#344052;"><tspan x="594.1666666666666" dy="0">Eng + I/Q fusion</tspan></text>
+<rect x="685.8333333333333" y="239.79999999999995" width="105" height="340.20000000000005" rx="8" fill="#0d2f6f"/>
+<text x="738.3333333333333" y="227.79999999999995" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:800;fill:#0d2f6f;">81.0%</text>
+<text x="738.3333333333333" y="612" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:800;fill:#0d1624;">M3E</text>
+<text x="738.3333333333333" y="636" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:400;fill:#344052;"><tspan x="738.3333333333333" dy="0">External confirmation</tspan></text>
+<rect x="875" y="165" width="285" height="185" rx="22" fill="#eef3ff" stroke="#2556d8" stroke-width="3"/>
+<text x="1017" y="220" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:52px;font-weight:800;fill:#2556d8;">+44.3</text>
+<text x="1017" y="257" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:800;fill:#2556d8;">percentage points</text>
+<text x="1017" y="288" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:500;fill:#344052;">vs. baseline</text>
+<rect x="875" y="380" width="285" height="170" rx="22" fill="#f7f9fc" stroke="#0d2f6f" stroke-width="3"/>
+<text x="1017" y="428" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:800;fill:#0d2f6f;">CONFIRMED WINNER</text>
+<line x1="920" y1="450" x2="1114" y2="450" stroke="#0d2f6f" stroke-width="2"/>
+<text x="1017" y="500" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:34px;font-weight:800;fill:#0d2f6f;">Eng+IQ-235</text>
+<text x="1017" y="532" text-anchor="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:600;fill:#344052;">81% external accuracy</text>
+<line x1="40" y1="655" x2="1160" y2="655" stroke="#b8c2d0" stroke-width="1"/>
+<text x="52" y="681" text-anchor="start" style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:400;fill:#6c7685;"><tspan x="52" dy="0">Candidate-model evaluation on held-out/external synthetic data;</tspan><tspan x="52" dy="16">no predictions were promoted to ground truth.</tspan></text>
+</svg>

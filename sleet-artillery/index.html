@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Sleet Artillery v1.1 Mobile - Free For All</title>
+<style>
+html,body{margin:0;height:100%;background:#0d1117;color:#e6edf3;font-family:Arial,Helvetica,sans-serif;overflow:hidden}
+#wrap{height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px}
+canvas{image-rendering:pixelated;image-rendering:crisp-edges;border:4px solid #e6edf3;max-width:98vw;max-height:86vh;background:#78b7e8;box-shadow:0 18px 50px rgba(0,0,0,.45)}
+canvas:fullscreen{width:100vw;height:100vh;max-width:none;max-height:none;border:0;object-fit:contain;background:#000}
+#help{font-size:14px;opacity:.92;text-align:center;padding:0 10px} kbd{background:#30363d;padding:2px 6px;border-radius:4px;border:1px solid #57606a}
+#touch{display:none;gap:8px;flex-wrap:wrap;justify-content:center;width:min(98vw,760px)}
+#touch button{font:700 16px Arial,sans-serif;min-width:64px;min-height:48px;padding:10px 14px;border-radius:10px;border:1px solid #57606a;background:#21262d;color:#fff;touch-action:none;user-select:none;-webkit-user-select:none}
+#touch .fire{min-width:110px;background:#8f2724}
+#touch .utility{font-size:13px;min-width:76px}
+@media (pointer:coarse),(max-width:900px){canvas{max-height:72vh;border-width:2px}#help{display:none}#touch{display:flex}#wrap{gap:6px;padding:4px;box-sizing:border-box}}
+</style>
+</head>
+<body>
+<div id="wrap">
+<canvas id="game" width="1600" height="720"></canvas>
+<div id="help"><kbd>←/→</kbd> aim · <kbd>↑/↓</kbd> power · <kbd>Space</kbd> fire · <kbd>R</kbd> restart · <kbd>F</kbd> fullscreen</div>
+<div id="touch">
+  <button data-hold="ArrowLeft">ANGLE +</button>
+  <button data-hold="ArrowRight">ANGLE -</button>
+  <button data-hold="ArrowUp">POWER +</button>
+  <button data-hold="ArrowDown">POWER -</button>
+  <button class="fire" id="fireBtn">FIRE</button>
+  <button class="utility" id="restartBtn">NEW MAP</button>
+  <button class="utility" id="fullBtn">FULLSCREEN</button>
+</div>
+</div>
+<script>
+const canvas=document.getElementById('game'),ctx=canvas.getContext('2d');ctx.imageSmoothingEnabled=false;
+const W=canvas.width,H=canvas.height,GRAVITY=190,WIND_SCALE=55;
+const keys={};
+let terrain=[],tanks=[],projectile=null,particles=[],trails=[],wind=0,turn=0,state='aim',winner=null,screenShake=0,flash=0,last=performance.now();
+const COLORS=[['#2f81f7','#174b94'],['#f85149','#8f2724'],['#d29922','#7a580e'],['#a371f7','#5d3a93']];
+const NAMES=['PLAYER','CPU RED','CPU GOLD','CPU PURPLE'];
+addEventListener('keydown',e=>{keys[e.code]=true;if(['Space','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code))e.preventDefault();if(e.code==='KeyF'&&!e.repeat){if(!document.fullscreenElement)canvas.requestFullscreen?.();else document.exitFullscreen?.();}if(e.code==='KeyR'&&!e.repeat)resetGame();if(e.code==='Space'&&!e.repeat&&state==='aim'&&turn===0)fireCurrent();});
+addEventListener('keyup',e=>keys[e.code]=false);
+const touch=document.getElementById('touch');
+for(const b of touch.querySelectorAll('[data-hold]')){
+  const code=b.dataset.hold;
+  const down=e=>{e.preventDefault();keys[code]=true;};
+  const up=e=>{e.preventDefault();keys[code]=false;};
+  b.addEventListener('pointerdown',down); b.addEventListener('pointerup',up); b.addEventListener('pointercancel',up); b.addEventListener('pointerleave',up);
+}
+document.getElementById('fireBtn').addEventListener('pointerdown',e=>{e.preventDefault();if(state==='aim'&&turn===0)fireCurrent();});
+document.getElementById('restartBtn').addEventListener('pointerdown',e=>{e.preventDefault();resetGame();});
+document.getElementById('fullBtn').addEventListener('pointerdown',async e=>{e.preventDefault();try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen?.();else await document.exitFullscreen?.();}catch(_){}});
+canvas.addEventListener('pointerdown',()=>{ if(window.innerWidth<900 && screen.orientation?.lock && document.fullscreenElement){screen.orientation.lock('landscape').catch(()=>{});} });
+function clamp(v,a,b){return Math.max(a,Math.min(b,v));} function rand(a,b){return a+Math.random()*(b-a);} function alive(){return tanks.filter(t=>t.health>0);} function groundY(x){return terrain[clamp(Math.round(x),0,W-1)];}
+function generateTerrain(){terrain=new Array(W);let base=505+rand(-20,20),drift=0;for(let x=0;x<W;x++){drift+=rand(-.3,.3);drift*=.968;const wave=Math.sin(x*.008)*54+Math.sin(x*.021+1.4)*22+Math.sin(x*.0031+2)*28;terrain[x]=clamp(base+wave+drift,335,635);} [145,580,1020,1450].forEach(x=>flattenPad(x,90));}
+function flattenPad(cx,r){let sum=0,n=0;for(let x=Math.max(0,cx-r);x<Math.min(W,cx+r);x++){sum+=terrain[x];n++;}const y=sum/n;for(let x=Math.max(0,cx-r);x<Math.min(W,cx+r);x++)terrain[x]=y;}
+function makeTank(x,id){const [color,dark]=COLORS[id];const left=id>=2;return{x,y:groundY(x)-20,w:38,h:20,id,angle:id===0?45:(left?140:120),power:62,health:100,color,dark};}
+function syncTankY(t){if(t.health>0)t.y=groundY(t.x)-t.h;}
+function resetGame(){generateTerrain();const xs=[145,580,1020,1450];tanks=xs.map((x,i)=>makeTank(x,i));projectile=null;particles=[];trails=[];wind=rand(-1,1);turn=0;state='aim';winner=null;screenShake=0;flash=0;}
+function muzzle(t){const r=36,rad=t.angle*Math.PI/180;return{x:t.x+Math.cos(rad)*r,y:t.y-6-Math.sin(rad)*r};}
+function fireTank(t){if(!t||t.health<=0)return;const m=muzzle(t),rad=t.angle*Math.PI/180,speed=t.power*4.55;projectile={x:m.x,y:m.y,vx:Math.cos(rad)*speed,vy:-Math.sin(rad)*speed,owner:t.id,life:0};trails=[];state='flight';burst(m.x,m.y,9,'#ffd166',125);}
+function fireCurrent(){if(projectile||winner!==null)return;fireTank(tanks[turn]);}
+function pickCpuTarget(cpu){const choices=tanks.filter(t=>t.health>0&&t.id!==cpu.id);choices.sort((a,b)=>Math.abs(a.x-cpu.x)-Math.abs(b.x-cpu.x));if(Math.random()<.72)return choices[0];return choices[Math.floor(Math.random()*choices.length)];}
+function simulateImpact(cpu,angle,power){const rad=angle*Math.PI/180,s=power*4.55,m=muzzle(cpu);let x=m.x,y=m.y,vx=Math.cos(rad)*s,vy=-Math.sin(rad)*s;for(let i=0;i<500;i++){const dt=.022;vx+=wind*WIND_SCALE*dt;vy+=GRAVITY*dt;x+=vx*dt;y+=vy*dt;if(x<0||x>=W||y>H+40)return{x,y,valid:false};if(y>=groundY(x))return{x,y,valid:true};}return{x,y,valid:false};}
+function cpuChooseAndFire(){const cpu=tanks[turn];if(!cpu||cpu.health<=0){advanceTurn();return;}const target=pickCpuTarget(cpu);let best={err:1e9,angle:cpu.x<target.x?45:135,power:58};const a0=cpu.x<target.x?12:98,a1=cpu.x<target.x?82:168;for(let angle=a0;angle<=a1;angle+=2){for(let power=30;power<=100;power+=2){const hit=simulateImpact(cpu,angle,power);if(!hit.valid)continue;const err=Math.abs(hit.x-target.x)+Math.abs(hit.y-(target.y+8))*.15;if(err<best.err)best={err,angle,power};}}cpu.angle=clamp(best.angle+rand(-2.8,2.8),5,175);cpu.power=clamp(best.power+rand(-3.5,3.5),20,100);setTimeout(()=>{if(state==='cpu'&&winner===null&&tanks[turn]===cpu)fireTank(cpu);},600);}
+function burst(x,y,n=18,color='#ffb347',speed=220){for(let i=0;i<n;i++)particles.push({x,y,vx:rand(-speed,speed),vy:rand(-speed,speed*.25),life:rand(.45,1),color,size:rand(2,5)});}
+function crater(cx,cy,r){for(let x=Math.max(0,Math.floor(cx-r));x<=Math.min(W-1,Math.ceil(cx+r));x++){const dx=x-cx;if(Math.abs(dx)>r)continue;const depth=Math.sqrt(r*r-dx*dx)*.78;terrain[x]=Math.min(H-12,Math.max(terrain[x],cy+depth));}tanks.forEach(syncTankY);}
+function damageAt(x,y,r){tanks.forEach(t=>{if(t.health<=0)return;const d=Math.hypot(t.x-x,(t.y-5)-y);if(d<r+30){const dmg=Math.round(clamp((1-d/(r+30))*62,7,62));t.health=clamp(t.health-dmg,0,100);burst(t.x,t.y-8,15,t.color,180);}});const survivors=alive();if(survivors.length===1){winner=survivors[0].id;state='gameover';}else if(survivors.length===0){winner=-1;state='gameover';}}
+function explode(x,y){const r=46;crater(x,y,r);damageAt(x,y,r);burst(x,y,44,'#ff9f43',310);burst(x,y,22,'#f0f6fc',185);screenShake=9;flash=.18;projectile=null;if(winner!==null)return;advanceTurn();}
+function advanceTurn(){if(winner!==null)return;let tries=0;do{turn=(turn+1)%tanks.length;tries++;}while(tanks[turn].health<=0&&tries<=tanks.length);wind=clamp(wind+rand(-.38,.38),-1,1);if(turn===0){state='aim';}else{state='cpu';cpuChooseAndFire();}}
+function update(dt){if(state==='aim'&&turn===0&&winner===null&&tanks[0].health>0){const t=tanks[0];if(keys.ArrowLeft)t.angle=clamp(t.angle+55*dt,5,175);if(keys.ArrowRight)t.angle=clamp(t.angle-55*dt,5,175);if(keys.ArrowUp)t.power=clamp(t.power+34*dt,20,100);if(keys.ArrowDown)t.power=clamp(t.power-34*dt,20,100);}if(projectile){projectile.life+=dt;projectile.vx+=wind*WIND_SCALE*dt;projectile.vy+=GRAVITY*dt;projectile.x+=projectile.vx*dt;projectile.y+=projectile.vy*dt;if(trails.length===0||Math.hypot(projectile.x-trails.at(-1).x,projectile.y-trails.at(-1).y)>10)trails.push({x:projectile.x,y:projectile.y,life:1.35});if(projectile.x<0||projectile.x>=W||projectile.y>H+50){projectile=null;advanceTurn();}else if(projectile.y>=groundY(projectile.x))explode(projectile.x,projectile.y);else{for(const t of tanks){if(t.health<=0)continue;if(projectile.owner===t.id&&projectile.life<.2)continue;if(Math.abs(projectile.x-t.x)<24&&projectile.y>t.y-30&&projectile.y<t.y+20){explode(projectile.x,projectile.y);break;}}}}for(const p of particles){p.life-=dt;p.vy+=260*dt;p.x+=p.vx*dt;p.y+=p.vy*dt;}particles=particles.filter(p=>p.life>0);trails.forEach(t=>t.life-=dt);trails=trails.filter(t=>t.life>0);screenShake=Math.max(0,screenShake-28*dt);flash=Math.max(0,flash-dt);}
+function drawSky(){const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#6da7d9');g.addColorStop(1,'#d7e6f4');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);ctx.fillStyle='rgba(255,244,194,.92)';ctx.beginPath();ctx.arc(1320,105,45,0,Math.PI*2);ctx.fill();ctx.fillStyle='rgba(255,255,255,.72)';for(let i=0;i<8;i++){const x=90+i*205,y=78+(i%3)*45;ctx.fillRect(x,y,92,20);ctx.fillRect(x+19,y-13,46,14);}ctx.fillStyle='#7da36b';ctx.beginPath();ctx.moveTo(0,500);for(let x=0;x<=W;x+=100)ctx.lineTo(x,400+Math.sin(x*.009)*55);ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.fill();}
+function drawTerrain(){ctx.fillStyle='#4b3428';ctx.beginPath();ctx.moveTo(0,H);ctx.lineTo(0,terrain[0]);for(let x=1;x<W;x++)ctx.lineTo(x,terrain[x]);ctx.lineTo(W-1,H);ctx.closePath();ctx.fill();ctx.strokeStyle='#83b05f';ctx.lineWidth=6;ctx.beginPath();ctx.moveTo(0,terrain[0]);for(let x=1;x<W;x++)ctx.lineTo(x,terrain[x]);ctx.stroke();}
+function drawTank(t){if(t.health<=0){ctx.fillStyle='rgba(20,20,20,.7)';ctx.fillRect(t.x-20,groundY(t.x)-9,40,9);return;}const x=Math.round(t.x),y=Math.round(t.y),rad=t.angle*Math.PI/180;ctx.fillStyle='rgba(0,0,0,.22)';ctx.fillRect(x-24,y+15,48,5);ctx.fillStyle=t.dark;ctx.fillRect(x-24,y+3,48,13);ctx.fillStyle='#111820';for(let i=-20;i<=14;i+=11)ctx.fillRect(x+i,y+10,8,8);ctx.fillStyle=t.color;ctx.fillRect(x-16,y-7,32,13);ctx.fillStyle='#d0d7de';ctx.fillRect(x-4,y-11,8,5);ctx.save();ctx.translate(x,y-6);ctx.rotate(-rad);ctx.fillStyle=t.color;ctx.fillRect(0,-3,38,6);ctx.fillStyle='#d0d7de';ctx.fillRect(33,-2,8,4);ctx.restore();if(turn===t.id&&state!=='flight'&&winner===null){ctx.strokeStyle='rgba(255,255,255,.95)';ctx.lineWidth=2;ctx.strokeRect(x-30,y-19,60,43);}ctx.fillStyle='rgba(0,0,0,.6)';ctx.fillRect(x-31,y-35,62,8);ctx.fillStyle=t.health>45?'#3fb950':(t.health>20?'#d29922':'#f85149');ctx.fillRect(x-30,y-34,60*(t.health/100),6);ctx.fillStyle='#fff';ctx.font='12px monospace';ctx.textAlign='center';ctx.fillText(t.id===0?'YOU':`CPU ${t.id}`,x,y-42);ctx.textAlign='left';}
+function drawTrajectoryPreview(){if(state!=='aim'||turn!==0||winner!==null)return;const t=tanks[0],rad=t.angle*Math.PI/180,s=t.power*4.55,m=muzzle(t);let x=m.x,y=m.y,vx=Math.cos(rad)*s,vy=-Math.sin(rad)*s;ctx.fillStyle='rgba(255,255,255,.75)';for(let i=0;i<125;i++){const dt=.035;vx+=wind*WIND_SCALE*dt;vy+=GRAVITY*dt;x+=vx*dt;y+=vy*dt;if(i%6===0)ctx.fillRect(x-2,y-2,4,4);if(x<0||x>=W||y>=groundY(x))break;}}
+function drawProjectile(){for(const t of trails){ctx.globalAlpha=Math.min(.65,t.life*.5);ctx.fillStyle='#f0f6fc';ctx.fillRect(t.x-2,t.y-2,4,4);}ctx.globalAlpha=1;if(projectile){ctx.fillStyle='#111';ctx.beginPath();ctx.arc(projectile.x,projectile.y,7,0,Math.PI*2);ctx.fill();ctx.fillStyle='#ffcc66';ctx.fillRect(projectile.x-2,projectile.y-2,4,4);}}
+function drawParticles(){for(const p of particles){ctx.globalAlpha=Math.max(0,p.life);ctx.fillStyle=p.color;ctx.fillRect(p.x,p.y,p.size,p.size);}ctx.globalAlpha=1;}
+function drawWind(){const cx=W/2,mag=Math.abs(wind);ctx.fillStyle='rgba(13,17,23,.78)';ctx.fillRect(cx-150,14,300,48);ctx.fillStyle='#fff';ctx.font='bold 18px monospace';ctx.textAlign='center';ctx.fillText(`WIND ${wind>=0?'→':'←'} ${Math.round(mag*100)}  (${wind>=0?'pushes right':'pushes left'})`,cx,44);ctx.textAlign='left';}
+function drawHUD(){ctx.fillStyle='rgba(13,17,23,.8)';ctx.fillRect(14,14,395,104);ctx.fillStyle='#fff';ctx.font='bold 22px monospace';ctx.fillText('SLEET ARTILLERY v1.1 MOBILE',28,43);ctx.font='16px monospace';ctx.fillStyle='#c9d1d9';const who=winner!==null?'BATTLE OVER':(turn===0?'YOUR TURN':`${NAMES[turn]} TURN`);ctx.fillText(`${who}  •  FREE FOR ALL`,28,70);if(turn===0&&winner===null)ctx.fillText(`ANGLE ${tanks[0].angle.toFixed(0)}°   POWER ${tanks[0].power.toFixed(0)}`,28,96);drawWind();const panelX=W-330;ctx.fillStyle='rgba(13,17,23,.8)';ctx.fillRect(panelX,14,316,132);ctx.font='bold 15px monospace';tanks.forEach((t,i)=>{ctx.fillStyle=t.color;ctx.fillText(`${NAMES[i].padEnd(10)} ${String(t.health).padStart(3)}%${t.health<=0?'  OUT':''}`,panelX+18,42+i*24);});if(winner!==null){ctx.fillStyle='rgba(0,0,0,.62)';ctx.fillRect(0,0,W,H);ctx.textAlign='center';ctx.fillStyle='#fff';ctx.font='bold 56px monospace';ctx.fillText(winner===-1?'DRAW!':`${NAMES[winner]} WINS!`,W/2,H/2-15);ctx.font='23px monospace';ctx.fillText('Press R for a new free-for-all battlefield',W/2,H/2+35);ctx.textAlign='left';}}
+function draw(){const sx=screenShake?rand(-screenShake,screenShake):0,sy=screenShake?rand(-screenShake,screenShake):0;ctx.save();ctx.translate(sx,sy);drawSky();drawTerrain();drawTrajectoryPreview();tanks.forEach(drawTank);drawProjectile();drawParticles();drawHUD();ctx.restore();if(flash>0){ctx.fillStyle=`rgba(255,240,210,${flash*2.8})`;ctx.fillRect(0,0,W,H);}}
+function loop(now){const dt=Math.min(.033,(now-last)/1000);last=now;update(dt);draw();requestAnimationFrame(loop);} resetGame();requestAnimationFrame(loop);
+</script>
+</body>
+</html>

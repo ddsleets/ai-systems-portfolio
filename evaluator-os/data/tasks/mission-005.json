@@ -16,10 +16,11 @@
     "evidence_ids": "array"
   },
   "design_targets": ["ESCALATE coverage","correct abstention under evidence insufficiency","temporary hold versus final decision","external authority boundary","reviewer-blind Gold workflow"],
-  "packet_id": "mission-005-evidence-v0.1-draft",
-  "packet_status": "READY_FOR_CANONICAL_FINGERPRINT_AND_FREEZE",
+  "packet_id": "mission-005-evidence-v1.0",
+  "packet_integrity_reference": "5f2160a88a2706c88449b7998396532acb0caf38280313c50408508bbff01b62",
+  "packet_status": "FROZEN",
   "reviewer_embargo": "ACTIVE",
-  "gold_status": "PLACEHOLDER_CREATED_AWAITING_PACKET_FREEZE",
+  "gold_status": "AWAITING_REVIEWER_BLIND_HUMAN_JUDGMENT",
   "candidate_status": "BLOCKED_UNTIL_GOLD_FREEZE",
-  "status": "FREEZE_PREFLIGHT"
+  "status": "PACKET_FROZEN_REVIEWER_BLIND_GOLD_PENDING"
 }

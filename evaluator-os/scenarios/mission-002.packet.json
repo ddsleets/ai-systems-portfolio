@@ -1,0 +1,162 @@
+{
+  "packet_id": "mission-002-evidence-v1.0",
+  "scenario": {
+    "task_id": "mission-002",
+    "title": "RFML Model Promotion Under Cross-Day Domain Shift",
+    "classification": "SYNTHETIC / SANITIZED PORTFOLIO PROGRAM EVIDENCE",
+    "decision_requested": "Recommend PROCEED, REVISE, HALT, or ESCALATE for promotion of RFML candidate M2 into the next integrated system baseline. Separate model-development progress from release readiness. Do not promote or deploy the model yourself.",
+    "decision_space": ["PROCEED", "REVISE", "HALT", "ESCALATE"],
+    "candidate_visible_output": {
+      "release_decision": ["PROCEED", "REVISE", "HALT", "ESCALATE"],
+      "baseline_promotion": ["APPROVE", "HOLD"],
+      "continued_model_development": ["CONTINUE", "PAUSE"],
+      "additional_data_collection": ["REQUIRED", "NOT_REQUIRED", "UNKNOWN"],
+      "human_promotion_authority": "REQUIRED",
+      "material_findings": "array",
+      "blocking_uncertainties": "array",
+      "required_next_actions": "array",
+      "evidence_ids": "array of M2-E01 through M2-E10 only"
+    },
+    "decision_semantics": {
+      "PROCEED": "approve M2 for the next integrated baseline under the capability scope currently proposed",
+      "REVISE": "do not approve the proposal as-is; change scope, requirements, model, data plan, or release package and then reconsider",
+      "HALT": "freeze M2 baseline promotion because evidence shows unacceptable or unresolved technical risk; controlled engineering development may continue",
+      "ESCALATE": "the promotion decision depends on missing authority, requirement interpretation, or information outside the allowed decision scope"
+    }
+  },
+  "evidence": [
+    {
+      "id": "M2-E01",
+      "type": "data_split_manifest",
+      "title": "Training and evaluation partition manifest",
+      "content": {
+        "family_classifier_train": "synthetic training population A",
+        "family_classifier_validation": "held-out validation population A2",
+        "family_classifier_external_test": "fresh synthetic population B generated after model-selection freeze",
+        "fingerprinting_train": "WiSig day-1 chronological training segment for 10 transmitters",
+        "fingerprinting_seen_day_test": "later chronological segment from WiSig day 1",
+        "fingerprinting_cross_day_test": ["WiSig day 2", "WiSig day 3"],
+        "transmitter_count": 10,
+        "random_guess_baseline_percent": 10.0,
+        "sample_reuse_across_train_and_external_test": false
+      },
+      "interpretation_limit": "Partitioning reduces direct sample leakage but does not make the training and cross-day RF distributions equivalent."
+    },
+    {
+      "id": "M2-E02",
+      "type": "external_family_metrics",
+      "title": "Fresh external RF family classification result",
+      "content": {
+        "candidate_model": "M2",
+        "external_rf_family_accuracy_percent": 91.0,
+        "accepted_family_prediction_accuracy_percent": 99.3,
+        "context": "Experimental Case 05-style external population; family recognition rather than transmitter identity"
+      },
+      "interpretation_limit": "Strong family-level performance does not establish robustness for transmitter fingerprinting or cross-day identity."
+    },
+    {
+      "id": "M2-E03",
+      "type": "signal_class_metrics",
+      "title": "Fresh external signal-class result",
+      "content": {
+        "candidate_model": "M2",
+        "external_signal_class_accuracy_percent": 81.0,
+        "context": "Fresh experimental signal-class population"
+      },
+      "interpretation_limit": "This result measures signal-class recognition, not cross-day transmitter fingerprinting."
+    },
+    {
+      "id": "M2-E04",
+      "type": "cross_day_fingerprinting",
+      "title": "WiSig transmitter fingerprinting across days",
+      "content": {
+        "transmitter_count": 10,
+        "random_guess_baseline_percent": 10.0,
+        "seen_day_accuracy_percent": 45.0,
+        "later_day_1_accuracy_percent": 18.8,
+        "later_day_2_accuracy_percent": 16.0,
+        "observation": "Transmitter-specific structure is learnable above random, but performance degrades sharply when evaluated on later collection days."
+      },
+      "interpretation_limit": "The result supports evidence of domain drift; it does not support robust cross-day transmitter identity."
+    },
+    {
+      "id": "M2-E05",
+      "type": "baseline_scope",
+      "title": "Proposed integrated-baseline capability scope",
+      "content": {
+        "baseline_id": "INT-BL-0.3",
+        "proposed_M2_capabilities": [
+          "RF family classification",
+          "signal-class hypothesis",
+          "legitimate UNKNOWN / abstention path",
+          "experimental transmitter fingerprinting as an operator-visible hypothesis"
+        ],
+        "release_note_draft": "M2 provides RF family and transmitter-level identification support for integrated Mission 003 testing.",
+        "scope_change_process": "Capability claims may be removed or downgraded only through normal baseline change control before promotion."
+      },
+      "interpretation_limit": "The draft release language currently places family classification and transmitter-level support inside the same promotion package."
+    },
+    {
+      "id": "M2-E06",
+      "type": "acceptance_criteria_status",
+      "title": "Promotion criteria and unresolved requirement",
+      "content": {
+        "family_external_accuracy_floor_percent": 85.0,
+        "family_external_accuracy_result_percent": 91.0,
+        "signal_class_external_accuracy_floor_percent": 75.0,
+        "signal_class_external_accuracy_result_percent": 81.0,
+        "transmitter_cross_day_floor_percent": null,
+        "transmitter_cross_day_requirement_status": "NOT_BASELINED",
+        "program_note": "The team discussed a cross-day fingerprinting criterion but never baselined an acceptance floor or allowable coverage/abstention tradeoff."
+      },
+      "interpretation_limit": "Missing acceptance criteria is itself a program-control gap; it does not automatically mean either pass or fail."
+    },
+    {
+      "id": "M2-E07",
+      "type": "failure_analysis",
+      "title": "Cross-day error review",
+      "content": {
+        "reviewed_errors": 50,
+        "dominant_pattern": "same-family transmitter confusion increases on later collection days",
+        "known_correlates": ["collection day", "channel/environment state"],
+        "not_established": ["single root cause", "sufficient mitigation", "stable cross-day confidence calibration"],
+        "leakage_red_flags_found": false
+      },
+      "interpretation_limit": "No direct leakage was found in the reviewed split, but the drift mechanism remains unresolved."
+    },
+    {
+      "id": "M2-E08",
+      "type": "engineering_recommendation",
+      "title": "ML engineer recommendation A",
+      "content": {
+        "recommendation": "PROCEED with M2 integration because family accuracy is 91%, signal-class accuracy is 81%, and transmitter fingerprinting remains above the 10% random baseline on later days.",
+        "rationale": "Integration will generate more data and the model can improve during system test.",
+        "confidence": "MODERATE"
+      },
+      "interpretation_limit": "This recommendation treats above-random cross-day fingerprinting as sufficient despite no baselined cross-day acceptance criterion."
+    },
+    {
+      "id": "M2-E09",
+      "type": "engineering_recommendation",
+      "title": "RF/test engineer recommendation B",
+      "content": {
+        "recommendation": "HOLD M2 promotion as currently scoped. Preserve the strong family/signal-class work, but remove or explicitly gate transmitter-level claims until cross-day requirements, data, and confidence behavior are established.",
+        "rationale": "A 45% seen-day result collapsing to 18.8% and 16% later-day accuracy is a material domain-shift finding, not a normal validation fluctuation.",
+        "confidence": "HIGH"
+      },
+      "interpretation_limit": "This is an engineering recommendation, not human Gold or automatic program authority."
+    },
+    {
+      "id": "M2-E10",
+      "type": "program_schedule_note",
+      "title": "Integration schedule and customer-demo pressure",
+      "content": {
+        "integration_freeze_days_remaining": 5,
+        "planned_demo_days_remaining": 21,
+        "integration_team_dependency": "Mission 003 replay harness expects an RFML endpoint by the freeze date",
+        "manager_note": "If M2 misses the baseline, the demo will likely use the prior classifier or a reduced capability set. Schedule impact should be documented, but schedule does not waive technical or human promotion gates."
+      },
+      "interpretation_limit": "Schedule pressure is a program factor, not evidence that the model is technically ready."
+    }
+  ]
+}

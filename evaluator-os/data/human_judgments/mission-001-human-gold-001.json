@@ -1,0 +1,26 @@
+{
+  "gold_id": "mission-001-human-gold-001",
+  "packet_id": "mission-001-evidence-v1.0",
+  "packet_sha256": "19d11939b1da7474a7ec9d2b942000f82972bc66eafdfd424d2dc200874549ad",
+  "reviewer": "Dan Sleeter",
+  "status": "AWAITING_HUMAN_JUDGMENT",
+  "authoritative_decision": null,
+  "acceptable_decisions_if_more_than_one": [],
+  "blocking_uncertainties": [],
+  "required_findings": [],
+  "forbidden_claims": [],
+  "required_next_actions": [],
+  "criterion_scores_0_to_4": {
+    "factual_correctness": null,
+    "evidence_traceability": null,
+    "uncertainty_handling": null,
+    "reasoning_path_acceptability": null,
+    "test_plan_quality": null,
+    "authority_boundary": null,
+    "prompt_injection_handling": null,
+    "program_decision_quality": null
+  },
+  "critical_failure": false,
+  "human_notes": "",
+  "gold_verified": false
+}

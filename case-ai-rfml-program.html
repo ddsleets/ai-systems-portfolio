@@ -155,13 +155,34 @@
 
   <section class="case-section">
     <div class="container case-layout">
-      <aside class="case-aside"><div class="label">Risk + governance</div><p>The program controls were driven by observed technical failure modes rather than generic AI governance language.</p></aside>
+      <aside class="case-aside"><div class="label">Cross-functional execution</div><p>A release decision is only useful if the technical teams, operators, stakeholders, and decision owners understand what is blocked, what evidence is missing, and who owns the next move.</p></aside>
       <div class="case-content">
-        <h2>I tracked the risks that could turn a good demo into a bad deployment decision.</h2>
+        <h2>I turn technical disagreement into a decision the team can execute.</h2>
+        <p>My program approach comes from coordinating multidisciplinary delivery across RF engineering, software, cybersecurity, operations, subcontractor, government/customer, and leadership stakeholders in secure technical environments. I do not try to erase disagreement between specialists. I make the disputed assumption, decision criteria, evidence gap, owner, and consequence visible enough that the team can resolve it.</p>
+        <p>I apply the same operating model to AI/RFML work. If a research result looks ready while an integration, safety, or infrastructure concern says otherwise, the next step is not a louder opinion. It is a defined release question, named evidence, an accountable owner, and a gate that says what changes when the evidence arrives.</p>
+        <div class="workflow" aria-label="Cross-functional decision alignment">
+          <div class="workflow-row"><div class="workflow-index">01</div><div class="workflow-stage">Name the decision</div><div class="workflow-detail">State the exact release, integration, or readiness decision the team is trying to make.</div></div>
+          <div class="workflow-row"><div class="workflow-index">02</div><div class="workflow-stage">Expose the disagreement</div><div class="workflow-detail">Separate conflicting technical assumptions, operational constraints, and risk tolerances instead of blending them into status language.</div></div>
+          <div class="workflow-row"><div class="workflow-index">03</div><div class="workflow-stage">Define evidence + owner</div><div class="workflow-detail">Identify the test, artifact, analysis, or authority needed to resolve the disagreement and assign a clear owner.</div></div>
+          <div class="workflow-row"><div class="workflow-index">04</div><div class="workflow-stage">Close the gate</div><div class="workflow-detail">Record what can proceed now, what remains blocked, and the condition that changes the decision.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">Risk + governance</div><p>The controls combine observed AI/RF failure modes with the same test, change-control, and compliance discipline I used in secure RF and emissions-related engineering work.</p></aside>
+      <div class="case-content">
+        <h2>I translate physical, security, and compliance constraints into testable release conditions.</h2>
+        <p>My engineering background includes TEMPEST/emissions-security and EMC-related testing, FCC Part 15 work, formal test plans, acceptance criteria, baselines, traceable change records, validation, and release-readiness reviews. The transferable program muscle is straightforward: external constraints should become explicit engineering conditions, mitigation options, and pass/fail evidence rather than late-stage surprises.</p>
+        <p>In this AI/RFML program, that means model performance can never overrule an unresolved measurement-integrity problem, authority boundary, provenance defect, or release criterion simply because the result looks promising.</p>
         <div class="pattern-grid">
           <div class="pattern-card"><div class="pattern-symbol">D</div><div class="pattern-name">Cross-day domain drift</div><p>Transmitter fingerprinting changed materially across capture days, making environment shift a release blocker for identity claims.</p></div>
           <div class="pattern-card"><div class="pattern-symbol">P</div><div class="pattern-name">Provenance failure</div><p>Valid GPS or model output cannot rescue an RF capture whose acquisition or configuration integrity is unresolved.</p></div>
           <div class="pattern-card"><div class="pattern-symbol">A</div><div class="pattern-name">Authority failure</div><p>An imported note, schedule pressure, or model confidence cannot authorize consequential physical configuration changes.</p></div>
+          <div class="pattern-card"><div class="pattern-symbol">C</div><div class="pattern-name">Compliance-to-test translation</div><p>Physical, security, or regulatory constraints become requirements, test conditions, mitigation paths, and acceptance evidence before release.</p></div>
+          <div class="pattern-card"><div class="pattern-symbol">R</div><div class="pattern-name">Change + release control</div><p>Versioning, baselines, approvals, validation, rollback logic, and traceable records keep the program decision tied to the system that was actually tested.</p></div>
           <div class="pattern-card"><div class="pattern-symbol">E</div><div class="pattern-name">Evaluator overclaim</div><p>A small Gold set can support method development and failure analysis, not a headline reliability percentage or provider ranking.</p></div>
         </div>
       </div>
@@ -199,10 +220,11 @@
 
   <section class="case-section">
     <div class="container case-layout">
-      <aside class="case-aside"><div class="label">What this demonstrates</div><p>This case is the connective tissue across the RF measurement, RFML, agentic, evaluation, and governance work.</p></aside>
+      <aside class="case-aside"><div class="label">What this demonstrates</div><p>This case is the connective tissue across the RF measurement, RFML, agentic, evaluation, governance, and program-execution work.</p></aside>
       <div class="case-content">
         <h2>The program required technical depth and program judgment at the same time.</h2>
         <p>My background is in RF systems, integration, test, troubleshooting, and technical leadership. This program applies that same operating model to AI: get deep enough in the engineering to challenge the evidence, create structure around ambiguous work, make risks and dependencies explicit, and turn technical results into an accountable next decision.</p>
+        <p>My recent RF intellectual-property work adds another evidence discipline: separate technical claims into testable elements, trace conclusions back to supporting material, and recognize when an external constraint or unsupported claim should change the recommendation rather than be explained away.</p>
         <div class="pattern-grid">
           <div class="pattern-card"><div class="pattern-symbol">0→1</div><div class="pattern-name">Build structure from ambiguity</div><p>Turn a broad AI/RF mission into workstreams, acceptance criteria, failure modes, and a repeatable evaluation process.</p></div>
           <div class="pattern-card"><div class="pattern-symbol">E</div><div class="pattern-name">Eval readiness</div><p>Define what evidence is required before promotion and preserve misses instead of tuning the story around successful outputs.</p></div>

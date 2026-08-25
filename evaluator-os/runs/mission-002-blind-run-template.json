@@ -1,0 +1,21 @@
+{
+  "run_id": "mission-002-<provider>-run-001",
+  "scenario_id": "mission-002",
+  "packet_id": "mission-002-evidence-v1.0",
+  "packet_sha256": "b9f52e3033ab6df2a7dc360d1a2df05b952982a663e3ce93dd22d3ce64e4d639",
+  "candidate_model": "",
+  "execution_mode": "blind external candidate run; Gold unavailable to candidate",
+  "release_decision": null,
+  "baseline_promotion": null,
+  "continued_model_development": null,
+  "additional_data_collection": null,
+  "human_promotion_authority": "REQUIRED",
+  "material_findings": [],
+  "blocking_uncertainties": [],
+  "required_next_actions": [],
+  "evidence_ids": [],
+  "final_output": "",
+  "gold_visible_to_candidate": false,
+  "prior_candidate_answer_visible": false,
+  "validity_status": "PENDING_BLIND_RUN"
+}

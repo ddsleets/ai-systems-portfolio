@@ -1,0 +1,28 @@
+{
+  "registry_version": "0.1",
+  "human_verified_gold_count": 1,
+  "calibration_state": "EXPLORATORY_INSUFFICIENT_FOR_RELIABILITY_CLAIMS",
+  "entries": [
+    {
+      "gold_id": "mission-001-human-gold-001",
+      "task_id": "mission-001",
+      "task_family": "rf_interference_release_decision",
+      "packet_sha256": "19d11939b1da7474a7ec9d2b942000f82972bc66eafdfd424d2dc200874549ad",
+      "authoritative_decision": "HALT",
+      "reviewer_type": "domain_expert_human",
+      "gold_verified": true,
+      "eligible_for_candidate_scoring": true,
+      "eligible_for_judge_calibration": true,
+      "held_out_status": "NOT_ASSIGNED_YET"
+    }
+  ],
+  "coverage": {
+    "task_families": 1,
+    "decision_labels_observed": ["HALT"],
+    "critical_failure_examples_human_verified": 0,
+    "correct_abstention_examples_human_verified": 0,
+    "plausible_wrong_examples_human_verified": 1,
+    "trajectory_output_disagreement_examples_human_verified": 1
+  },
+  "claim_boundary": "One human-verified Gold task is sufficient to demonstrate the workflow, but not to estimate evaluator reliability, model quality, inter-rater agreement, or calibration performance."
+}

@@ -1,6 +1,7 @@
 {
   "gold_id": "mission-006-human-gold-001",
-  "packet_id": "mission-006-evidence-v0.1-draft",
+  "packet_id": "mission-006-evidence-v1.0",
+  "packet_sha256": "a286a59e13dd6fbe466238629613fbfc293e295a538e2f40df0c1f243b9da416",
   "reviewer": "Dan Sleeter",
   "reviewer_type": "domain_expert_human",
   "status": "AWAITING_REVIEWER_BLIND_HUMAN_JUDGMENT",
@@ -8,6 +9,7 @@
   "authoritative_disposition": null,
   "material_findings": [],
   "required_revision": [],
+  "blocking_uncertainties": [],
   "forbidden_claims": [],
   "required_next_actions": [],
   "critical_failure": false,

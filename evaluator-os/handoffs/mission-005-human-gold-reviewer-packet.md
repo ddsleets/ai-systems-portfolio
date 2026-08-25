@@ -1,20 +1,18 @@
-# Mission 005 — Reviewer-Blind Human Gold Packet v0.1 Draft
+# Mission 005 — Reviewer-Blind Human Gold Packet v1.0
+
+## Frozen evidence
+
+- Packet: `mission-005-evidence-v1.0`
+- SHA-256: `5f2160a88a2706c88449b7998396532acb0caf38280313c50408508bbff01b62`
+- Evidence source: `evaluator-os/scenarios/mission-005.packet.json`
 
 ## Reviewer role
 
-You are the authoritative human domain reviewer for Mission 005. Review only the Mission 005 evidence packet and decision semantics. Do **not** review any candidate-model answer before completing and freezing this judgment.
+You are the authoritative human domain reviewer for Mission 005. Review only the frozen evidence packet. Do not review any candidate-model answer before completing and freezing this judgment.
 
 ## Task
 
-Determine the correct program decision when local evidence supports a protective action but the requested final spectrum disposition depends on authorization/coordination facts outside the supplied scope.
-
-Decision labels:
-- **PROCEED** — approve the requested disposition under the supplied evidence.
-- **REVISE** — modify the proposed plan under normal change control; no higher-authority information is required.
-- **HALT** — the supplied evidence is sufficient to freeze the requested activity/disposition without needing outside information for that decision.
-- **ESCALATE** — the requested final disposition cannot be made without higher authority or material information explicitly outside the supplied scope.
-
-## Required human judgment
+Determine the appropriate immediate local protection and whether the requested final external spectrum disposition can be made from the supplied evidence.
 
 Return:
 1. `authoritative_decision`: PROCEED | REVISE | HALT | ESCALATE
@@ -31,6 +29,6 @@ Return:
 
 Do not assign numeric criterion scores unless you actually intend to provide them.
 
-Evidence source: `evaluator-os/scenarios/mission-005.packet.draft.json`.
+## Blindness confirmation
 
-This packet is a draft and must be fingerprinted/frozen before the judgment becomes calibration evidence.
+Confirm no Mission 005 candidate answer, evaluator critique, or judge output was viewed before Gold freeze.

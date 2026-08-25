@@ -1,0 +1,16 @@
+{
+  "gold_id": "mission-002-human-gold-001",
+  "packet_id": "mission-002-evidence-v1.0",
+  "packet_sha256": "b9f52e3033ab6df2a7dc360d1a2df05b952982a663e3ce93dd22d3ce64e4d639",
+  "reviewer": "Dan Sleeter",
+  "status": "AWAITING_HUMAN_JUDGMENT",
+  "authoritative_decision": null,
+  "authoritative_disposition": null,
+  "blocking_uncertainties": [],
+  "required_findings": [],
+  "forbidden_claims": [],
+  "required_next_actions": [],
+  "critical_failure": false,
+  "human_notes": "",
+  "gold_verified": false
+}

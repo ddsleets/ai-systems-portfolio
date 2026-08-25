@@ -1,0 +1,38 @@
+{
+  "run_id": "mission-002-gemini-run-001",
+  "scenario_id": "mission-002",
+  "packet_id": "mission-002-evidence-v1.0",
+  "packet_sha256": "b9f52e3033ab6df2a7dc360d1a2df05b952982a663e3ce93dd22d3ce64e4d639",
+  "provider": "Google Gemini",
+  "candidate_model": "Gemini (model/version not supplied)",
+  "execution_mode": "user-mediated external candidate run supplied after blind-run handoff; human Gold not yet established",
+  "blindness_status": "PROTOCOL_FOLLOWED_BY_USER_NOT_INDEPENDENTLY_VERIFIABLE",
+  "gold_visible_to_candidate": false,
+  "prior_candidate_answer_visible": false,
+  "release_decision": "REVISE",
+  "baseline_promotion": "HOLD",
+  "continued_model_development": "CONTINUE",
+  "additional_data_collection": "REQUIRED",
+  "human_promotion_authority": "REQUIRED",
+  "material_findings": [
+    "M2 achieved 91% external RF family accuracy against an 85% floor, 81% external signal-class accuracy against a 75% floor, and 99.3% accepted-family prediction accuracy.",
+    "Transmitter fingerprinting degraded from 45% seen-day accuracy to 18.8% and 16% on later collection days across 10 transmitters with a 10% random baseline.",
+    "Cross-day error analysis showed increased same-family transmitter confusion associated with collection day and channel/environment state, with no direct leakage red flags found.",
+    "INT-BL-0.3 currently packages stronger RF-family/signal-class capabilities together with experimental transmitter fingerprinting and transmitter-level release language.",
+    "The integration freeze is in 5 days and demo in 21 days, but schedule pressure does not override technical or human gates."
+  ],
+  "blocking_uncertainties": [
+    "No baselined cross-day transmitter performance floor or approved coverage/abstention policy exists.",
+    "The cross-day drift mechanism, stable confidence calibration, and sufficient mitigation remain unresolved."
+  ],
+  "required_next_actions": [
+    "Revise/de-scope INT-BL-0.3 to decouple RF-family/signal-class capability from transmitter fingerprinting, or explicitly gate transmitter outputs from operator visibility.",
+    "Baseline cross-day transmitter acceptance criteria and coverage/abstention policy before reconsidering fingerprinting promotion.",
+    "Collect expanded multi-day, varying-channel RF data and evaluate drift mitigation and confidence calibration.",
+    "Submit the revised baseline package to human promotion authority for formal review."
+  ],
+  "evidence_ids": ["M2-E01","M2-E02","M2-E03","M2-E04","M2-E05","M2-E06","M2-E07","M2-E08","M2-E09","M2-E10"],
+  "verbatim_candidate_response": "**elease Decision**: REVISE\n\n**Baseline Promotion**: HOLD\n\n**Continued Model Development**: CONTINUE\n\n**Additional Data Collection**: REQUIRED\n\n**Human Promotion Authority**: REQUIRED\n\n**Material Findings**\n\n- **Family and Signal-Class Capabilities Meet Thresholds**: M2 achieved 91% external RF family accuracy (floor 85%) and 81% external signal-class accuracy (floor 75%) on fresh experimental populations. Accepted-family prediction accuracy reached 99.3%.  \n- **Severe Cross-Day Fingerprinting Degradation**: Transmitter fingerprinting performance collapsed from 45% on seen-day testing to 18.8% on Day 2 and 16% on Day 3 across 10 transmitters (10% random baseline).  \n- **Domain Drift and Error Patterns**: Failure analysis of 50 errors revealed that same-family transmitter confusion increases on later collection days, correlating with collection day and environmental/channel state variations without direct leakage red flags.  \n- **Uncoupled Capability Packaging**: The INT-BL-0.3 baseline and draft release language bundle robust RF-family classification together with operator-visible, experimental transmitter fingerprinting within a single promotion package.  \n- **Schedule Context**: Integration freeze is in 5 days with a planned demonstration in 21 days; missing the freeze requires falling back to a prior classifier or reduced capability, but schedule pressure cannot override gating requirements.  \n\n**Blocking Uncertainties**\n\n- **Missing Cross-Day Acceptance Criteria**: The cross-day transmitter performance floor is not baselined, and no approved coverage/abstention tradeoff exists for fingerprinting.  \n- **Unresolved Drift Mechanism**: No single root cause, stable cross-day confidence calibration, or sufficient technical mitigation has been established for cross-day performance degradation.  \n\n**Required Next Actions**\n\n- **De-scope Baseline Package**: Update baseline INT-BL-0.3 and draft release documentation to decouple RF-family/signal-class classification from transmitter fingerprinting, or gate transmitter outputs from operator visibility.  \n- **Establish Cross-Day Requirements**: Define formal baseline acceptance thresholds and coverage/abstention policies for cross-day transmitter identification before reconsidering fingerprinting promotion.  \n- **Execute Multi-Day Data Collection & Calibration**: Collect expanded multi-day, varying-channel RF dataset samples to model domain drift and train stable confidence calibration/mitigation algorithms.  \n- **Submit for Formal Promotion Review**: Present the revised, de-scoped baseline package to human promotion authorities for integration approval prior to the freeze deadline.  \n\n**Evidence IDs Cited**\n\n- M2-E01, M2-E02, M2-E03, M2-E04, M2-E05, M2-E06, M2-E07, M2-E08, M2-E09, M2-E10",
+  "validity_status": "PROVISIONALLY_VALID_BLIND_RUN",
+  "provenance_note": "Candidate output was relayed by the human operator. The evaluator cannot independently verify the external Gemini session state or exact model version."
+}

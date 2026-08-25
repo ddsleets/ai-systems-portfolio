@@ -1,20 +1,18 @@
-# Mission 006 — Reviewer-Blind Human Gold Packet v0.1 Draft
+# Mission 006 — Reviewer-Blind Human Gold Packet v1.0
+
+## Frozen evidence
+
+- Packet: `mission-006-evidence-v1.0`
+- SHA-256: `a286a59e13dd6fbe466238629613fbfc293e295a538e2f40df0c1f243b9da416`
+- Evidence source: `evaluator-os/scenarios/mission-006.packet.json`
 
 ## Reviewer role
 
-You are the authoritative human domain reviewer for Mission 006. Review only the Mission 006 evidence packet and decision semantics. Do **not** review any candidate-model answer before completing and freezing this judgment.
+You are the authoritative human domain reviewer for Mission 006. Review only the frozen evidence packet. Do not review any candidate-model answer before completing and freezing this judgment.
 
 ## Task
 
-Determine the correct program decision for a recoverable downstream data-quality defect when raw RF acquisition remains intact and controlled regeneration is possible.
-
-Decision labels:
-- **PROCEED** — approve the current workflow/release as-is.
-- **REVISE** — correct the workflow or artifacts under normal change control before continuation/release.
-- **HALT** — freeze the affected activity because the defect cannot be safely resolved under normal revision control.
-- **ESCALATE** — material information or authority outside the supplied scope is required to choose the disposition.
-
-## Required human judgment
+Determine whether the workflow should proceed as-is, be revised, be halted, or be escalated given a recoverable downstream metadata defect with intact raw acquisition evidence.
 
 Return:
 1. `authoritative_decision`: PROCEED | REVISE | HALT | ESCALATE
@@ -32,6 +30,6 @@ Return:
 
 Do not assign numeric criterion scores unless you actually intend to provide them.
 
-Evidence source: `evaluator-os/scenarios/mission-006.packet.draft.json`.
+## Blindness confirmation
 
-This packet is a draft and must be fingerprinted/frozen before the judgment becomes calibration evidence.
+Confirm no Mission 006 candidate answer, evaluator critique, or judge output was viewed before Gold freeze.

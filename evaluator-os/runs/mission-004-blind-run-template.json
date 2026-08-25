@@ -2,9 +2,12 @@
   "run_id": "mission-004-<provider>-run-001",
   "scenario_id": "mission-004",
   "packet_id": "mission-004-evidence-v0.1-draft",
+  "packet_sha256": null,
   "provider": null,
   "candidate_model": null,
+  "provider_model_exactness": "UNVERIFIED_UNTIL_CAPTURED",
   "execution_mode": "blind external candidate run; Human Gold embargoed",
+  "fresh_conversation_attested": null,
   "blindness_status": "PENDING_ATTESTATION",
   "gold_visible_to_candidate": false,
   "prior_candidate_answer_visible": false,
@@ -16,12 +19,11 @@
   "human_release_authority": null,
   "material_findings": [],
   "bounded_anomalies": [],
-  "blocking_uncertainties": [],
   "required_next_actions": [],
   "evidence_ids": [],
   "verbatim_candidate_response": null,
   "observable_trajectory": [],
   "trajectory_status": "PENDING_CAPTURE",
-  "validity_status": "PENDING_PACKET_FREEZE",
-  "provenance_note": "Record exact provider/model/version only when visible. Final-only responses are NOT_SCORABLE_FINAL_ONLY for trajectory."
+  "validity_status": "PENDING_BLIND_RUN",
+  "capture_notes": []
 }

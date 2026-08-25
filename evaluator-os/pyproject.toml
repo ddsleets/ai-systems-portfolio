@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "evaluator-os"
+version = "0.7.0"
+description = "Human-grounded, cross-model evaluation harness for agent outcomes and trajectories."
+requires-python = ">=3.11"
+
+[tool.setuptools]
+packages = ["evaluator_os"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

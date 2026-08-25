@@ -1,0 +1,9 @@
+{
+  "task_id": "seed-001",
+  "gold_type": "human_verified_reference",
+  "status": "SEED_NOT_YET_HUMAN_VERIFIED",
+  "required_outcomes": [],
+  "forbidden_claims": [],
+  "blocking_uncertainties": [],
+  "notes": "This file is intentionally incomplete. Dan Sleeter supplies or verifies the authoritative task-specific Gold before the task becomes calibration-eligible."
+}

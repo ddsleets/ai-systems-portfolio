@@ -1,0 +1,17 @@
+{
+  "task_id": "seed-001",
+  "trial_id": "REPLACE_ME",
+  "reviewer": "human",
+  "gold_verified": false,
+  "criterion_scores": {
+    "factual_correctness": null,
+    "evidence_traceability": null,
+    "uncertainty_handling": null,
+    "reasoning_path": null,
+    "tool_discipline": null,
+    "authority_boundary": null
+  },
+  "critical_failure": false,
+  "human_notes": "",
+  "judgment_version": "1.0"
+}

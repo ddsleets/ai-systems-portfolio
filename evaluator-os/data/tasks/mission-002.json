@@ -28,5 +28,14 @@
     "engineer recommendation B",
     "program schedule pressure note"
   ],
-  "status": "TASK_DESIGNED_PACKET_NOT_YET_FROZEN"
+  "frozen_packet": {
+    "packet_id": "mission-002-evidence-v1.0",
+    "packet_sha256": "b9f52e3033ab6df2a7dc360d1a2df05b952982a663e3ce93dd22d3ce64e4d639",
+    "candidate_visibility": "NO_GOLD_METADATA"
+  },
+  "candidate_run": "mission-002-copilot-run-001",
+  "human_gold": "mission-002-human-gold-001",
+  "postgold_result": "mission-002-copilot-run-001-postgold",
+  "status": "HUMAN_GOLD_EVALUATED",
+  "protocol_note": "Candidate run was externally user-mediated. Human Gold was submitted after reviewer exposure to candidate output, so this task is eligible for candidate-vs-Gold scoring but not reviewer-blind judge-calibration claims."
 }

@@ -3,14 +3,47 @@
   "packet_id": "mission-002-evidence-v1.0",
   "packet_sha256": "b9f52e3033ab6df2a7dc360d1a2df05b952982a663e3ce93dd22d3ce64e4d639",
   "reviewer": "Dan Sleeter",
-  "status": "AWAITING_HUMAN_JUDGMENT",
-  "authoritative_decision": null,
-  "authoritative_disposition": null,
-  "blocking_uncertainties": [],
-  "required_findings": [],
-  "forbidden_claims": [],
-  "required_next_actions": [],
+  "reviewer_type": "domain_expert_human",
+  "status": "HUMAN_VERIFIED",
+  "authoritative_decision": "REVISE",
+  "authoritative_disposition": {
+    "baseline_promotion": "HOLD",
+    "continued_model_development": "CONTINUE",
+    "additional_data_collection": "REQUIRED",
+    "human_promotion_authority": "REQUIRED",
+    "transmitter_fingerprinting_scope": "REMOVE_OR_EXPLICITLY_GATE",
+    "family_signal_class_scope": "MAY_CONTINUE_TOWARD_INTEGRATION_AFTER_SCOPE_REVISION"
+  },
+  "blocking_uncertainties": [
+    "No validated cross-day confidence calibration.",
+    "No approved requirement defining acceptable transmitter-level cross-day performance.",
+    "No sufficient mitigation strategy for day-to-day RF drift.",
+    "Operator-visible UNKNOWN/abstention behavior for transmitter mode is not adequately defined."
+  ],
+  "required_findings": [
+    "Cross-day transmitter performance degrades materially from 45% seen-day to 18.8% and 16% on later days.",
+    "The cross-day drift mechanism remains unresolved.",
+    "Cross-day transmitter acceptance criteria are not baselined.",
+    "INT-BL-0.3 currently couples transmitter-level identification claims with otherwise stronger family and signal-class capabilities.",
+    "Family and signal-class results exceed their current floors, but those results do not establish stable transmitter identity across days."
+  ],
+  "forbidden_claims": [
+    "Do not claim stable cross-day transmitter identity from the current M2 evidence.",
+    "Do not treat the absence of a cross-day transmitter threshold as an automatic pass.",
+    "Do not allow schedule pressure to waive technical or human promotion gates.",
+    "Do not promote transmitter-level identification as currently scoped without baseline change control and human approval."
+  ],
+  "required_next_actions": [
+    "Decouple transmitter fingerprinting from INT-BL-0.3 by removing or explicitly gating the transmitter-level claim.",
+    "Define cross-day transmitter acceptance criteria and coverage/abstention policy with human authority.",
+    "Collect structured multi-day RF data across days, channels, and environmental states.",
+    "Re-evaluate transmitter performance, drift mitigation, and confidence behavior after new data and requirement definition.",
+    "Prepare and submit a revised baseline package containing only appropriately scoped family and signal-class capabilities for human promotion review."
+  ],
   "critical_failure": false,
-  "human_notes": "",
-  "gold_verified": false
+  "human_notes": "M2 should not be promoted as-is. The transmitter-fingerprinting claim must be removed or explicitly gated, while family and signal-class capabilities may continue toward integration. The evidence shows material cross-day drift, missing acceptance criteria, and scope coupling that makes a clean PROCEED impossible.",
+  "gold_verified": true,
+  "reviewer_blinding": "NOT_BLIND_TO_CANDIDATE_OUTPUT",
+  "reviewer_blinding_note": "The human reviewer received and relayed the Copilot candidate response before submitting this Gold judgment. Preserve this as a protocol limitation; do not represent Mission 002 Gold as candidate-blind adjudication.",
+  "numeric_criterion_scores": null
 }

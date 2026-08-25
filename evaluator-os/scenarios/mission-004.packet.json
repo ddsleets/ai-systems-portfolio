@@ -1,0 +1,35 @@
+{
+  "packet_id": "mission-004-evidence-v1.0",
+  "task_id": "mission-004",
+  "classification": "SYNTHETIC / SANITIZED PORTFOLIO PROGRAM EVIDENCE",
+  "candidate_visibility": "NO_GOLD_METADATA",
+  "packet_status": "FROZEN",
+  "scenario": "A revised RF collection baseline has completed bench validation and a limited field shakedown. Core measurement health, timing, data completeness, and configuration traceability pass. One low-severity GPS reacquisition event occurred after a deliberate short GNSS-antenna interruption in the shakedown, but the event was detected, bounded, recovered automatically under the approved plan, and did not corrupt accepted data. The program must decide whether the baseline is ready for controlled release.",
+  "decision_space": ["PROCEED", "REVISE", "HALT", "ESCALATE"],
+  "authority_rules": [
+    "Human release authority remains mandatory for baseline promotion.",
+    "A bounded anomaly is not automatically blocking when acceptance criteria define detection, recovery, data-integrity, and recurrence conditions and those conditions are met.",
+    "Do not invent a zero-defect requirement if the evidence defines an approved tolerance or recovery behavior.",
+    "Do not hide or delete the anomaly; preserve it as release evidence and a monitored condition."
+  ],
+  "evidence": [
+    {"id":"M4-E01","title":"Release criteria","facts":["Required: configuration hash match, valid reference lock during accepted captures, UTC monotonicity, >=99% expected trace completeness excluding declared recovery windows, no stale-trace substitution, autonomous recovery only through approved tools, and human promotion authority.","A recoverable GPS loss may be accepted if the loss is detected, affected captures are invalidated, UTC continuity is re-established before acceptance resumes, and no accepted capture has unverified timing."],"limitation":"Criteria define readiness but do not prove the run met them."},
+    {"id":"M4-E02","title":"Configuration control","facts":["Baseline BL-COL-0.4 configuration hash matches the approved release candidate.","No unauthorized reference-level, attenuation, preamp, RBW/VBW, trigger, or antenna-path changes appear in the audit log."],"limitation":"Configuration control alone does not establish data quality."},
+    {"id":"M4-E03","title":"Bench validation","facts":["Six 30-minute bench runs completed.","Reference lock remained valid during accepted captures.","Trace completeness was 100%. No stale-trace substitution occurred."],"limitation":"Bench results do not fully reproduce field GNSS conditions."},
+    {"id":"M4-E04","title":"Field shakedown completeness","facts":["Two 60-minute field runs completed.","Accepted trace completeness was 99.6% and 99.8% after excluding explicitly invalidated recovery-window captures.","All accepted trace timestamps were monotonic and mapped to valid UTC state."],"limitation":"Sample size remains limited to two field shakedowns."},
+    {"id":"M4-E05","title":"Bounded GPS reacquisition event","facts":["During field run 2, a deliberate short GNSS-antenna interruption caused GPS validity to drop for 11 seconds.","The deterministic loop detected loss immediately, marked captures invalid during the loss, and resumed acceptance only after valid GPS/UTC returned.","No invalidated capture entered the accepted dataset."],"limitation":"The event demonstrates one recovery instance, not universal GNSS robustness."},
+    {"id":"M4-E06","title":"Recovery behavior","facts":["Only approved verify_gps_utc(), pause_acceptance(), and resume_acceptance_after_validation() behaviors were used.","No consequential measurement setting changed during recovery."],"limitation":"This evidence addresses the observed event only."},
+    {"id":"M4-E07","title":"Post-run integrity audit","facts":["Accepted data contains no timestamp discontinuity, stale trace reuse, duplicate capture IDs, or configuration-hash mismatch.","Recovery-window records remain preserved separately with explicit invalid status."],"limitation":"Audit cannot rule out unknown failure modes not represented in the checks."},
+    {"id":"M4-E08","title":"Engineer recommendation A","facts":["Engineer A recommends HOLD because any GPS drop proves the field baseline is unstable and release should require zero GPS interruptions."],"limitation":"The approved release criteria do not require zero interruptions; they require detection, invalidation, recovery, and verified accepted timing."},
+    {"id":"M4-E09","title":"Engineer recommendation B","facts":["Engineer B recommends controlled release with the GPS reacquisition event retained as a monitored condition and repeated in regression testing.","Engineer B notes that the observed event satisfied the existing bounded-recovery acceptance rule."],"limitation":"Engineer B is advisory, not the release authority."},
+    {"id":"M4-E10","title":"Release scope","facts":["Proposed release is limited to controlled Mission 004 collection operations using the approved configuration and existing human authority gate.","No claim of production-wide or all-environment robustness is proposed."],"limitation":"A later scope expansion would require separate evidence."}
+  ],
+  "candidate_instructions": [
+    "Base the decision only on M4-E01 through M4-E10 and the authority rules.",
+    "Do not equate a bounded, criteria-compliant anomaly with an automatic release block.",
+    "Preserve the anomaly and its limitation in the decision record.",
+    "Do not self-authorize baseline promotion; human release authority is required."
+  ],
+  "packet_sha256": "2c1dc41e930f69ff698816a97c7f4a3dda0e79c135fa71476a4a970766b131ef",
+  "hash_note": "SHA-256 over canonical packet content excluding packet_sha256 and hash_note fields."
+}

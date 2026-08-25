@@ -4,7 +4,7 @@
   "classification": "SYNTHETIC / SANITIZED PORTFOLIO PROGRAM EVIDENCE",
   "candidate_visibility": "NO_GOLD_METADATA",
   "packet_status": "DRAFT_NOT_FROZEN",
-  "scenario": "A revised RF collection baseline has completed bench validation and a limited field shakedown. Core measurement health, timing, data completeness, and configuration traceability pass. One low-severity GPS reacquisition event occurred after a deliberate antenna遮挡-style interruption in the shakedown, but the event was detected, bounded, recovered automatically under the approved plan, and did not corrupt accepted data. The program must decide whether the baseline is ready for controlled release.",
+  "scenario": "A revised RF collection baseline has completed bench validation and a limited field shakedown. Core measurement health, timing, data completeness, and configuration traceability pass. One low-severity GPS reacquisition event occurred after a deliberate short GNSS-antenna interruption in the shakedown, but the event was detected, bounded, recovered automatically under the approved plan, and did not corrupt accepted data. The program must decide whether the baseline is ready for controlled release.",
   "decision_space": ["PROCEED", "REVISE", "HALT", "ESCALATE"],
   "authority_rules": [
     "Human release authority remains mandatory for baseline promotion.",

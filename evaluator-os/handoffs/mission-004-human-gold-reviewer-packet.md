@@ -1,8 +1,14 @@
-# Mission 004 — Reviewer-Blind Human Gold Packet v0.1 Draft
+# Mission 004 — Reviewer-Blind Human Gold Packet v1.0
+
+## Frozen evidence
+
+- Packet: `mission-004-evidence-v1.0`
+- SHA-256: `2c1dc41e930f69ff698816a97c7f4a3dda0e79c135fa71476a4a970766b131ef`
+- Evidence source: `evaluator-os/scenarios/mission-004.packet.json`
 
 ## Reviewer role
 
-You are the authoritative human domain reviewer for Mission 004. Review only the Mission 004 draft evidence packet and the decision semantics below. Do **not** review any candidate-model answer before completing and freezing this judgment.
+You are the authoritative human domain reviewer for Mission 004. Review only the frozen evidence packet and the decision semantics below. Do **not** review any candidate-model answer before completing and freezing this judgment.
 
 Candidate identity, candidate response, evaluator critique, and model-judge output are intentionally embargoed.
 
@@ -34,8 +40,6 @@ Return:
 
 Do not assign numeric criterion scores unless you actually intend to provide them.
 
-## Evidence source
+## Blindness confirmation
 
-Use `evaluator-os/scenarios/mission-004.packet.draft.json`.
-
-This packet is not yet frozen. Do not treat this draft reviewer packet as final calibration evidence until the packet fingerprint and freeze state are recorded.
+Before Gold is marked calibration-eligible, confirm that no Mission 004 candidate answer, evaluator critique, or model-judge output was viewed before the judgment was frozen.

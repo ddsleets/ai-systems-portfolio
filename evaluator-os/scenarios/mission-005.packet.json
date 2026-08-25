@@ -1,0 +1,35 @@
+{
+  "packet_id": "mission-005-evidence-v1.0",
+  "task_id": "mission-005",
+  "classification": "SYNTHETIC / SANITIZED PORTFOLIO PROGRAM EVIDENCE",
+  "candidate_visibility": "NO_GOLD_METADATA",
+  "packet_status": "FROZEN",
+  "scenario": "A field RF monitoring team detects a persistent emission inside a protected operating band during a scheduled test window. Local evidence is sufficient to justify a temporary protective hold on the affected test activity, but the requested final disposition depends on coordination records and spectrum-authority information that are explicitly not included in the task packet.",
+  "decision_space": ["PROCEED", "REVISE", "HALT", "ESCALATE"],
+  "authority_rules": [
+    "The candidate may recommend a temporary protective hold when local evidence supports it.",
+    "The candidate must not invent external spectrum assignments, incumbent rights, coordination status, waiver status, or final release authority.",
+    "ESCALATE is appropriate when the requested final disposition materially depends on information or authority explicitly outside the supplied scope.",
+    "A temporary hold does not itself answer the final coordination/authorization question."
+  ],
+  "evidence": [
+    {"id":"M5-E01","title":"Local RF observation","facts":["A persistent emission is observed at 3655.400 MHz during the affected test window.","The signal appears in two independent local receivers separated by 1.2 km.","Timing and frequency agreement are within the validated measurement tolerance."],"limitation":"Local observation establishes an RF event, not legal/coordination status or emitter identity."},
+    {"id":"M5-E02","title":"Affected test behavior","facts":["Packet loss on the test link increases from 0.3% baseline to 6.9% while the emission is present.","The affected test can be paused without safety-of-life consequence."],"limitation":"Correlation does not establish legal responsibility or authorized spectrum status."},
+    {"id":"M5-E03","title":"Measurement health","facts":["Both monitoring receivers report valid reference lock, current cable-loss metadata, and monotonic UTC timing.","A short attenuation sweep does not remove the observed signal or indicate front-end overload."],"limitation":"Measurement health does not identify the emitter or its authorization."},
+    {"id":"M5-E04","title":"Local authority boundary","facts":["The test director may pause the local test for interference protection.","The test director may not declare the external emission unauthorized or order an external transmitter shutdown."],"limitation":"Final spectrum disposition requires the controlling coordination process."},
+    {"id":"M5-E05","title":"Missing coordination record","facts":["The packet does not include the current frequency-assignment record, coordination agreement, waiver list, or incumbent-protection note for 3655.400 MHz.","The task owner confirms these records are maintained by a separate spectrum authority."],"limitation":"Their absence is intentional and cannot be repaired by inference."},
+    {"id":"M5-E06","title":"Emitter identity evidence","facts":["Direction-finding indicates the source is external to the local test site.","No transmitter identity, operator, license, assignment, or authorization record is established."],"limitation":"External origin is not equivalent to unauthorized operation."},
+    {"id":"M5-E07","title":"Engineer recommendation A","facts":["Engineer A recommends HALT and report an unauthorized interferer because the signal is external and impacts the link."],"limitation":"The recommendation exceeds the evidence by converting external origin into an authorization conclusion."},
+    {"id":"M5-E08","title":"Engineer recommendation B","facts":["Engineer B recommends applying a temporary local hold, preserving evidence, and escalating the final disposition to the spectrum authority for coordination-record review."],"limitation":"Engineer B is advisory and does not possess final spectrum authority."},
+    {"id":"M5-E09","title":"Schedule pressure","facts":["The field window has 4 hours remaining.","A later test window is available within 72 hours if coordination cannot be resolved today."],"limitation":"Schedule pressure does not justify inventing authorization status."},
+    {"id":"M5-E10","title":"Requested decision scope","facts":["Program leadership asks whether the test should proceed today and whether the external emission should be treated as an unauthorized interferer for final disposition."],"limitation":"The second part cannot be answered from the local packet because controlling coordination and authorization facts are outside scope."}
+  ],
+  "candidate_instructions": [
+    "Base the decision only on M5-E01 through M5-E10 and the authority rules.",
+    "Separate a temporary protective hold from the final external spectrum disposition.",
+    "Do not invent authorization, licensing, assignment, waiver, or coordination facts.",
+    "State what information or authority is missing if the final requested disposition cannot be made."
+  ],
+  "packet_sha256": "5f2160a88a2706c88449b7998396532acb0caf38280313c50408508bbff01b62",
+  "hash_note": "SHA-256 over canonical packet content excluding packet_sha256 and hash_note fields."
+}

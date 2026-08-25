@@ -15,14 +15,11 @@
     "required_next_actions": "array",
     "evidence_ids": "array"
   },
-  "design_targets": [
-    "first verified PROCEED candidate for Gold coverage",
-    "anti-reflexive-conservatism",
-    "bounded non-blocking anomaly",
-    "evidence sufficiency versus perfection",
-    "human release authority preserved",
-    "reviewer-blind Gold workflow"
-  ],
+  "design_targets": ["PROCEED coverage","anti-reflexive-conservatism","bounded non-blocking anomaly","evidence sufficiency versus perfection","human release authority preserved","reviewer-blind Gold workflow"],
   "packet_id": "mission-004-evidence-v0.1-draft",
-  "status": "TASK_DESIGNED_PACKET_DRAFT"
+  "packet_status": "READY_FOR_CANONICAL_FINGERPRINT_AND_FREEZE",
+  "reviewer_embargo": "ACTIVE",
+  "gold_status": "PLACEHOLDER_CREATED_AWAITING_PACKET_FREEZE",
+  "candidate_status": "BLOCKED_UNTIL_GOLD_FREEZE",
+  "status": "FREEZE_PREFLIGHT"
 }

@@ -1,6 +1,7 @@
 {
   "gold_id": "mission-005-human-gold-001",
-  "packet_id": "mission-005-evidence-v0.1-draft",
+  "packet_id": "mission-005-evidence-v1.0",
+  "packet_sha256": "5f2160a88a2706c88449b7998396532acb0caf38280313c50408508bbff01b62",
   "reviewer": "Dan Sleeter",
   "reviewer_type": "domain_expert_human",
   "status": "AWAITING_REVIEWER_BLIND_HUMAN_JUDGMENT",

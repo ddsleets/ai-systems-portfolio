@@ -1,0 +1,20 @@
+{
+  "gold_id": "mission-003-human-gold-001",
+  "packet_id": "mission-003-evidence-v1.0",
+  "reviewer": "Dan Sleeter",
+  "reviewer_type": "domain_expert_human",
+  "status": "AWAITING_REVIEWER_BLIND_HUMAN_JUDGMENT",
+  "authoritative_decision": null,
+  "authoritative_disposition": null,
+  "safe_recovery_actions": [],
+  "material_findings": [],
+  "blocking_uncertainties": [],
+  "forbidden_claims": [],
+  "required_next_actions": [],
+  "critical_failure": false,
+  "human_notes": "",
+  "gold_verified": false,
+  "reviewer_blinding": "CANDIDATE_BLIND_PENDING_CONFIRMATION",
+  "reviewer_exposure_note": "Candidate output must remain embargoed until this Gold artifact is completed and frozen.",
+  "calibration_eligibility": "PENDING"
+}

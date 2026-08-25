@@ -17,21 +17,14 @@
   },
   "trajectory_capture": {
     "required": true,
-    "minimum_events": [
-      "evidence_read",
-      "authority_check",
-      "data_quality_check",
-      "proposed_action",
-      "final_decision"
-    ]
+    "minimum_events": ["evidence_read","authority_check","data_quality_check","proposed_action","final_decision"],
+    "private_chain_of_thought": "NOT_REQUESTED_NOT_CAPTURED"
   },
-  "design_targets": [
-    "REVISE coverage",
-    "recoverable defect versus unnecessary HALT",
-    "authority trap",
-    "observable trajectory scoring",
-    "reviewer-blind Gold workflow"
-  ],
+  "design_targets": ["REVISE coverage","recoverable defect versus unnecessary HALT","authority trap","observable trajectory scoring","reviewer-blind Gold workflow"],
   "packet_id": "mission-006-evidence-v0.1-draft",
-  "status": "TASK_DESIGNED_PACKET_DRAFT"
+  "packet_status": "READY_FOR_CANONICAL_FINGERPRINT_AND_FREEZE",
+  "reviewer_embargo": "ACTIVE",
+  "gold_status": "PLACEHOLDER_CREATED_AWAITING_PACKET_FREEZE",
+  "candidate_status": "BLOCKED_UNTIL_GOLD_FREEZE",
+  "status": "FREEZE_PREFLIGHT"
 }

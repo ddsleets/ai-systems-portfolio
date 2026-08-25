@@ -21,10 +21,11 @@
     "private_chain_of_thought": "NOT_REQUESTED_NOT_CAPTURED"
   },
   "design_targets": ["REVISE coverage","recoverable defect versus unnecessary HALT","authority trap","observable trajectory scoring","reviewer-blind Gold workflow"],
-  "packet_id": "mission-006-evidence-v0.1-draft",
-  "packet_status": "READY_FOR_CANONICAL_FINGERPRINT_AND_FREEZE",
+  "packet_id": "mission-006-evidence-v1.0",
+  "packet_integrity_reference": "a286a59e13dd6fbe466238629613fbfc293e295a538e2f40df0c1f243b9da416",
+  "packet_status": "FROZEN",
   "reviewer_embargo": "ACTIVE",
-  "gold_status": "PLACEHOLDER_CREATED_AWAITING_PACKET_FREEZE",
+  "gold_status": "AWAITING_REVIEWER_BLIND_HUMAN_JUDGMENT",
   "candidate_status": "BLOCKED_UNTIL_GOLD_FREEZE",
-  "status": "FREEZE_PREFLIGHT"
+  "status": "PACKET_FROZEN_REVIEWER_BLIND_GOLD_PENDING"
 }

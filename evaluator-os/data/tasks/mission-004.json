@@ -16,10 +16,11 @@
     "evidence_ids": "array"
   },
   "design_targets": ["PROCEED coverage","anti-reflexive-conservatism","bounded non-blocking anomaly","evidence sufficiency versus perfection","human release authority preserved","reviewer-blind Gold workflow"],
-  "packet_id": "mission-004-evidence-v0.1-draft",
-  "packet_status": "READY_FOR_CANONICAL_FINGERPRINT_AND_FREEZE",
+  "packet_id": "mission-004-evidence-v1.0",
+  "packet_integrity_reference": "2c1dc41e930f69ff698816a97c7f4a3dda0e79c135fa71476a4a970766b131ef",
+  "packet_status": "FROZEN",
   "reviewer_embargo": "ACTIVE",
-  "gold_status": "PLACEHOLDER_CREATED_AWAITING_PACKET_FREEZE",
+  "gold_status": "AWAITING_REVIEWER_BLIND_HUMAN_JUDGMENT",
   "candidate_status": "BLOCKED_UNTIL_GOLD_FREEZE",
-  "status": "FREEZE_PREFLIGHT"
+  "status": "PACKET_FROZEN_REVIEWER_BLIND_GOLD_PENDING"
 }

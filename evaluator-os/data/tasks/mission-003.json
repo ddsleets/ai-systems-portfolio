@@ -23,5 +23,10 @@
     "trajectory/final-output separation",
     "candidate-blind and reviewer-blind Gold workflow"
   ],
-  "status": "TASK_DESIGNED_PACKET_PENDING_FREEZE"
+  "packet_id": "mission-003-evidence-v1.0",
+  "packet_integrity_reference": "64d90d0d746ad11f29da7234479634c6c973e2704f05ff607a17bc69b2706288",
+  "reviewer_embargo": "ACTIVE",
+  "gold_status": "AWAITING_REVIEWER_BLIND_HUMAN_JUDGMENT",
+  "candidate_status": "READY_FOR_BLIND_EXTERNAL_RUN_AFTER_GOLD_FREEZE_OR_WITH_OUTPUT_EMBARGOED_FROM_REVIEWER",
+  "status": "PACKET_FROZEN_REVIEWER_BLIND_GOLD_PENDING"
 }

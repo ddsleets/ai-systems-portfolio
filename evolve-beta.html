@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EVOLVE RF Beta | Distributed RF Observability Preview</title>
+  <meta name="description" content="Public EVOLVE RF Beta preview: distributed RF observability, cross-device event correlation, localization uncertainty, and cooperative sensing presented with synthetic/demo evidence boundaries." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
+  <link rel="canonical" href="https://ddsleets.github.io/ai-systems-portfolio/evolve-beta.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Dan Sleeter Technical Portfolio" />
+  <meta property="og:title" content="EVOLVE RF Beta | Distributed RF Observability Preview" />
+  <meta property="og:description" content="A public beta preview of EVOLVE RF: distributed RF observability, event correlation, localization uncertainty, and cooperative sensing." />
+  <meta property="og:url" content="https://ddsleets.github.io/ai-systems-portfolio/evolve-beta.html" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"EVOLVE RF Beta",
+    "applicationCategory":"EngineeringApplication",
+    "operatingSystem":"Experimental / cross-platform architecture",
+    "url":"https://ddsleets.github.io/ai-systems-portfolio/evolve-beta.html",
+    "description":"Experimental distributed RF-observability, interference-correlation, localization, and cooperative-sensing platform preview.",
+    "author":{"@type":"Person","name":"Dan Sleeter","url":"https://ddsleets.github.io/ai-systems-portfolio/index.html"}
+  }
+  </script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="index.html"><span class="brand-mark">DS</span><span>Dan Sleeter</span></a>
+    <button class="menu-button" aria-label="Open navigation" aria-expanded="false">&#9776;</button>
+    <div class="nav-links">
+      <a href="index.html">Portfolio</a>
+      <a href="case-agentic-rf.html">Case 04</a>
+      <a href="case-rfml-memory.html">Case 05</a>
+      <a href="case-ai-rfml-program.html">Case 06</a>
+      <a href="case-elevenlabs-rf-agent.html">Case 07</a>
+      <a href="case-agentic-prior-art.html">Earlier work</a>
+      <a class="nav-cta" href="mailto:daniel.d.sleeter@gmail.com">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="case-hero">
+    <div class="container">
+      <div class="eyebrow">EVOLVE RF / Public Beta</div>
+      <h1>A distributed RF-observability system built around evidence, uncertainty, and cooperative sensing.</h1>
+      <p class="lede">EVOLVE RF is an experimental platform direction for turning observations from heterogeneous RF-capable devices into persistent events, cross-device correlation, candidate localization, and operator-facing evidence. This public Beta shows the system concept and current software evidence without publishing the proprietary RF Core.</p>
+      <div class="case-meta">
+        <div class="meta-item"><span class="meta-label">Status</span><span class="meta-value">Public Beta preview / private core development</span></div>
+        <div class="meta-item"><span class="meta-label">Current software line</span><span class="meta-value">RF Core v0.1 Alpha.4 evidence baseline</span></div>
+        <div class="meta-item"><span class="meta-label">Primary use</span><span class="meta-value">RF observability, event correlation, localization uncertainty</span></div>
+        <div class="meta-item"><span class="meta-label">Authority model</span><span class="meta-value">Capability constrained; active sensing remains policy/human gated</span></div>
+      </div>
+      <div class="working-note"><strong>Beta boundary</strong><p>This page is a public concept and evidence preview. It does not provide the EVOLVE proprietary source code, private architecture details, production credentials, or access to live customer/device telemetry. Demonstrations below are synthetic or architecture-level unless explicitly labeled otherwise.</p></div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">The problem</div><p>Useful RF evidence is often scattered across devices, measurement types, clock qualities, and locations.</p></aside>
+      <div class="case-content">
+        <h2>One observation is not the same thing as one RF event.</h2>
+        <p>EVOLVE separates device-level observations from the higher-level event being investigated. That distinction matters because multiple sensors may see the same RF behavior with different timing quality, signal fidelity, location context, and measurement capability.</p>
+        <div class="callout"><strong>Core rule:</strong> a device owns an observation. EVOLVE owns the event.</div>
+        <p>The platform direction is to preserve each observation's provenance, qualify what each node is actually capable of measuring, and combine compatible evidence without pretending all sensors are equivalent.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">System flow</div><p>Edge observations become persistent correlated events only after capability, timing, and provenance checks.</p></aside>
+      <div class="case-content">
+        <h2>The software treats clock quality and measurement capability as part of the evidence.</h2>
+        <div class="workflow">
+          <div class="workflow-row"><div class="workflow-index">01</div><div class="workflow-stage">Observe</div><div class="workflow-detail">A device reports a capability-bounded observation with timing, signal, and provenance information.</div></div>
+          <div class="workflow-row"><div class="workflow-index">02</div><div class="workflow-stage">Detect</div><div class="workflow-detail">Local observations are compared with adaptive baselines and grouped into local events when warranted.</div></div>
+          <div class="workflow-row"><div class="workflow-index">03</div><div class="workflow-stage">Correlate</div><div class="workflow-detail">Compatible observations from multiple devices are associated into a persistent cross-device RF event.</div></div>
+          <div class="workflow-row"><div class="workflow-index">04</div><div class="workflow-stage">Locate carefully</div><div class="workflow-detail">RSSI, TDoA, AoA, or hybrid methods are considered only when the node capabilities and clock quality justify them. Every estimate carries uncertainty.</div></div>
+          <div class="workflow-row"><div class="workflow-index">05</div><div class="workflow-stage">Cooperate</div><div class="workflow-detail">A fusion service may request additional sensing from eligible edge nodes, with command provenance and human/policy authority preserved.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">Synthetic event console</div><p>This illustrates the type of operator evidence EVOLVE is designed to surface. The values are synthetic.</p></aside>
+      <div class="case-content">
+        <h2>A useful operator view should show the event and the reasons not to overclaim it.</h2>
+        <div class="artifact">
+          <div class="artifact-head"><strong>EVOLVE RF Beta / synthetic event EV-024</strong><span>Illustrative public preview</span></div>
+          <div class="artifact-body">
+            <div class="pattern-grid">
+              <div class="pattern-card"><div class="pattern-symbol">4</div><div class="pattern-name">Participating nodes</div><p>Four authenticated device identities contributed compatible observations to the event.</p></div>
+              <div class="pattern-card"><div class="pattern-symbol">RSSI</div><div class="pattern-name">Localization eligible</div><p>Current evidence supports an RSSI-based candidate location with an uncertainty region.</p></div>
+              <div class="pattern-card"><div class="pattern-symbol">T</div><div class="pattern-name">TDoA blocked</div><p>Only one node has qualifying precise timing, so TDoA is not permitted.</p></div>
+              <div class="pattern-card"><div class="pattern-symbol">H</div><div class="pattern-name">Active sensing gated</div><p>Capability alone does not grant permission; policy and human authority remain separate.</p></div>
+            </div>
+            <div class="code-window"><div class="code-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><pre>EVENT EV-024  /  SYNTHETIC PUBLIC PREVIEW
+
+state                 correlated / active
+observations          4 compatible device observations
+clock quality         1 precise / 3 coarse
+RSSI localization     candidate region available
+TDoA                   BLOCKED — insufficient qualifying clocks
+location confidence   bounded; uncertainty region required
+cooperative sensing   eligible node identified
+mitigation authority  NONE — human/policy decision required
+provenance             observation + envelope + receipt chain preserved</pre></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">Current software evidence</div><p>The private Alpha.4 build establishes a software baseline, not a production field-performance claim.</p></aside>
+      <div class="case-content">
+        <h2>The current build proves software behaviors that can be tested locally and deterministically.</h2>
+        <div class="outcomes">
+          <div class="outcome"><strong>Authenticated transport</strong><span>HMAC envelope verification, freshness, payload integrity, replay/nonce, sequence checks, receipts, and edge/fusion delivery.</span></div>
+          <div class="outcome"><strong>Event lifecycle</strong><span>Persistent correlation, inactivity, closure, resolution, recurrence, merge, split, and immutable event journaling.</span></div>
+          <div class="outcome"><strong>Localization discipline</strong><span>Probabilistic RSSI estimate with explicit uncertainty plus readiness boundaries for TDoA, AoA, and hybrid approaches.</span></div>
+          <div class="outcome"><strong>Cooperative sensing</strong><span>Command dispatch, acknowledgment, result return, and linked-observation provenance between fusion and eligible edge nodes.</span></div>
+        </div>
+        <div class="working-note"><strong>Verification baseline</strong><p>The Alpha.4 build manifest records 69 passing automated tests, an authenticated end-to-end demonstration, host validation output, OpenAPI contracts, a built Python wheel, an installed-wheel smoke test, and source/SHA-256 inventories.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">What is not established</div><p>The Beta is intentionally explicit about what the current evidence does not prove.</p></aside>
+      <div class="case-content">
+        <h2>Software readiness is not the same thing as RF field validation.</h2>
+        <div class="outcomes">
+          <div class="outcome"><strong>Not established</strong><span>Production access to a specific commercial phone, router, modem, access point, SDR, chipset, driver, or firmware.</span></div>
+          <div class="outcome"><strong>Not established</strong><span>Field interference-detection sensitivity, false-alarm rate, classification accuracy, or calibrated cross-vendor RSSI equivalence.</span></div>
+          <div class="outcome"><strong>Not established</strong><span>Real-world emitter-location accuracy or validated TDoA/AoA solver performance.</span></div>
+          <div class="outcome"><strong>Not established</strong><span>Production security certification, high-availability scale, fleet behavior, or autonomous mitigation authority.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container">
+      <div class="note-panel">
+        <div><div class="small-kicker inverse-kicker">Why it belongs here</div><h2>EVOLVE RF extends the portfolio from one measurement workflow toward a multi-node RF system.</h2></div>
+        <div>
+          <p>Cases 04 and 05 establish the instrument, agent, and RFML foundations. EVOLVE expands the question: how should multiple heterogeneous observations become one auditable RF event without losing timing quality, uncertainty, capability limits, or human authority?</p>
+          <div class="button-row"><a class="button" href="case-agentic-rf.html">Start with Case 04 &rarr;</a><a class="button secondary" href="index.html">Back to portfolio</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="container footer-grid"><span>&copy; 2026 Dan Sleeter. EVOLVE RF Beta is experimental and sanitized for public portfolio use.</span><span><a href="mailto:daniel.d.sleeter@gmail.com">Email</a> &middot; Maryland</span></div></footer>
+<script src="script.js"></script>
+</body>
+</html>

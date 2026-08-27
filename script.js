@@ -10,37 +10,49 @@
       { href: 'case-rfml-memory.html', label: 'Case 05' },
       { href: 'case-ai-rfml-program.html', label: 'Case 06' },
       { href: 'case-elevenlabs-rf-agent.html', label: 'Case 07' },
-      { href: 'case-agentic-prior-art.html', label: 'Earlier work' }
+      { href: 'case-agentic-prior-art.html', label: 'Earlier work' },
+      { href: 'contact.html', label: 'Contact', cta: true }
     ];
 
-    const contactLink = navLinks.querySelector('.nav-cta');
     navLinks.innerHTML = '';
-
     navItems.forEach(item => {
       const link = document.createElement('a');
       link.href = item.href;
       link.textContent = item.label;
+      if (item.cta) link.className = 'nav-cta';
       if (currentPath === item.href || (item.href === 'index.html' && currentPath === '')) {
         link.setAttribute('aria-current', 'page');
       }
       navLinks.appendChild(link);
     });
-
-    if (contactLink) {
-      navLinks.appendChild(contactLink);
-    } else {
-      const contact = document.createElement('a');
-      contact.className = 'nav-cta';
-      contact.href = 'mailto:daniel.d.sleeter@gmail.com';
-      contact.textContent = 'Contact';
-      navLinks.appendChild(contact);
-    }
   }
 
   if (menuButton && navLinks) {
     menuButton.addEventListener('click', () => {
       const isOpen = navLinks.classList.toggle('open');
       menuButton.setAttribute('aria-expanded', String(isOpen));
+    });
+  }
+
+  // Keep the homepage recruiter path current without duplicating navigation logic in every page.
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  if (currentPath === 'index.html' || currentPath === '') {
+    const note = document.querySelector('.hero .muted-note');
+    if (note) {
+      note.innerHTML = '<a href="resume.html"><strong>Resume</strong></a> &middot; <a href="cv.html"><strong>Professional CV</strong></a> &middot; <a href="contact.html"><strong>Contact</strong></a>';
+    }
+  }
+
+  // Public EVOLVE page is a portfolio Beta preview; RF Core itself remains on the Alpha.14 evidence baseline.
+  if (currentPath === 'evolve-beta.html') {
+    document.querySelectorAll('.meta-value').forEach(el => {
+      if (el.textContent.includes('Alpha.4')) el.textContent = 'RF Core v0.1 Alpha.14 evidence baseline';
+    });
+    document.querySelectorAll('.case-aside p, .working-note p').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/Alpha\.4/g, 'Alpha.14').replace(/69 passing automated tests/g, '140/140 automated tests passing');
+    });
+    document.querySelectorAll('.case-content p').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/Alpha\.4/g, 'Alpha.14').replace(/69 passing automated tests/g, '140/140 automated tests passing');
     });
   }
 

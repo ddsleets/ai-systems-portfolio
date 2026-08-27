@@ -4,8 +4,6 @@ A public portfolio focused on technical leadership across **AI, RF systems, RF m
 
 **Live portfolio:** https://ddsleets.github.io/ai-systems-portfolio/
 
-> Branch note: the `portfolio-v2-evaluator-os` branch contains the current Case 06 / Evaluator OS development work. GitHub Pages remains deployed from `main` until the portfolio update is explicitly approved for release.
-
 ## What this portfolio demonstrates
 
 My background is 20+ years in RF engineering, systems integration, field testing, troubleshooting, automation, and technical leadership. The current portfolio connects that engineering depth with hands-on AI/RFML work and a technical-program operating model: define the mission, establish acceptance criteria, build and test the technical system, expose failure modes, preserve human authority, and tie measured evidence to a defensible release decision.
@@ -13,6 +11,19 @@ My background is 20+ years in RF engineering, systems integration, field testing
 The flagship question is not simply whether an AI model can produce a strong result. It is:
 
 **What evidence would be required before an AI-enabled RF system should be trusted to advance toward deployment?**
+
+## New side-project case
+
+### Case 07 — RF Field Support Agent
+**Building and adversarially evaluating an RF engineering assistant with ElevenAgents**
+
+Built an RF Field Support agent using ElevenAgents and evaluated it with adversarial engineering scenarios rather than only happy-path demos. The evaluation tested contradictory evidence, RF localization, measurement provenance, and management pressure to make a decision from compromised data.
+
+A repeatable baseline weakness emerged: the agent sometimes promoted correlation toward causation, treated strongly disconfirming evidence as definitive exclusion, or described directional evidence with more location certainty than the measurement justified. I revised the evidence-strength guardrails and reran the same scenarios. The updated agent shifted to better-calibrated language such as `candidate`, `apparent bearing`, and `requires verification`, while preserving human engineering authority.
+
+This case is an independent personal project and is not affiliated with or endorsed by ElevenLabs. It is explicitly presented as an experimental side project, not a production RF diagnostic system or statistically calibrated evaluator.
+
+File: `case-elevenlabs-rf-agent.html`
 
 ## Flagship case
 
@@ -113,6 +124,8 @@ RFML results are framed as experimental/research-grade. The portfolio does not c
 - PyTorch / TorchSig / RFML experimentation
 - I/Q analysis and RF feature engineering
 - Agentic AI workflow design
+- ElevenAgents
+- Agent adversarial evaluation and regression testing
 - Human-in-the-loop controls
 - Evaluation and Human Gold workflows
 - Evidence provenance and traceability
@@ -127,6 +140,7 @@ assets/
   case05/
 evaluator-os/
 README.md
+case-elevenlabs-rf-agent.html
 case-ai-rfml-program.html
 case-agentic-prior-art.html
 case-agentic-rf.html

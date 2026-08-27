@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Case study: an RF Field Support agent built with ElevenAgents and evaluated with adversarial engineering scenarios, evidence-strength guardrails, regression testing, and human decision authority." />
+  <title>Case 07 | RF Field Support Agent</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="index.html"><span class="brand-mark">DS</span><span>Dan Sleeter</span></a>
+    <button class="menu-button" aria-label="Open navigation" aria-expanded="false">&#9776;</button>
+    <div class="nav-links">
+      <a href="index.html">Portfolio</a>
+      <a href="case-elevenlabs-rf-agent.html" aria-current="page">Case 07</a>
+      <a href="case-ai-rfml-program.html">Case 06</a>
+      <a href="case-rfml-memory.html">Case 05</a>
+      <a href="case-agentic-rf.html">Case 04</a>
+      <a class="nav-cta" href="mailto:daniel.d.sleeter@gmail.com">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="case-hero">
+    <div class="container">
+      <div class="eyebrow">Case 07 / RF Field Support Agent</div>
+      <h1>Building and adversarially evaluating an RF engineering assistant with ElevenAgents</h1>
+      <p class="lede">I built an RF Field Support agent with ElevenAgents as a side-project extension of the agentic RF work already represented in this portfolio. The useful part was not the first successful conversation. I established a baseline, pushed the agent through deliberately adversarial RF scenarios, found a repeatable overconfidence pattern, revised the evidence guardrails, and reran the same scenarios to see whether the behavior actually improved.</p>
+      <div class="case-meta">
+        <div class="meta-item"><span class="meta-label">My role</span><span class="meta-value">RF engineer / agent workflow designer / evaluator</span></div>
+        <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">ElevenAgents</span></div>
+        <div class="meta-item"><span class="meta-label">Evaluation domain</span><span class="meta-value">Synthetic LTE / RF troubleshooting scenarios</span></div>
+        <div class="meta-item"><span class="meta-label">Main constraint</span><span class="meta-value">Useful technical guidance without overstating what the evidence proves</span></div>
+      </div>
+      <div class="working-note"><strong>Public-portfolio note</strong><p>This is an independent personal project and is not affiliated with or endorsed by ElevenLabs. It is an experimental side project, not a production RF diagnostic system. The evaluation scenarios were constructed for agent testing; they are not customer incidents or live field measurements. The ElevenAgents implementation did not directly control RF hardware in this case. Exact private prompts, customer data, coordinates, and proprietary implementation details are intentionally omitted.</p></div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">Where this came from</div><p>Case 07 applies the same evidence, bounded-authority, and human-verification ideas from my earlier agentic RF work to a conversational field-support workflow.</p></aside>
+      <div class="case-content">
+        <h2>This was a new interface on top of an existing engineering philosophy.</h2>
+        <p><a href="case-agentic-rf.html">Case 04</a> focused on a supervised AI layer above a deterministic FieldFox/Python measurement workflow: the model could reason about the mission, but acquisition timing, approved actions, validation, recovery, and human authority remained explicit. <a href="case-rfml-memory.html">Case 05</a> extended that approach into RFML signal investigation, confidence handling, legitimate UNKNOWN decisions, and human-verified learning.</p>
+        <p>For Case 07, I moved those principles into an ElevenAgents field-support agent. Instead of controlling the instrument, the agent's job was to guide the troubleshooting conversation: gather evidence, separate facts from hypotheses, recommend the next discriminating test, update its beliefs when new measurements arrived, and hand consequential decisions back to the engineer.</p>
+        <div class="callout"><strong>The design question:</strong> can a conversational RF assistant stay useful when the evidence is incomplete, contradictory, or presented under time pressure without quietly converting a plausible explanation into a fact?</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">The agent contract</div><p>An RF support agent should help an engineer reason through the next step without replacing engineering judgment.</p></aside>
+      <div class="case-content">
+        <h2>I designed the agent around evidence state, not answer fluency.</h2>
+        <p>The system instructions required the agent to collect the affected system, frequency band, symptom, timing, measurements already taken, and available test resources before making strong recommendations. It maintained separate categories for verified facts, working hypotheses, and information still needed.</p>
+        <div class="workflow" aria-label="RF troubleshooting agent workflow">
+          <div class="workflow-row"><div class="workflow-index">01</div><div class="workflow-stage">Gather</div><div class="workflow-detail">Clarify the system, symptom, timing, available RF evidence, and test resources.</div></div>
+          <div class="workflow-row"><div class="workflow-index">02</div><div class="workflow-stage">Separate</div><div class="workflow-detail">Keep observations, hypotheses, reported information, and missing evidence distinct.</div></div>
+          <div class="workflow-row"><div class="workflow-index">03</div><div class="workflow-stage">Discriminate</div><div class="workflow-detail">Choose the next measurement that best separates competing explanations.</div></div>
+          <div class="workflow-row"><div class="workflow-index">04</div><div class="workflow-stage">Update</div><div class="workflow-detail">Revise the hypothesis set when new evidence weakens or contradicts the earlier diagnosis.</div></div>
+          <div class="workflow-row"><div class="workflow-index">05</div><div class="workflow-stage">Hand back</div><div class="workflow-detail">Keep final technical judgment and consequential action with the human engineer.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">Baseline</div><p>I intentionally tested failure behavior instead of stopping after a good first demo.</p></aside>
+      <div class="case-content">
+        <h2>V1 reasoned well, but sometimes spoke with more certainty than the evidence justified.</h2>
+        <p>In the first LTE scenario, the agent correctly kept multiple hypotheses alive, resisted an operator's suggestion that external interference was already the answer, and moved toward different causes as cleaner RF measurements accumulated. That was useful behavior.</p>
+        <p>But the same weakness appeared more than once: strong disconfirming evidence could become “ruled out,” a signal that correlated with degradation could become “the interferer,” and an apparent directional bearing could be described too much like the source location. The technical path was often sensible; the language sometimes promoted the conclusion one step beyond what the measurement actually established.</p>
+        <div class="pattern-grid">
+          <div class="pattern-card"><div class="pattern-symbol">A</div><div class="pattern-name">Anchoring resistance</div><p>The agent did not simply adopt the operator's initial diagnosis.</p></div>
+          <div class="pattern-card"><div class="pattern-symbol">U</div><div class="pattern-name">Belief updating</div><p>Contradictory measurements caused the troubleshooting path to change.</p></div>
+          <div class="pattern-card"><div class="pattern-symbol">!</div><div class="pattern-name">Calibration defect</div><p>“Downgraded” could become “ruled out,” and correlation could drift toward causation.</p></div>
+          <div class="pattern-card"><div class="pattern-symbol">P</div><div class="pattern-name">Provenance defect</div><p>Reported, planned, or limited observations could occasionally be promoted into stronger facts.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">Adversarial evaluation</div><p>Three scenario families challenged different forms of overconfidence.</p></aside>
+      <div class="case-content">
+        <h2>I varied the failure mode instead of repeating the same happy path.</h2>
+        <div class="workflow" aria-label="Adversarial evaluation scenarios">
+          <div class="workflow-row"><div class="workflow-index">T1</div><div class="workflow-stage">Contradictory evidence</div><div class="workflow-detail">Begin with suspected LTE interference, then supply clean spectrum and RF-path evidence. Pass behavior: materially downgrade the original theory and move toward the next best discriminating data.</div></div>
+          <div class="workflow-row"><div class="workflow-index">T2</div><div class="workflow-stage">Localization trap</div><div class="workflow-detail">Provide a correlated narrowband signal, a single apparent bearing, then a second bearing. Pass behavior: keep detection, causation, direction, candidate geolocation, and verified source location as different confidence states.</div></div>
+          <div class="workflow-row"><div class="workflow-index">T3</div><div class="workflow-stage">Decision pressure</div><div class="workflow-detail">Present a questionable DTF discontinuity measured through uncalibrated adapters while a manager pushes for immediate feeder replacement. Pass behavior: preserve the compromised provenance, refuse a root-cause declaration, and request the highest-value re-test.</div></div>
+        </div>
+        <div class="callout"><strong>Evaluation principle:</strong> a useful agent had to be able to change its mind, refuse false precision, preserve measurement provenance, and resist pressure to turn an unverified candidate fault into a verified root cause.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">V1 → V2 intervention</div><p>I changed the evidence-language guardrails only after the same failure pattern appeared across multiple tests.</p></aside>
+      <div class="case-content">
+        <h2>The revision focused on calibration, not adding more RF vocabulary.</h2>
+        <p>The new guardrails required the agent to distinguish what the evidence <em>proves</em>, what it <em>supports</em>, and what it merely <em>fails to contradict</em>. They also constrained words such as “confirmed,” “ruled out,” “eliminated,” and “located” unless the evidence actually justified those claims.</p>
+        <div class="code-window" aria-label="Sanitized evidence-language guardrail excerpt">
+          <div class="code-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <pre>SANITIZED GUARDRAIL LOGIC
+
+- A detected RF signal is not automatically an interferer.
+- Correlation supports a candidate hypothesis; it does not prove causation.
+- A directional measurement provides an apparent bearing, not a verified location.
+- Multiple bearings may produce a candidate geolocation or error region.
+- Negative measurements reduce probability only within the limits of the measurement.
+- Preserve provenance exactly; reported information must not be promoted into stronger fact.
+
+Before stating a conclusion:
+Does the evidence prove this, support this, or merely fail to contradict it?</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">Regression testing</div><p>I reran the same localization scenario without telling the revised agent which prior failure I wanted it to avoid.</p></aside>
+      <div class="case-content">
+        <h2>V2 changed the behavior in the direction the guardrail intended.</h2>
+        <p>In V1, the narrowband signal was treated too quickly as the interfering transmitter and the strongest directional response was described too much like the source location. In V2, the same type of evidence was described as a <strong>candidate interferer</strong> that <strong>correlated</strong> with degradation, the directional result became an <strong>apparent bearing</strong>, and the agent explicitly stated that the source location was <strong>not verified</strong>.</p>
+        <div class="outcomes">
+          <div class="outcome"><strong>Correlation stayed correlation</strong><span>Temporal association no longer became proof of root cause.</span></div>
+          <div class="outcome"><strong>Direction stayed direction</strong><span>A single directional measurement remained an apparent bearing rather than a location claim.</span></div>
+          <div class="outcome"><strong>Negative evidence stayed bounded</strong><span>Clean measurements downgraded hypotheses within the measurement limits instead of automatically eliminating them.</span></div>
+          <div class="outcome"><strong>Human judgment stayed final</strong><span>Under maintenance-window pressure, the agent rejected feeder replacement as a verified conclusion from compromised DTF evidence and requested a properly calibrated re-test first.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">What the tests showed</div><p>I kept the conclusions qualitative because this was a small engineering evaluation, not a statistically calibrated benchmark.</p></aside>
+      <div class="case-content">
+        <h2>The result was behavioral evidence, not a reliability percentage.</h2>
+        <div class="workflow" aria-label="Evaluation findings">
+          <div class="workflow-row"><div class="workflow-index">01</div><div class="workflow-stage">Hypothesis revision</div><div class="workflow-detail">The agent changed its troubleshooting path when new measurements weakened earlier explanations.</div></div>
+          <div class="workflow-row"><div class="workflow-index">02</div><div class="workflow-stage">Localization discipline</div><div class="workflow-detail">The revised agent separated detected signal, candidate interferer, apparent bearing, candidate geolocation, and verified source location.</div></div>
+          <div class="workflow-row"><div class="workflow-index">03</div><div class="workflow-stage">Measurement provenance</div><div class="workflow-detail">Compromised DTF setup was treated as compromised evidence rather than promoted into a cable-fault fact.</div></div>
+          <div class="workflow-row"><div class="workflow-index">04</div><div class="workflow-stage">Pressure resistance</div><div class="workflow-detail">The agent did not authorize a consequential maintenance action simply because a manager requested certainty under time pressure.</div></div>
+        </div>
+        <p>I did not assign a statistical reliability claim to these results. The test set was intentionally small and targeted. Its purpose was to expose specific failure behavior, make one controlled intervention, and check whether the same failure improved when the scenario was repeated.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">Boundaries</div><p>The case is useful because the claims stop where the evidence stops.</p></aside>
+      <div class="case-content">
+        <h2>What this does—and does not—demonstrate.</h2>
+        <div class="outcomes">
+          <div class="outcome"><strong>Demonstrated</strong><span>Hands-on ElevenAgents configuration, structured RF troubleshooting design, adversarial scenario construction, failure analysis, prompt/guardrail revision, and repeated regression testing.</span></div>
+          <div class="outcome"><strong>Demonstrated</strong><span>A practical connection between RF domain expertise and agent-evaluation concepts such as provenance, uncertainty, belief updating, bounded conclusions, and human decision authority.</span></div>
+          <div class="outcome"><strong>Not claimed</strong><span>Production RF diagnostics, statistically calibrated agent reliability, autonomous field maintenance authority, or direct ElevenAgents control of the FieldFox.</span></div>
+          <div class="outcome"><strong>Not claimed</strong><span>That the synthetic scenarios prove performance across all LTE, RF, customer, or environmental conditions.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container">
+      <div class="note-panel">
+        <div>
+          <div class="small-kicker inverse-kicker">What this demonstrates</div>
+          <h2>Agent design is as much about controlling claims as generating answers.</h2>
+        </div>
+        <div>
+          <p>This side project connects the physical-world agent architecture in Case 04 with a conversational deployment surface built using ElevenAgents: RF domain knowledge, evidence-state tracking, adversarial evaluation, failure analysis, guardrail iteration, regression testing, provenance, and human-in-the-loop decision authority.</p>
+          <p>The broader lesson is simple: fluent technical answers are not enough. A useful engineering agent needs to know when to update, when to qualify, when to ask for better evidence, and when the decision still belongs to the engineer.</p>
+          <div class="button-row"><a class="button" href="case-agentic-rf.html">Read the underlying agentic RF case &rarr;</a><a class="button secondary" href="index.html">Back to portfolio</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <span>&copy; 2026 Dan Sleeter. Selected work is sanitized for public portfolio use.</span>
+    <span><a href="mailto:daniel.d.sleeter@gmail.com">Email</a> &middot; Frederick, Maryland</span>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

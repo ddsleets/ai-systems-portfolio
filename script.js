@@ -1,6 +1,42 @@
 (function () {
   const menuButton = document.querySelector('.menu-button');
   const navLinks = document.querySelector('.nav-links');
+
+  if (navLinks) {
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const navItems = [
+      { href: 'index.html', label: 'Portfolio' },
+      { href: 'case-agentic-rf.html', label: 'Case 04' },
+      { href: 'case-rfml-memory.html', label: 'Case 05' },
+      { href: 'case-ai-rfml-program.html', label: 'Case 06' },
+      { href: 'case-elevenlabs-rf-agent.html', label: 'Case 07' },
+      { href: 'case-agentic-prior-art.html', label: 'Earlier work' }
+    ];
+
+    const contactLink = navLinks.querySelector('.nav-cta');
+    navLinks.innerHTML = '';
+
+    navItems.forEach(item => {
+      const link = document.createElement('a');
+      link.href = item.href;
+      link.textContent = item.label;
+      if (currentPath === item.href || (item.href === 'index.html' && currentPath === '')) {
+        link.setAttribute('aria-current', 'page');
+      }
+      navLinks.appendChild(link);
+    });
+
+    if (contactLink) {
+      navLinks.appendChild(contactLink);
+    } else {
+      const contact = document.createElement('a');
+      contact.className = 'nav-cta';
+      contact.href = 'mailto:daniel.d.sleeter@gmail.com';
+      contact.textContent = 'Contact';
+      navLinks.appendChild(contact);
+    }
+  }
+
   if (menuButton && navLinks) {
     menuButton.addEventListener('click', () => {
       const isOpen = navLinks.classList.toggle('open');

@@ -8,13 +8,14 @@
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
   <link rel="canonical" href="https://ddsleets.github.io/ai-systems-portfolio/evolve.html" />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Dan Sleeter Technical Portfolio" />
+  <meta property="og:site_name" content="EVOLVE | Dan Sleeter" />
   <meta property="og:title" content="EVOLVE | Applied AI Operating Model & Technical Proof" />
   <meta property="og:description" content="A technical proof-of-concept for evidence-first enterprise AI workflow design, evaluation, and bounded deployment." />
   <meta property="og:url" content="https://ddsleets.github.io/ai-systems-portfolio/evolve.html" />
   <meta name="twitter:card" content="summary" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="evolve-scan.css" />
+  <link rel="stylesheet" href="evolve-scan-v03.css" />
   <link rel="stylesheet" href="evolve-proof.css" />
   <script type="application/ld+json">
   {
@@ -29,7 +30,7 @@
 </head>
 <body class="evolve-proof-page">
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header"><nav class="nav" aria-label="Primary"><a class="brand" href="index.html"><span class="brand-mark">DS</span><span>Dan Sleeter</span></a><button class="menu-button" aria-label="Open navigation" aria-expanded="false">&#9776;</button><div class="nav-links"></div></nav></header>
+<header class="site-header"><nav class="nav" aria-label="Primary"><a class="brand" href="index.html"><span class="brand-mark">E</span><span>EVOLVE</span></a><button class="menu-button" aria-label="Open navigation" aria-expanded="false">&#9776;</button><div class="nav-links"></div></nav></header>
 
 <main id="main">
   <section class="hero">
@@ -43,7 +44,7 @@
           <a class="button secondary" href="#how-it-works">Inspect the operating model</a>
           <a class="button secondary" href="evolve-beta.html">View EVOLVE RF Proof</a>
         </div>
-        <p class="muted-note" style="margin-top:16px;">The browser generates a deterministic opportunity score. When you run the scan, the same non-sensitive intake is also sent to the EVOLVE backend for agent-assisted analysis; the backend is configured not to persist the request. Do not enter classified, export-controlled, proprietary, personal, regulated, credential, or other sensitive information.</p>
+        <p class="muted-note" style="margin-top:16px;">The opportunity score is generated in your browser. If you run the scan, the same non-sensitive intake is sent to the EVOLVE backend for agent-assisted analysis; provider application-state storage is explicitly disabled. Do not enter classified, export-controlled, proprietary, personal, regulated, credential, or other sensitive information.</p>
       </div>
       <aside class="hero-side" aria-label="EVOLVE proof boundaries">
         <strong>What this demonstrates</strong>
@@ -59,15 +60,15 @@
   <section class="section alt" id="workflow-scan">
     <div class="container">
       <div class="section-heading">
-        <div><div class="small-kicker">Workflow Opportunity Scan / v0.2</div><h2>A working intake surface for framing where AI may actually help.</h2></div>
-        <p>Describe one workflow and score a few operating characteristics. The proof combines a deterministic first-pass score with agent-assisted analysis of bottlenecks, control boundaries, pilot shape, and measurement. It does not invent ROI, feasibility, compliance approval, or production readiness.</p>
+        <div><div class="small-kicker">Workflow Opportunity Scan / v0.3</div><h2>Start with the workflow. Leave with a bounded first blueprint.</h2></div>
+        <p>Give EVOLVE the workflow and the pain point first. It will either ask a small number of material follow-up questions or return a preliminary blueprint: priority bottleneck, future-state roles, human boundary, pilot hypothesis, and what to measure.</p>
       </div>
 
       <div class="scan-shell">
         <div class="scan-panel">
-          <h3>Describe the current workflow</h3>
-          <p>Use one specific process rather than an entire department. Do not enter classified, export-controlled, proprietary, personal, regulated, credential, or other sensitive information.</p>
-          <div class="scan-privacy"><strong>Privacy:</strong> v0.2 sends the workflow description and selected questionnaire values to the EVOLVE backend for agent-assisted analysis. The backend is configured not to persist the request, but the content is processed by the configured AI provider. Do not enter classified, export-controlled, proprietary, personal, regulated, credential, or other sensitive information.</div>
+          <h3>Tell EVOLVE about one workflow</h3>
+          <p>Start with the two questions below. EVOLVE may ask up to two focused follow-up questions when a missing fact materially blocks a useful blueprint.</p>
+          <div class="scan-privacy"><strong>Privacy:</strong> v0.3 sends the workflow description, selected questionnaire values, and any follow-up answers to the EVOLVE backend for analysis. The backend does not intentionally persist the request, and the provider request explicitly disables application-state storage. Do not enter classified, export-controlled, proprietary, personal, regulated, credential, or other sensitive information.</div>
 
           <form class="scan-form" data-evolve-scan-form>
             <div class="scan-field">
@@ -157,7 +158,7 @@
             </div>
 
             <div class="scan-actions">
-              <button class="scan-submit" type="submit">Generate Opportunity Scan</button>
+              <button class="scan-submit" type="submit">Build EVOLVE Blueprint</button>
               <button class="scan-reset" type="reset">Reset</button>
             </div>
           </form>
@@ -182,7 +183,7 @@
               <a class="scan-email" data-scan-email href="mailto:daniel.d.sleeter@gmail.com">Email This Scan for Human Review</a>
               <button class="scan-copy" type="button" data-scan-copy>Copy Scan</button>
             </div>
-            <p class="scan-disclaimer">This result is a deterministic preliminary screen based only on the answers entered above. It does not establish ROI, technical feasibility, compliance approval, or a production design. EVOLVE's next step is review against representative real cases and current-state measurements.</p>
+            <p class="scan-disclaimer">The opportunity score is deterministic. Agent-assisted analysis and the EVOLVE Blueprint are preliminary and based on user-provided information. They do not establish ROI, technical feasibility, compliance approval, or production readiness; representative real-case review and paired measurement are still required.</p>
           </div>
         </aside>
       </div>

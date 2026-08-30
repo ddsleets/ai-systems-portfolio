@@ -1,0 +1,123 @@
+/* Image-led project evidence bands for Cases 04-07. */
+.project-evidence-band {
+  background:#071a2d;
+  color:#fff;
+  border-bottom:1px solid #28465c;
+}
+.project-evidence-grid {
+  display:grid;
+  grid-template-columns:1.35fr .65fr;
+  min-height:430px;
+}
+.project-evidence-item {
+  position:relative;
+  overflow:hidden;
+  min-height:430px;
+  background:#102f47;
+  border-right:1px solid rgba(255,255,255,.12);
+}
+.project-evidence-item:last-child { border-right:0; }
+.project-evidence-item img {
+  width:100%;
+  height:100%;
+  min-height:430px;
+  object-fit:cover;
+  display:block;
+  filter:saturate(.85) contrast(1.04);
+}
+.project-evidence-item.diagram img {
+  object-fit:contain;
+  padding:44px;
+  background:#f5f7f8;
+  filter:none;
+}
+.project-evidence-caption {
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  padding:56px 26px 22px;
+  background:linear-gradient(transparent,rgba(3,13,23,.88));
+}
+.project-evidence-caption span {
+  display:block;
+  margin-bottom:7px;
+  color:#75dce7;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.project-evidence-caption strong {
+  display:block;
+  max-width:560px;
+  font-size:20px;
+  line-height:1.12;
+}
+.project-evidence-intro {
+  padding:24px 0;
+  border-top:1px solid rgba(255,255,255,.12);
+  color:#b9c9d2;
+  font-size:13px;
+  line-height:1.55;
+}
+.project-evidence-intro strong { color:#fff; }
+
+.evaluation-visual {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  min-height:300px;
+  background:#071a2d;
+}
+.evaluation-stage {
+  position:relative;
+  padding:34px 28px;
+  border-right:1px solid #355165;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.evaluation-stage:last-child { border-right:0; }
+.evaluation-stage::before {
+  content:"";
+  width:28px;
+  height:4px;
+  background:#20c5d8;
+  position:absolute;
+  top:0;
+  left:28px;
+}
+.evaluation-stage.alert::before { background:#f47b20; }
+.evaluation-stage span {
+  color:#86a0af;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.13em;
+}
+.evaluation-stage strong {
+  display:block;
+  margin:60px 0 12px;
+  font-size:25px;
+  line-height:1;
+}
+.evaluation-stage p {
+  margin:0;
+  color:#b9c9d2;
+  font-size:13px;
+  line-height:1.5;
+}
+
+@media(max-width:800px){
+  .project-evidence-grid { grid-template-columns:1fr; min-height:0; }
+  .project-evidence-item,
+  .project-evidence-item img { min-height:300px; }
+  .project-evidence-item { border-right:0; border-bottom:1px solid rgba(255,255,255,.12); }
+  .project-evidence-item.diagram img { min-height:260px; padding:22px; }
+  .project-evidence-caption { padding:48px 20px 18px; }
+  .project-evidence-caption strong { font-size:18px; }
+  .evaluation-visual { grid-template-columns:1fr; min-height:0; }
+  .evaluation-stage { min-height:160px; border-right:0; border-bottom:1px solid #355165; padding:26px 20px; }
+  .evaluation-stage:last-child { border-bottom:0; }
+  .evaluation-stage::before { left:20px; }
+  .evaluation-stage strong { margin:34px 0 8px; font-size:22px; }
+}

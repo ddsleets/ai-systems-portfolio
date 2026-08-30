@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EVOLVE | Applied AI Operating Model & Technical Proof</title>
+  <meta name="description" content="EVOLVE is an applied-AI operating-model proof showing workflow decomposition, deterministic controls, agent-assisted analysis, evaluation, human authority, and measurable deployment discipline." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
+  <link rel="canonical" href="https://ddsleets.github.io/ai-systems-portfolio/evolve.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Dan Sleeter Technical Portfolio" />
+  <meta property="og:title" content="EVOLVE | Applied AI Operating Model & Technical Proof" />
+  <meta property="og:description" content="A technical proof-of-concept for evidence-first enterprise AI workflow design, evaluation, and bounded deployment." />
+  <meta property="og:url" content="https://ddsleets.github.io/ai-systems-portfolio/evolve.html" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="evolve-scan.css" />
+  <link rel="stylesheet" href="evolve-proof.css" />
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"CreativeWork",
+    "name":"EVOLVE Applied AI Operating Model & Technical Proof",
+    "creator":{"@type":"Person","name":"Dan Sleeter","url":"https://ddsleets.github.io/ai-systems-portfolio/index.html"},
+    "url":"https://ddsleets.github.io/ai-systems-portfolio/evolve.html",
+    "description":"A technical proof-of-concept for evidence-first enterprise AI workflow decomposition, deterministic controls, agent-assisted reasoning, human authority, evaluation, and bounded release."
+  }
+  </script>
+</head>
+<body class="evolve-proof-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><nav class="nav" aria-label="Primary"><a class="brand" href="index.html"><span class="brand-mark">DS</span><span>Dan Sleeter</span></a><button class="menu-button" aria-label="Open navigation" aria-expanded="false">&#9776;</button><div class="nav-links"></div></nav></header>
+
+<main id="main">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">EVOLVE / Applied-AI operating model</div>
+        <h1>A working proof for how enterprise AI should move from workflow friction to controlled deployment.</h1>
+        <p class="hero-copy">EVOLVE is a flagship technical proof-of-concept for decomposing workflows, separating deterministic automation from model reasoning, preserving evidence and human authority, evaluating failure modes, and measuring whether an AI-assisted process is actually better.</p>
+        <div class="button-row">
+          <a class="button" href="#workflow-scan">Run the Workflow Scan &rarr;</a>
+          <a class="button secondary" href="#how-it-works">Inspect the operating model</a>
+          <a class="button secondary" href="evolve-beta.html">View EVOLVE RF Proof</a>
+        </div>
+        <p class="muted-note" style="margin-top:16px;">The browser generates a deterministic opportunity score. When you run the scan, the same non-sensitive intake is also sent to the EVOLVE backend for agent-assisted analysis; the backend is configured not to persist the request. Do not enter classified, export-controlled, proprietary, personal, regulated, credential, or other sensitive information.</p>
+      </div>
+      <aside class="hero-side" aria-label="EVOLVE proof boundaries">
+        <strong>What this demonstrates</strong>
+        <p>Workflow decomposition, evidence handling, deterministic controls, agent-assisted reasoning, human authorization, evaluation, and bounded pilot design.</p>
+        <strong>What it is not</strong>
+        <p>A claim that every workflow needs an agent, or that a confident model should own consequential decisions.</p>
+        <strong>Physical-world proof</strong>
+        <p>EVOLVE RF applies the same architecture to distributed sensing, uncertainty, and guarded technical reasoning.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section alt" id="workflow-scan">
+    <div class="container">
+      <div class="section-heading">
+        <div><div class="small-kicker">Workflow Opportunity Scan / v0.2</div><h2>A working intake surface for framing where AI may actually help.</h2></div>
+        <p>Describe one workflow and score a few operating characteristics. The proof combines a deterministic first-pass score with agent-assisted analysis of bottlenecks, control boundaries, pilot shape, and measurement. It does not invent ROI, feasibility, compliance approval, or production readiness.</p>
+      </div>
+
+      <div class="scan-shell">
+        <div class="scan-panel">
+          <h3>Describe the current workflow</h3>
+          <p>Use one specific process rather than an entire department. Do not enter classified, export-controlled, proprietary, personal, regulated, credential, or other sensitive information.</p>
+          <div class="scan-privacy"><strong>Privacy:</strong> v0.2 sends the workflow description and selected questionnaire values to the EVOLVE backend for agent-assisted analysis. The backend is configured not to persist the request, but the content is processed by the configured AI provider. Do not enter classified, export-controlled, proprietary, personal, regulated, credential, or other sensitive information.</div>
+
+          <form class="scan-form" data-evolve-scan-form>
+            <div class="scan-field">
+              <label for="scan-workflow">What workflow or process are you trying to improve? *</label>
+              <textarea id="scan-workflow" name="workflow" required maxlength="900" placeholder="Example: Incoming technical customer requests arrive by email, then someone manually finds context, identifies the right owner, asks follow-up questions, and builds a response package."></textarea>
+            </div>
+
+            <div class="scan-field">
+              <label for="scan-pain">What is the biggest problem with it today? *</label>
+              <textarea id="scan-pain" name="pain" required maxlength="700" placeholder="Example: Too much time is spent searching old threads and documents, ownership is unclear, and important details are sometimes missing at handoff."></textarea>
+            </div>
+
+            <div class="scan-grid-2">
+              <div class="scan-field">
+                <label for="scan-repetitive">How repetitive are the steps?</label>
+                <select id="scan-repetitive" name="repetitive">
+                  <option value="1">1 — Mostly unique work</option><option value="2">2</option><option value="3" selected>3 — Mixed</option><option value="4">4</option><option value="5">5 — Highly repeatable</option>
+                </select>
+              </div>
+              <div class="scan-field">
+                <label for="scan-search">How much time is spent finding information?</label>
+                <select id="scan-search" name="search">
+                  <option value="1">1 — Very little</option><option value="2">2</option><option value="3" selected>3 — Moderate</option><option value="4">4</option><option value="5">5 — A major part of the work</option>
+                </select>
+              </div>
+              <div class="scan-field">
+                <label for="scan-handoffs">How handoff-heavy is the workflow?</label>
+                <select id="scan-handoffs" name="handoffs">
+                  <option value="1">1 — Mostly one owner</option><option value="2">2</option><option value="3" selected>3 — Several handoffs</option><option value="4">4</option><option value="5">5 — Many teams / owners</option>
+                </select>
+              </div>
+              <div class="scan-field">
+                <label for="scan-judgment">How much expert judgment is required?</label>
+                <select id="scan-judgment" name="judgment">
+                  <option value="1">1 — Rules are clear</option><option value="2">2</option><option value="3" selected>3 — Mixed</option><option value="4">4</option><option value="5">5 — Heavy expert judgment</option>
+                </select>
+              </div>
+              <div class="scan-field">
+                <label for="scan-consequence">How serious would a wrong output/action be?</label>
+                <select id="scan-consequence" name="consequence">
+                  <option value="1">1 — Low consequence</option><option value="2">2</option><option value="3" selected>3 — Moderate</option><option value="4">4</option><option value="5">5 — High consequence / irreversible</option>
+                </select>
+              </div>
+              <div class="scan-field">
+                <label for="scan-data-quality">How consistent are the inputs?</label>
+                <select id="scan-data-quality" name="dataQuality">
+                  <option value="1">1 — Very messy / incomplete</option><option value="2">2</option><option value="3" selected>3 — Mixed</option><option value="4">4</option><option value="5">5 — Structured and consistent</option>
+                </select>
+              </div>
+              <div class="scan-field">
+                <label for="scan-volume">How often does this workflow occur?</label>
+                <select id="scan-volume" name="volume">
+                  <option value="1">1 — Rarely</option><option value="2">2 — A few times per month</option><option value="3" selected>3 — Weekly</option><option value="4">4 — Daily</option><option value="5">5 — Many times per day</option>
+                </select>
+              </div>
+            </div>
+
+            <fieldset class="scan-group">
+              <legend>Where does the friction show up?</legend>
+              <div class="scan-checks">
+                <label class="scan-check"><input type="checkbox" name="bottlenecks" value="Manual search">Manual search</label>
+                <label class="scan-check"><input type="checkbox" name="bottlenecks" value="Missing information">Missing information</label>
+                <label class="scan-check"><input type="checkbox" name="bottlenecks" value="Ownership / routing">Ownership / routing</label>
+                <label class="scan-check"><input type="checkbox" name="bottlenecks" value="Repetitive drafting">Repetitive drafting</label>
+                <label class="scan-check"><input type="checkbox" name="bottlenecks" value="Status chasing">Status chasing</label>
+                <label class="scan-check"><input type="checkbox" name="bottlenecks" value="Review / QC burden">Review / QC burden</label>
+                <label class="scan-check"><input type="checkbox" name="bottlenecks" value="Inconsistent handoffs">Inconsistent handoffs</label>
+                <label class="scan-check"><input type="checkbox" name="bottlenecks" value="Tool switching / re-entry">Tool switching / re-entry</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="scan-group">
+              <legend>What kinds of systems does it touch?</legend>
+              <div class="scan-checks">
+                <label class="scan-check"><input type="checkbox" name="systems" value="Email / messaging">Email / messaging</label>
+                <label class="scan-check"><input type="checkbox" name="systems" value="Documents / PDFs">Documents / PDFs</label>
+                <label class="scan-check"><input type="checkbox" name="systems" value="Spreadsheets">Spreadsheets</label>
+                <label class="scan-check"><input type="checkbox" name="systems" value="CRM / ticketing / work management">CRM / ticketing / work management</label>
+                <label class="scan-check"><input type="checkbox" name="systems" value="Engineering / technical tools">Engineering / technical tools</label>
+                <label class="scan-check"><input type="checkbox" name="systems" value="Internal knowledge / shared drives">Internal knowledge / shared drives</label>
+              </div>
+            </fieldset>
+
+            <div class="scan-field">
+              <label for="scan-notes">Anything else EVOLVE should know?</label>
+              <textarea id="scan-notes" name="notes" maxlength="700" placeholder="Optional: constraints, current tools, target outcome, compliance needs, or what a successful pilot would have to preserve."></textarea>
+            </div>
+
+            <div class="scan-actions">
+              <button class="scan-submit" type="submit">Generate Opportunity Scan</button>
+              <button class="scan-reset" type="reset">Reset</button>
+            </div>
+          </form>
+        </div>
+
+        <aside class="scan-panel scan-result" aria-live="polite">
+          <div class="scan-empty" data-scan-empty>
+            <div><strong>Your preliminary EVOLVE scan will appear here.</strong><br><br>It will not claim a validated ROI or recommend autonomous action solely from this questionnaire.</div>
+          </div>
+          <div class="scan-output" data-scan-output hidden>
+            <div class="small-kicker">Preliminary opportunity scan</div>
+            <div class="scan-score-row">
+              <div class="scan-score"><div><strong data-scan-score>—</strong><span>/ 100</span></div></div>
+              <div><div class="scan-fit" data-scan-fit></div><div class="scan-control" data-scan-action></div></div>
+            </div>
+            <div class="scan-block"><h4>Workflow readout</h4><p data-scan-summary></p></div>
+            <div class="scan-block"><h4>Recommended automation pattern</h4><p data-scan-pattern></p></div>
+            <div class="scan-block"><h4>Control / implementation constraints</h4><ul data-scan-constraints></ul></div>
+            <div class="scan-block"><h4>Suggested first pilot</h4><ul data-scan-pilot></ul></div>
+            <div class="scan-block"><h4>What to measure</h4><ul data-scan-metrics></ul></div>
+            <div class="scan-result-actions">
+              <a class="scan-email" data-scan-email href="mailto:daniel.d.sleeter@gmail.com">Email This Scan for Human Review</a>
+              <button class="scan-copy" type="button" data-scan-copy>Copy Scan</button>
+            </div>
+            <p class="scan-disclaimer">This result is a deterministic preliminary screen based only on the answers entered above. It does not establish ROI, technical feasibility, compliance approval, or a production design. EVOLVE's next step is review against representative real cases and current-state measurements.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <div><div class="small-kicker">Proof surfaces</div><h2>Inspect the workflow framing and the technical operating model.</h2></div>
+        <p>The page demonstrates two linked ideas: how to frame an AI opportunity without overclaiming it, and how to decide what should be deterministic automation, model-assisted work, or explicitly human-owned.</p>
+      </div>
+      <div class="case-grid">
+        <a class="case-card featured" href="#workflow-scan">
+          <div class="case-num">WORKFLOW OPPORTUNITY SCAN</div>
+          <h3>Frame one workflow before choosing an AI architecture.</h3>
+          <p>The scan exposes friction, handoffs, evidence gaps, control boundaries, and a measurable pilot shape before any broad autonomy decision.</p>
+          <div class="case-tags"><span class="tag">Bottlenecks</span><span class="tag">Handoffs</span><span class="tag">Evidence gaps</span><span class="tag">Automation candidates</span></div>
+          <div class="case-link">Run the scan &rarr;</div>
+        </a>
+        <div class="case-card featured">
+          <div class="case-num">OPERATING-MODEL DESIGN PATH</div>
+          <h3>Separate deterministic work, model reasoning, and human authority.</h3>
+          <p>EVOLVE maps decisions, tools, evidence, permissions, failure modes, and review checkpoints before deciding where an agent belongs.</p>
+          <div class="case-tags"><span class="tag">Agent design</span><span class="tag">Human controls</span><span class="tag">Evaluation</span><span class="tag">Risk boundaries</span></div>
+          <div class="case-link"><a href="#how-it-works">Inspect the operating model &rarr;</a></div>
+        </div>
+        <a class="case-card featured" href="evolve-beta.html">
+          <div class="case-num">PUBLIC TECHNICAL PROOF / EVOLVE RF</div>
+          <h3>See the evidence-first approach applied to RF.</h3>
+          <p>The RF proof shows distributed sensing, event correlation, localization uncertainty, guarded agent reasoning, and explicit separation between software evidence and physical field validation.</p>
+          <div class="case-tags"><span class="tag">RF systems</span><span class="tag">Agent evaluation</span><span class="tag">Evidence boundaries</span></div>
+          <div class="case-link">Explore EVOLVE RF &rarr;</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="how-it-works">
+    <div class="container">
+      <div class="section-heading">
+        <div><div class="small-kicker">Operating model</div><h2>Scan. Blueprint. Pilot. Measure. Improve.</h2></div>
+        <p>The goal is not to install the maximum amount of AI. The goal is to remove avoidable work while preserving the evidence, control, and judgment that the process actually needs.</p>
+      </div>
+      <div class="workflow">
+        <div class="workflow-row"><div class="workflow-index">01</div><div class="workflow-stage">Scan</div><div class="workflow-detail">Map the current workflow, people, systems, inputs, outputs, bottlenecks, search time, handoffs, failure modes, and business consequences.</div></div>
+        <div class="workflow-row"><div class="workflow-index">02</div><div class="workflow-stage">Blueprint</div><div class="workflow-detail">Define the future-state workflow: deterministic automation, agent/model roles, permissions, evidence needs, escalation paths, and human decision ownership.</div></div>
+        <div class="workflow-row"><div class="workflow-index">03</div><div class="workflow-stage">Pilot</div><div class="workflow-detail">Build the smallest useful working version against a controlled set of real or representative cases rather than a broad platform first.</div></div>
+        <div class="workflow-row"><div class="workflow-index">04</div><div class="workflow-stage">Measure</div><div class="workflow-detail">Compare the old and new workflow using observable measures such as cycle time, human touches, search time, completeness, rework, handoff quality, and critical errors.</div></div>
+        <div class="workflow-row"><div class="workflow-index">05</div><div class="workflow-stage">Improve</div><div class="workflow-detail">Use measured failures, user feedback, and reviewed outcomes to refine prompts, controls, tools, routing, and process design without silently changing the evidence standard.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <div><div class="small-kicker">Enterprise workflow patterns</div><h2>Representative workflow patterns the operating model can support.</h2></div>
+        <p>These are representative system-design patterns, not a services catalog. The implementation may be deterministic automation, supervised model assistance, evidence retrieval, or a technical agent depending on risk and evidence needs.</p>
+      </div>
+      <div class="pattern-grid">
+        <div class="pattern-card"><div class="pattern-symbol">IN</div><div class="pattern-name">Intake & request handling</div><p>Turn messy incoming requests into structured, action-ready cases with owners, missing information, priority, deadlines, and review gates.</p></div>
+        <div class="pattern-card"><div class="pattern-symbol">RF</div><div class="pattern-name">Technical RFP / RFI & proposal operations</div><p>Decompose requirements, track evidence and owners, identify gaps, prepare technical response material, and preserve review/QC.</p></div>
+        <div class="pattern-card"><div class="pattern-symbol">RS</div><div class="pattern-name">Research & evidence workflows</div><p>Accelerate research, source review, evidence mapping, uncertainty handling, technical drafting, and human-verified conclusions.</p></div>
+        <div class="pattern-card"><div class="pattern-symbol">RP</div><div class="pattern-name">Recurring reports & decision briefs</div><p>Collect inputs, detect missing information, summarize changes, surface exceptions, and prepare decision-ready material for human review.</p></div>
+        <div class="pattern-card"><div class="pattern-symbol">TE</div><div class="pattern-name">Technical engineering workflows</div><p>Connect tools, measurements, scripts, test evidence, troubleshooting steps, and supervised AI without handing unrestricted control to a model.</p></div>
+        <div class="pattern-card"><div class="pattern-symbol">EV</div><div class="pattern-name">Agent evaluation & guardrails</div><p>Build test cases, failure taxonomies, human-verified evaluation judgments, regression checks, routing/depth controls, and explicit evidence boundaries for agent behavior.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <div class="section-heading">
+        <div><div class="small-kicker">Design principles</div><h2>Automation only helps when the operating model survives contact with reality.</h2></div>
+        <p>EVOLVE is built around a few non-negotiables that reduce the chance of a convincing demo turning into an unreliable business process.</p>
+      </div>
+      <div class="principles">
+        <div class="principle"><strong>01. Evidence first</strong><span>Outputs should show where important facts came from and what remains uncertain.</span></div>
+        <div class="principle"><strong>02. Permission is separate from confidence</strong><span>A model can be confident and still not be authorized to act.</span></div>
+        <div class="principle"><strong>03. Human judgment stays visible</strong><span>High-consequence, ambiguous, or irreversible decisions remain explicitly human-owned.</span></div>
+        <div class="principle"><strong>04. Measure before claiming ROI</strong><span>Cycle time and labor savings should come from observed workflow comparisons, not marketing arithmetic.</span></div>
+        <div class="principle"><strong>05. Learn from reviewed failures</strong><span>Continuous improvement should be driven by traceable outcomes and regression-tested changes.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="note-panel">
+        <div>
+          <div class="small-kicker inverse-kicker">One workflow / measurable proof</div>
+          <h2>A useful proof starts small enough to measure.</h2>
+        </div>
+        <div>
+          <p>A useful first test is one workflow with enough friction to matter and a small enough scope to measure. The scan demonstrates how I frame that problem before any broad platform or autonomy decision.</p>
+          <div class="button-row"><a class="button" href="#workflow-scan">Run the Workflow Scan &rarr;</a><a class="button secondary" href="evolve-beta.html">See EVOLVE RF Technical Proof</a></div>
+          <p class="muted-note" style="margin-top:18px;">The floating EVOLVE RF Guide on this site remains a public technical demonstration of agent/evidence discipline. It is separate from the general workflow scan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="container footer-grid"><span>&copy; 2026 Dan Sleeter. EVOLVE is presented as an applied-AI operating model and technical proof-of-concept; production, ROI, and client-outcome claims require separate supporting evidence.</span><span><a href="contact.html">Contact</a> &middot; Maryland</span></div></footer>
+<script src="script.js"></script>
+<script src="evolve-scan.js"></script>
+</body>
+</html>

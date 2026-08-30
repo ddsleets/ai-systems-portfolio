@@ -1,0 +1,84 @@
+/* EVOLVE as an enterprise applied-AI operating-model proof */
+.evolve-proof-page {
+  --ep-navy:#071a2d;
+  --ep-navy-2:#0e304b;
+  --ep-cyan:#20c5d8;
+  --ep-orange:#f47b20;
+  --ep-paper:#f4f7f8;
+  --ep-line:#c9d4da;
+  --ep-slate:#425968;
+  background:#fff;
+}
+.evolve-proof-page .site-header { background:rgba(255,255,255,.96); border-bottom-color:var(--ep-line); }
+.evolve-proof-page .brand-mark { border-radius:2px; background:var(--ep-navy); font-size:0; }
+.evolve-proof-page .brand-mark::after { content:'E'; font-size:13px; }
+.evolve-proof-page .brand > span:last-child { font-size:0; }
+.evolve-proof-page .brand > span:last-child::after { content:'EVOLVE'; font-size:14px; }
+.evolve-proof-page .nav-links a { border-radius:2px; }
+.evolve-proof-page .hero {
+  padding:88px 0 76px;
+  background:
+    linear-gradient(110deg, rgba(7,26,45,.99), rgba(10,37,58,.93)),
+    repeating-linear-gradient(90deg, transparent 0 79px, rgba(255,255,255,.035) 80px);
+  color:#fff;
+  border-bottom:6px solid var(--ep-cyan);
+}
+.evolve-proof-page .hero-grid { align-items:end; }
+.evolve-proof-page .hero h1 { max-width:930px; font-size:clamp(50px,6vw,84px); line-height:.94; }
+.evolve-proof-page .hero-copy { color:#d1dfe6; max-width:760px; }
+.evolve-proof-page .eyebrow { color:#7ce1ea; }
+.evolve-proof-page .eyebrow::before { background:var(--ep-orange); }
+.evolve-proof-page .hero-side {
+  border:0;
+  border-top:4px solid var(--ep-orange);
+  border-radius:0;
+  background:rgba(3,15,26,.72);
+  color:#c8d6de;
+  box-shadow:0 22px 56px rgba(0,0,0,.26);
+}
+.evolve-proof-page .hero-side strong { color:#fff; }
+.evolve-proof-page .hero .button { border-radius:0; text-transform:uppercase; letter-spacing:.03em; }
+.evolve-proof-page .hero .button:first-child { background:var(--ep-orange); border-color:var(--ep-orange); color:#111820; }
+.evolve-proof-page .hero .button.secondary { color:#fff; border-color:#668091; }
+.evolve-proof-page .hero .muted-note { color:#afc2cc; max-width:820px; }
+.evolve-proof-page .section { border-top-color:var(--ep-line); }
+.evolve-proof-page .section.alt { background:var(--ep-paper); }
+.evolve-proof-page .section-heading h2 { font-size:clamp(36px,4.7vw,60px); }
+.evolve-proof-page .small-kicker { color:#0b687f; }
+.evolve-proof-page .case-card,
+.evolve-proof-page .pattern-card,
+.evolve-proof-page .scan-panel,
+.evolve-proof-page .workflow-stage,
+.evolve-proof-page .workflow-detail { border-radius:2px; }
+.evolve-proof-page .case-card { box-shadow:none; border-top:4px solid var(--ep-navy); }
+.evolve-proof-page .case-card.featured:first-child { border-top-color:var(--ep-orange); }
+.evolve-proof-page .case-link,
+.evolve-proof-page .pattern-name { color:var(--ep-navy); }
+.evolve-proof-page .workflow-index { border-radius:2px; background:var(--ep-navy); }
+.evolve-proof-page .workflow-row:nth-child(3) .workflow-index { background:#0b627f; }
+.evolve-proof-page .principle { border-top-color:var(--ep-navy); }
+.evolve-proof-page .note-panel { border-radius:0; background:var(--ep-navy); border-top:6px solid var(--ep-cyan); }
+.evolve-proof-page .note-panel .button { border-radius:0; }
+.evolve-proof-page .scan-shell { align-items:stretch; }
+.evolve-proof-page .scan-panel { box-shadow:none; }
+.evolve-proof-page .scan-privacy { border-radius:2px; background:#e6f1f2; color:#174d58; }
+.evolve-proof-page .scan-submit,
+.evolve-proof-page .scan-reset,
+.evolve-proof-page .scan-email,
+.evolve-proof-page .scan-copy { border-radius:2px; }
+.evolve-proof-page .scan-submit { background:var(--ep-orange); border-color:var(--ep-orange); color:#111820; }
+.evolve-proof-page .site-footer { background:#061522; color:#93a7b5; border-top-color:#18364f; }
+.evolve-proof-page .site-footer a { color:#dbe7ec; }
+.proof-boundary {
+  margin:22px 0 0;
+  padding:18px 20px;
+  border-left:4px solid var(--ep-orange);
+  background:#edf2f4;
+  color:#334d5b;
+  font-size:14px;
+}
+.proof-boundary strong { color:var(--ep-navy); }
+@media(max-width:700px){
+  .evolve-proof-page .hero { padding:58px 0 48px; }
+  .evolve-proof-page .hero h1 { font-size:clamp(43px,12vw,60px); }
+}

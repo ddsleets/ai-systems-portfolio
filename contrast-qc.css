@@ -1,0 +1,69 @@
+/* Final contrast/readability hardening after mobile + cross-page QC. */
+
+/* Explicit text colors prevent inheritance across dark/light section boundaries. */
+.home-industrial .industrial-fast-read h2,
+.home-industrial .foundation-section h2,
+.home-industrial .career-section h2,
+.home-industrial .evolve-proof-section h2 {
+  color:#102536;
+}
+.home-industrial .industrial-dark h2,
+.home-industrial .evidence-band h2,
+.home-industrial .industrial-cta h2 {
+  color:#fff;
+}
+.home-industrial .evolve-proof-section .industrial-kicker {
+  color:#0b687f;
+}
+.home-industrial .industrial-dark .industrial-kicker,
+.home-industrial .evidence-band .industrial-kicker,
+.home-industrial .industrial-cta .industrial-kicker {
+  color:#7fe1ea;
+}
+
+/* Protect white-tile metadata from dark-hero inheritance. */
+body:not(.home-industrial) .case-hero .meta-item,
+body:not(.home-industrial) .case-hero .meta-value {
+  color:#102536;
+}
+body:not(.home-industrial) .case-hero .meta-label {
+  color:#607583;
+}
+
+/* Dark callout / CTA panels should never inherit dark heading text. */
+body:not(.home-industrial) .note-panel h2,
+body:not(.home-industrial) .note-panel h3,
+body:not(.home-industrial) .note-panel strong {
+  color:#fff;
+}
+body:not(.home-industrial) .note-panel p {
+  color:#cbd8df;
+}
+
+/* Evidence captions and evaluation labels remain legible even if parent styles change. */
+.project-evidence-caption strong,
+.evaluation-stage strong {
+  color:#fff;
+}
+.project-evidence-caption span {
+  color:#8de6ed;
+}
+
+@media (max-width:980px) {
+  /* Homepage-specific desktop nav styles previously had enough specificity to
+     lighten the active link inside the dark mobile menu. Keep the mobile state dark. */
+  .home-industrial .nav-links a,
+  .home-industrial .nav-links a:hover,
+  .home-industrial .nav-links a[aria-current="page"] {
+    color:#f2f6f8 !important;
+    background:transparent !important;
+  }
+  .home-industrial .nav-links a[aria-current="page"] {
+    border-left:3px solid var(--industrial-cyan);
+    padding-left:10px;
+  }
+  .home-industrial .nav-links .nav-cta {
+    color:#fff !important;
+    background:transparent !important;
+  }
+}

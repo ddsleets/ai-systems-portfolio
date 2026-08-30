@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EVOLVE RF | Distributed RF Observability Technical Proof</title>
+  <meta name="description" content="EVOLVE RF is the physical-world technical proof for EVOLVE: distributed RF observability, cross-device event correlation, localization uncertainty, cooperative sensing, and evidence-calibrated reasoning." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
+  <link rel="canonical" href="https://ddsleets.github.io/ai-systems-portfolio/evolve-beta.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="EVOLVE | Dan Sleeter" />
+  <meta property="og:title" content="EVOLVE RF | Distributed RF Observability Technical Proof" />
+  <meta property="og:description" content="The physical-world technical proof for EVOLVE: distributed sensing, event correlation, localization uncertainty, cooperative sensing, and explicit evidence boundaries." />
+  <meta property="og:url" content="https://ddsleets.github.io/ai-systems-portfolio/evolve-beta.html" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="evolve-rf-proof.css" />
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"CreativeWork",
+    "name":"EVOLVE RF Distributed RF Observability Technical Proof",
+    "url":"https://ddsleets.github.io/ai-systems-portfolio/evolve-beta.html",
+    "description":"A technical proof for distributed RF observability, event correlation, localization uncertainty, cooperative sensing, and evidence-calibrated reasoning.",
+    "creator":{"@type":"Person","name":"Dan Sleeter","url":"https://ddsleets.github.io/ai-systems-portfolio/resume.html"}
+  }
+  </script>
+</head>
+<body class="evolve-rf-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="index.html"><span class="brand-mark">E</span><span>EVOLVE</span></a>
+    <button class="menu-button" aria-label="Open navigation" aria-expanded="false">&#9776;</button>
+    <div class="nav-links"></div>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="case-hero">
+    <div class="container">
+      <div class="eyebrow">EVOLVE RF / Physical-World Technical Proof</div>
+      <h1>Distributed RF observability built around evidence, uncertainty, and cooperative sensing.</h1>
+      <p class="lede">EVOLVE RF asks a harder version of the EVOLVE question: how do multiple imperfect physical-world observations become one useful, auditable event without hiding timing quality, measurement limits, uncertainty, or human authority? The public proof shows the system behavior and evidence boundaries without exposing the private RF Core.</p>
+      <div class="case-meta">
+        <div class="meta-item"><span class="meta-label">Purpose</span><span class="meta-value">Physical-world proof of the EVOLVE operating model</span></div>
+        <div class="meta-item"><span class="meta-label">System focus</span><span class="meta-value">Distributed sensing, event correlation, localization, cooperative sensing</span></div>
+        <div class="meta-item"><span class="meta-label">Evidence model</span><span class="meta-value">Software behavior, reasoning quality, and physical validation kept separate</span></div>
+        <div class="meta-item"><span class="meta-label">Authority model</span><span class="meta-value">Capability constrained; consequential sensing and action remain policy/human gated</span></div>
+      </div>
+      <div class="working-note"><strong>Evidence boundary</strong><p>This public proof separates tested software behavior, reasoning-evaluation evidence, and physical RF validation. It does not expose proprietary source, private thresholds, unpublished IP/FTO material, credentials, customer data, or live telemetry. Synthetic and architecture-level examples are labeled as such.</p></div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">The problem</div><p>Useful RF evidence is often scattered across devices, measurement types, clock qualities, and locations.</p></aside>
+      <div class="case-content">
+        <h2>One observation is not the same thing as one RF event.</h2>
+        <p>EVOLVE separates device-level observations from the higher-level event being investigated. Multiple sensors may see the same RF behavior with different timing quality, signal fidelity, location context, and measurement capability.</p>
+        <div class="callout"><strong>Core rule:</strong> a device owns an observation. EVOLVE owns the event.</div>
+        <p>The architecture preserves each observation's provenance, qualifies what each node can actually measure, and combines compatible evidence without pretending all sensors are equivalent.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">System flow</div><p>Edge observations become persistent correlated events only after capability, timing, and provenance checks.</p></aside>
+      <div class="case-content">
+        <h2>AI assists interpretation. It does not get to rewrite physics.</h2>
+        <div class="workflow">
+          <div class="workflow-row"><div class="workflow-index">01</div><div class="workflow-stage">Observe</div><div class="workflow-detail">A device reports a capability-bounded observation with timing, signal, and provenance information.</div></div>
+          <div class="workflow-row"><div class="workflow-index">02</div><div class="workflow-stage">Detect</div><div class="workflow-detail">Local observations are compared with adaptive baselines and grouped into local events when warranted. Learned or model-assisted detection/classification may operate here when evidence supports it.</div></div>
+          <div class="workflow-row"><div class="workflow-index">03</div><div class="workflow-stage">Correlate</div><div class="workflow-detail">Compatible observations from multiple devices are associated into a persistent cross-device RF event, with source identity and event history preserved.</div></div>
+          <div class="workflow-row"><div class="workflow-index">04</div><div class="workflow-stage">Locate carefully</div><div class="workflow-detail">RSSI, TDoA, AoA, or hybrid methods are considered only when node capabilities and timing quality justify them. Readiness gates and uncertainty remain deterministic evidence constraints.</div></div>
+          <div class="workflow-row"><div class="workflow-index">05</div><div class="workflow-stage">Cooperate</div><div class="workflow-detail">A fusion service may request additional sensing from eligible edge nodes, with command provenance and human/policy authority preserved.</div></div>
+        </div>
+
+        <div class="rf-architecture-note" aria-label="AI and deterministic architecture boundary">
+          <div class="rf-architecture-head"><span>Architecture boundary</span><span>Model assistance is not decision authority</span></div>
+          <div class="rf-architecture-grid">
+            <div class="rf-lane ai">
+              <div class="rf-lane-kicker">Model-assisted / learned</div>
+              <h3>Recognition, prioritization, and evidence synthesis.</h3>
+              <p>AI/RFML can help detect or classify signal behavior, rank candidate explanations, summarize multi-node evidence, and support an operator's understanding of an event. Its outputs remain evidence to be evaluated—not permission to act.</p>
+            </div>
+            <div class="rf-lane deterministic">
+              <div class="rf-lane-kicker">Deterministic / physics-constrained</div>
+              <h3>Readiness gates, timing validity, localization constraints, and authority.</h3>
+              <p>Clock qualification, node capability, TDoA/AoA readiness, provenance, uncertainty requirements, command authorization, and mitigation permission are enforced independently of model confidence.</p>
+            </div>
+          </div>
+          <div class="rf-architecture-rule">A model can help explain what the evidence may mean. It cannot make an unavailable measurement valid, manufacture clock quality, or grant itself operational authority.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rf-pullquote-section">
+    <div class="container">
+      <blockquote class="rf-pullquote">The software treats <strong>clock quality and measurement capability</strong> as part of the evidence.</blockquote>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">Synthetic event console</div><p>This illustrates the type of operator evidence EVOLVE is designed to surface. The values are synthetic.</p></aside>
+      <div class="case-content">
+        <h2>The operator view shows both the event and the reasons not to overclaim it.</h2>
+        <div class="rf-console-shell" aria-label="Synthetic EVOLVE RF event console">
+          <div class="rf-console-top">
+            <div class="rf-console-title">EVOLVE RF // EVENT EV-024 // SYNTHETIC PUBLIC PROOF</div>
+            <div class="rf-console-badge">Event active</div>
+          </div>
+          <div class="rf-console-summary">
+            <div class="rf-console-stat good"><strong>4</strong><span>Compatible observations / verified nodes</span></div>
+            <div class="rf-console-stat"><strong>RSSI</strong><span>Candidate localization method available</span></div>
+            <div class="rf-console-stat warning"><strong>BLOCKED</strong><span>TDoA / insufficient qualifying clocks</span></div>
+            <div class="rf-console-stat gated"><strong>GATED</strong><span>Active sensing / policy-human authority</span></div>
+          </div>
+          <div class="rf-console-table">
+            <div class="rf-console-row"><div class="rf-console-key">event state</div><div class="rf-console-value ok">correlated / active</div></div>
+            <div class="rf-console-row"><div class="rf-console-key">observations</div><div class="rf-console-value">4 compatible device observations</div></div>
+            <div class="rf-console-row"><div class="rf-console-key">clock quality</div><div class="rf-console-value warn">1 precise / 3 coarse</div></div>
+            <div class="rf-console-row"><div class="rf-console-key">RSSI localization</div><div class="rf-console-value ok">candidate region available / uncertainty required</div></div>
+            <div class="rf-console-row"><div class="rf-console-key">TDoA</div><div class="rf-console-value blocked">BLOCKED — insufficient qualifying clocks</div></div>
+            <div class="rf-console-row"><div class="rf-console-key">location confidence</div><div class="rf-console-value warn">bounded / uncertainty region required</div></div>
+            <div class="rf-console-row"><div class="rf-console-key">cooperative sensing</div><div class="rf-console-value ok">eligible node identified</div></div>
+            <div class="rf-console-row"><div class="rf-console-key">mitigation authority</div><div class="rf-console-value critical">NONE — human / policy decision required</div></div>
+            <div class="rf-console-row"><div class="rf-console-key">provenance</div><div class="rf-console-value ok">source and receipt history preserved</div></div>
+          </div>
+          <div class="rf-console-foot">illustrative operator surface // synthetic values // not live telemetry</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">Software evidence</div><p>The current implementation establishes testable software behavior, not production RF field performance.</p></aside>
+      <div class="case-content">
+        <h2>The software proof covers the behaviors needed to carry trustworthy observations into auditable events.</h2>
+        <div class="rf-verification-metrics" aria-label="Software verification evidence">
+          <div class="rf-verify-metric"><strong>Verified</strong><span>Software baseline</span><p>Current public claims are tied to tested software behavior, not an internal build nickname.</p></div>
+          <div class="rf-verify-metric"><strong>E2E</strong><span>Pipeline validation</span><p>End-to-end behavior is exercised across the implemented observation-to-event path.</p></div>
+          <div class="rf-verify-metric"><strong>Contract</strong><span>Interface checks</span><p>Interfaces and expected evidence/state transitions are validated as part of the software proof.</p></div>
+          <div class="rf-verify-metric"><strong>Integrity</strong><span>Source / package checks</span><p>Packaged-build and source/integrity checks support the software-behavior boundary.</p></div>
+        </div>
+        <div class="outcomes">
+          <div class="outcome"><strong>Authenticated transport</strong><span>Authenticated delivery, integrity validation, anti-replay controls, freshness checks, and preserved provenance across edge/fusion exchange.</span></div>
+          <div class="outcome"><strong>Event lifecycle</strong><span>Persistent correlation, inactivity, closure, resolution, recurrence, merge, split, and immutable event journaling.</span></div>
+          <div class="outcome"><strong>Localization discipline</strong><span>Probabilistic RSSI estimates with explicit uncertainty plus readiness boundaries for TDoA, AoA, and hybrid approaches.</span></div>
+          <div class="outcome"><strong>Cooperative sensing</strong><span>Controlled sensing requests, acknowledgment, result return, and linked-observation provenance between fusion and eligible edge nodes.</span></div>
+        </div>
+        <div class="rf-boundary-banner"><strong>Verification boundary</strong><p>Automated regression, end-to-end software validation, interface-contract checks, packaged-build verification, and source/integrity checks support these software-behavior claims. They do not establish production RF field performance.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">Reasoning evidence</div><p>Public-facing RF reasoning and guardrail behavior are evaluated separately from physical RF performance.</p></aside>
+      <div class="case-content">
+        <h2>The reasoning layer is challenged for technical correctness, restraint, and authority boundaries.</h2>
+        <div class="pattern-grid">
+          <div class="pattern-card"><div class="pattern-symbol">60</div><div class="pattern-name">Frozen challenge cases</div><p>A fixed external-reality challenge set tests the reasoning layer against known expectations.</p></div>
+          <div class="pattern-card"><div class="pattern-symbol">98.3%</div><div class="pattern-name">Evaluation pass rate</div><p>59 PASS, 1 BORDERLINE, 0 FAIL, with zero hard failures in the frozen replacement challenge.</p></div>
+          <div class="pattern-card"><div class="pattern-symbol">100%</div><div class="pattern-name">Route / depth accuracy</div><p>60/60 cases selected the intended route and response depth.</p></div>
+          <div class="pattern-card"><div class="pattern-symbol">3/3</div><div class="pattern-name">Disclosure guardrails</div><p>All disclosure/adversarial guardrail cases passed.</p></div>
+        </div>
+        <div class="working-note"><strong>Scope boundary</strong><p>These results support reasoning-quality and guardrail claims only. They do not establish physical RF detection, classification, localization, or field performance.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="container case-layout">
+      <aside class="case-aside"><div class="label">What is not established</div><p>The current proof is explicit about what still requires physical-world validation.</p></aside>
+      <div class="case-content">
+        <h2>Software and reasoning readiness are not the same thing as RF field validation.</h2>
+        <div class="outcomes">
+          <div class="outcome"><strong>Device access</strong><span>Production access to specific commercial phones, routers, modems, access points, SDRs, chipsets, drivers, or firmware remains device- and platform-dependent.</span></div>
+          <div class="outcome"><strong>Detection / classification</strong><span>Field sensitivity, false-alarm rate, classification accuracy, and calibrated cross-vendor measurement equivalence require representative hardware testing.</span></div>
+          <div class="outcome"><strong>Localization</strong><span>Real-world emitter-location accuracy and validated TDoA/AoA solver performance require controlled physical trials.</span></div>
+          <div class="outcome"><strong>Production operations</strong><span>Security certification, high-availability scale, fleet behavior, and any autonomous mitigation authority require separate production validation and governance.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section rf-final-cta">
+    <div class="container">
+      <div class="note-panel">
+        <div><div class="small-kicker inverse-kicker">Continue the evidence chain</div><h2>Go deeper into the engineering underneath EVOLVE RF.</h2></div>
+        <div>
+          <p>EVOLVE RF is the integrated physical-world proof. The supporting cases show the supervised RF-agent foundation, the RFML/UNKNOWN evidence layer, and the route into enterprise integration.</p>
+          <div class="button-row"><a class="button" href="case-agentic-rf.html">See the AI Foundation — Case 04 &rarr;</a><a class="button secondary" href="case-rfml-memory.html">Review the RFML Evidence — Case 05</a><a class="button secondary" href="contact.html">Discuss Enterprise Integration</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="container footer-grid"><span>&copy; 2026 Dan Sleeter. EVOLVE RF is a technical proof; selected evidence is sanitized for public use.</span><span><a href="contact.html">Contact</a> &middot; Maryland</span></div></footer>
+<script src="script.js"></script>
+</body>
+</html>

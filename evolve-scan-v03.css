@@ -1,0 +1,174 @@
+/* EVOLVE Workflow Scan v0.3 experience layer */
+.scan-refine {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #f7f9fa;
+  overflow: hidden;
+}
+.scan-refine summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 15px 16px;
+  color: var(--ink);
+  position: relative;
+  padding-right: 46px;
+}
+.scan-refine summary::-webkit-details-marker { display: none; }
+.scan-refine summary::after {
+  content: '+';
+  position: absolute;
+  right: 18px;
+  font-size: 20px;
+  line-height: 1;
+}
+.scan-refine[open] summary::after { content: '−'; }
+.scan-refine summary strong { font-size: 14px; }
+.scan-refine summary span { color: var(--muted); font-size: 12px; }
+.scan-refine-body {
+  display: grid;
+  gap: 18px;
+  padding: 16px;
+  border-top: 1px solid var(--line);
+}
+.scan-agent-block {
+  border-top: 0;
+  margin-top: 18px;
+  padding: 18px;
+  background: #eef5f6;
+  border-left: 4px solid #0b687f;
+}
+.scan-followup-fields {
+  display: grid;
+  gap: 14px;
+  margin: 15px 0;
+}
+.scan-followup-field {
+  display: grid;
+  gap: 7px;
+}
+.scan-followup-field > span {
+  font-weight: 800;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.4;
+}
+.scan-followup-field textarea {
+  width: 100%;
+  min-height: 92px;
+  border: 1px solid #bac7ce;
+  background: #fff;
+  color: var(--ink);
+  padding: 11px 12px;
+  resize: vertical;
+  font: inherit;
+  line-height: 1.45;
+}
+.scan-followup-submit {
+  border: 0;
+  background: #071a2d;
+  color: #fff;
+  padding: 12px 16px;
+  min-height: 44px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 850;
+  cursor: pointer;
+}
+.scan-followup-submit:disabled { opacity: .65; cursor: wait; }
+.scan-followup-limit {
+  border-top: 1px solid #c7d7dc;
+  padding-top: 13px;
+  margin-top: 14px;
+}
+.scan-blueprint {
+  padding: 20px 0 2px;
+}
+.scan-blueprint-priority {
+  display: grid;
+  gap: 4px;
+  padding: 14px 16px;
+  background: #071a2d;
+  color: #fff;
+  margin: 10px 0 14px;
+}
+.scan-blueprint-priority span,
+.scan-blueprint-callout span {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  font-weight: 900;
+}
+.scan-blueprint-priority strong {
+  font-size: 18px;
+  line-height: 1.25;
+}
+.scan-blueprint-steps {
+  display: grid;
+  gap: 1px;
+  background: #d7e0e4;
+  border: 1px solid #d7e0e4;
+}
+.scan-blueprint-step {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  padding: 14px;
+  background: #fff;
+}
+.scan-blueprint-index {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  color: #0b687f;
+  padding-top: 2px;
+}
+.scan-blueprint-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 5px;
+}
+.scan-blueprint-head strong {
+  color: var(--ink);
+  font-size: 14px;
+}
+.scan-blueprint-head span {
+  white-space: nowrap;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  padding: 4px 7px;
+  border: 1px solid #b7c8cf;
+  color: #274b5a;
+  background: #f1f6f7;
+}
+.scan-blueprint-step p {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.scan-blueprint-callout {
+  margin-top: 12px;
+  padding: 14px 16px;
+  border-left: 4px solid #f47b20;
+  background: #f7f4ef;
+}
+.scan-blueprint-callout span { color: #7a3d0c; }
+.scan-blueprint-callout p {
+  margin: 5px 0 0;
+  color: var(--ink-2);
+  font-size: 13px;
+  line-height: 1.45;
+}
+@media (max-width: 640px) {
+  .scan-blueprint-step { grid-template-columns: 30px 1fr; gap: 8px; padding: 12px; }
+  .scan-blueprint-head { display: grid; justify-content: start; }
+  .scan-blueprint-head span { width: fit-content; }
+  .scan-followup-submit { width: 100%; }
+}

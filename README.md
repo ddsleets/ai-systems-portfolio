@@ -1,120 +1,90 @@
-# Dan Sleeter — AI / RFML Technical Program Portfolio
+# EVOLVE — Evidence-First AI Systems + RF Technical Proof
 
-A public portfolio focused on technical leadership across **AI, RF systems, RF machine learning, agentic engineering, evaluation, risk, and deployment readiness**.
+This repository contains the public, sanitized website for **EVOLVE**, an applied-AI operating model focused on evidence, bounded automation, deterministic controls, human authority, and measurable technical proof.
 
-**Live portfolio:** https://ddsleets.github.io/ai-systems-portfolio/
+**Live site:** https://ddsleets.github.io/ai-systems-portfolio/
 
-## What this portfolio demonstrates
+## What EVOLVE demonstrates
 
-My background is 20+ years in RF engineering, systems integration, field testing, troubleshooting, automation, and technical leadership. The current portfolio connects that engineering depth with hands-on AI/RFML work and a technical-program operating model: define the mission, establish acceptance criteria, build and test the technical system, expose failure modes, preserve human authority, and tie measured evidence to a defensible release decision.
+EVOLVE is built around a simple principle: AI should be treated as one component of an engineered system, not as an authority layer by default.
 
-The flagship question is not simply whether an AI model can produce a strong result. It is:
+The public portfolio demonstrates how workflows can combine deterministic processing, model-assisted reasoning, human review, provenance, uncertainty handling, and explicit release boundaries.
 
-**What evidence would be required before an AI-enabled RF system should be trusted to advance toward deployment?**
+The technical work is grounded in 20+ years of RF engineering, systems integration, field testing, troubleshooting, automation, and technical leadership.
 
-## New side-project case
+## Flagship technical proof — EVOLVE RF
 
-### Case 07 — RF Field Support Agent
-**Building and adversarially evaluating an RF engineering assistant with ElevenAgents**
+EVOLVE RF explores distributed RF observability and supervised AI assistance in a physical-world engineering context.
 
-Built an RF Field Support agent using ElevenAgents and evaluated it with adversarial engineering scenarios rather than only happy-path demos. The evaluation tested contradictory evidence, RF localization, measurement provenance, and management pressure to make a decision from compromised data.
+The public proof emphasizes:
 
-A repeatable baseline weakness emerged: the agent sometimes promoted correlation toward causation, treated strongly disconfirming evidence as definitive exclusion, or described directional evidence with more location certainty than the measurement justified. I revised the evidence-strength guardrails and reran the same scenarios. The updated agent shifted to better-calibrated language such as `candidate`, `apparent bearing`, and `requires verification`, while preserving human engineering authority.
+- capability-bounded observations;
+- evidence provenance;
+- timing and clock-quality constraints;
+- careful localization readiness;
+- bounded uncertainty;
+- deterministic authority gates;
+- model-assisted interpretation without autonomous permission to act.
 
-This case is an independent personal project and is not affiliated with or endorsed by ElevenLabs. It is explicitly presented as an experimental side project, not a production RF diagnostic system or statistically calibrated evaluator.
+Public page: `evolve-beta.html`
 
-File: `case-elevenlabs-rf-agent.html`
+## Supporting technical evidence
 
-## Flagship case
-
-### Case 06 — AI + RFML Technical Program
-**Taking an AI-enabled RF signal-identification system from measurement to deployment decision**
-
-Case 06 connects the hands-on engineering from Cases 04 and 05 with the program-level work around requirements, data strategy, RFML development, agent integration, independent evaluation, risk, human controls, and deployment-readiness decisions.
-
-My role is framed as:
-
-**Technical Program Lead | RF Systems Engineering | AI/RFML**
-
-The case deliberately distinguishes measured technical evidence from release claims. It shows what can proceed under controlled engineering scope, what requires revision or more evidence, and what should not yet be promoted as a reliable capability.
-
-File: `case-ai-rfml-program.html`
-
-## Supporting technical cases
-
-### Case 05 — RFML + Persistent RF Memory
-**Building an AI RF investigator that learns from what it measures**
-
-Experimental RFML pipeline combining deterministic DSP, 43 engineered RF features, a 192-dimensional learned I/Q representation, hierarchical recognition, legitimate UNKNOWN decisions, persistent RF evidence, and controlled human verification.
-
-Confirmed experimental results include:
-- 81% external signal-class accuracy;
-- 91% external RF-family accuracy;
-- 99.3% accuracy among accepted external family predictions;
-- transmitter-specific learning on WiSig with severe cross-day domain drift preserved as a material limitation.
-
-File: `case-rfml-memory.html`
-
-Assets: `assets/case05/`
-
-### Case 04 — Physical-World Agent
-**Giving an AI engineer supervised control of a real RF measurement workflow**
-
-A physical-world agent architecture built around a Keysight FieldFox measurement workflow. A deterministic Python control plane handles acquisition while an AI engineering supervisor operates through approved semantic tools, bounded authority, recovery logic, validation, and explicit human override.
+### Case 04 — Physical-World RF Agent
+A supervised physical-world agent architecture built around RF measurement, deterministic acquisition, bounded semantic tools, recovery logic, validation, and explicit human override.
 
 File: `case-agentic-rf.html`
 
-Assets: `assets/case04/`
+### Case 05 — RFML + Persistent RF Memory
+Experimental RFML work combining deterministic DSP, engineered RF features, learned I/Q representation, hierarchical recognition, legitimate UNKNOWN decisions, persistent evidence, and controlled human verification.
 
-## Earlier AI / automation work
+File: `case-rfml-memory.html`
+
+### Case 06 — AI + RFML Technical Program
+A program-level view connecting measurement, data strategy, RFML, agent integration, evaluation, risk, human controls, and deployment-readiness decisions.
+
+File: `case-ai-rfml-program.html`
+
+### Case 07 — RF Field Support Agent
+An adversarially evaluated RF engineering assistant focused on evidence strength, localization discipline, measurement provenance, uncertainty, and human engineering authority.
+
+File: `case-elevenlabs-rf-agent.html`
+
+## Foundational workflow evidence
 
 ### Case 01 — Prior-Art Research Workflow
-A staged AI-assisted research process built around claim scope, evidence mapping, date proof, confidence, blocking gaps, and explicit human review.
+A staged AI-assisted research process built around evidence mapping, date proof, blocking gaps, uncertainty, and human review.
 
 File: `case-agentic-prior-art.html`
 
 ### Case 02 — Agent Rules
-An operating charter defining what an AI research assistant can do, what it cannot claim, when it must ask for clarification, what must be verified, and where professional judgment takes over.
+A bounded operating charter defining what an AI research assistant may do, what it may not claim, and when professional judgment takes over.
 
 File: `case-ip-navigator.html`
 
 ### Case 03 — Automation + Recovery
-A Python and Playwright prototype designed around changing browser states, consent prompts, timeouts, download verification, recovery, and clear human handoff.
+A browser-automation prototype designed around changing state, timeouts, verification, recovery, and explicit human handoff.
 
 File: `case-automation.html`
-
-## Evaluator OS
-
-Evaluator OS is an experimental evaluation subsystem supporting Case 06. It separates final outcome, observable trajectory, and safety/authority behavior; uses frozen evidence packets and human-verified Gold judgments; and preserves disagreement instead of treating model consensus as ground truth.
-
-Current earned evidence:
-- 3 human-verified Gold tasks across 3 task families;
-- 1 reviewer-blind, calibration-eligible Human Gold task;
-- decision-label versus operational-disposition evaluation;
-- critical-failure, authority, provenance, and contamination controls;
-- user-mediated external candidate comparisons from Microsoft Copilot and Gemini on Mission 003.
-
-Evaluator OS is **not** presented as a statistically calibrated or production-ready evaluator. The current Gold set is too small for general reliability or provider-performance claims.
-
-Directory: `evaluator-os/`
-
-## Technical-program principles
-
-- Start with the mission and the decision required, not a feature list.
-- Get technically deep enough to challenge assumptions, test design, and release claims.
-- Turn ambiguity into workstreams, gates, dependencies, owners, and measurable evidence.
-- Keep physical and release authority explicit rather than implied by model confidence.
-- Preserve provenance and uncertainty when data, model behavior, or system state changes.
-- Treat failure analysis as program input, not an exception to hide.
-- State clearly what can proceed, what must be revised, what should halt, and what requires escalation.
 
 ## Public portfolio boundaries
 
 This repository is intentionally sanitized for public use.
 
-It does **not** contain private production source code, credentials, API keys, customer-confidential material, raw field data, exact test coordinates, proprietary evidence, private instrument addresses, private prompts, or internal implementation details.
+It does **not** contain private evaluation implementation, private Gold data, private prompts, proprietary workflow logic, credentials, API keys, customer-confidential material, raw field data, exact test coordinates, private instrument addresses, or unpublished internal implementation details.
 
-RFML results are framed as experimental/research-grade. The portfolio does not claim production RFML deployment, operational government deployment, general evaluator reliability, or provider superiority.
+Public evaluation claims are limited to the evidence explicitly presented on the website. Experimental RFML and agent results are not claims of production deployment, operational government use, general evaluator reliability, or autonomous decision authority.
+
+## Design principles
+
+- Evidence before claims.
+- Deterministic controls where they are the better tool.
+- Model assistance only where the evidence and task justify it.
+- Preserve uncertainty instead of hiding it.
+- Keep consequential authority explicit and human-controlled.
+- Treat UNKNOWN, REVIEW, CLARIFY, and HALT as legitimate system outcomes.
+- Separate confidence from permission to act.
+- Design failure and recovery behavior as part of the system.
 
 ## Technology represented
 
@@ -124,10 +94,8 @@ RFML results are framed as experimental/research-grade. The portfolio does not c
 - PyTorch / TorchSig / RFML experimentation
 - I/Q analysis and RF feature engineering
 - Agentic AI workflow design
-- ElevenAgents
-- Agent adversarial evaluation and regression testing
 - Human-in-the-loop controls
-- Evaluation and Human Gold workflows
+- Adversarial evaluation and regression testing
 - Evidence provenance and traceability
 - HTML / CSS / JavaScript
 - Playwright browser automation
@@ -136,25 +104,27 @@ RFML results are framed as experimental/research-grade. The portfolio does not c
 
 ```text
 assets/
+  career/
   case04/
   case05/
-evaluator-os/
 README.md
-case-elevenlabs-rf-agent.html
-case-ai-rfml-program.html
+index.html
+evolve.html
+evolve-beta.html
 case-agentic-prior-art.html
 case-agentic-rf.html
 case-automation.html
 case-ip-navigator.html
 case-rfml-memory.html
-index.html
+case-ai-rfml-program.html
+case-elevenlabs-rf-agent.html
 script.js
 styles.css
 ```
 
 ## Local preview
 
-The portfolio is a static site. Open `index.html` directly in a browser or serve the repository locally:
+The public site is static. Open `index.html` directly or serve the repository locally:
 
 ```bash
 python -m http.server 8000
@@ -164,13 +134,7 @@ Then open `http://localhost:8000`.
 
 ## Deployment
 
-The public site is deployed with GitHub Pages from the repository's `main` branch and root directory.
-
-## Contact
-
-Dan Sleeter  
-Frederick, Maryland  
-daniel.d.sleeter@gmail.com
+The site is deployed with GitHub Pages from the repository's `main` branch and root directory.
 
 ---
 

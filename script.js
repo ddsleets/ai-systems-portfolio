@@ -5,13 +5,13 @@
 
   if (navLinks) {
     const navItems = [
-      { href: 'index.html', label: 'EVOLVE' },
-      { href: 'evolve-beta.html', label: 'EVOLVE RF' },
-      { href: 'case-agentic-rf.html', label: 'RF Agent' },
+      { href: 'index.html', label: 'Portfolio' },
+      { href: 'case-agentic-rf.html', label: 'RF Measurement' },
       { href: 'case-rfml-memory.html', label: 'RFML' },
       { href: 'case-ai-rfml-program.html', label: 'Program' },
       { href: 'case-elevenlabs-rf-agent.html', label: 'Evaluation' },
       { href: 'resume.html', label: 'Resume' },
+      { href: 'cv.html', label: 'CV' },
       { href: 'contact.html', label: 'Contact', cta: true }
     ];
     navLinks.innerHTML = '';
@@ -47,9 +47,9 @@
       buttons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const s = states[btn.dataset.demoState];
-      confidence.textContent = s.confidence;
-      evidence.textContent = s.evidence;
-      action.textContent = s.action;
+      if (confidence) confidence.textContent = s.confidence;
+      if (evidence) evidence.textContent = s.evidence;
+      if (action) action.textContent = s.action;
     }));
   }
 
@@ -113,51 +113,6 @@
     hero.insertAdjacentElement('afterend', section);
   }
 
-  function alignPublicPortfolioLanguage() {
-    if (currentPath === 'index.html' || currentPath === '') {
-      document.querySelectorAll('.industrial-heading p, .industrial-tag-row span').forEach(el => {
-        el.textContent = el.textContent.replace(/human Gold judgments/gi, 'human-verified evaluation judgments').replace(/^Human Gold$/i, 'Human-verified evaluation');
-      });
-    }
-
-    if (currentPath !== 'evolve.html') return;
-    document.body.classList.add('evolve-proof-page');
-    loadStylesheet('evolve-proof.css');
-    document.title = 'EVOLVE | Applied AI Operating Model & Technical Proof';
-
-    const description = document.querySelector('meta[name="description"]');
-    if (description) description.setAttribute('content', 'EVOLVE is an applied-AI operating-model proof showing workflow decomposition, deterministic controls, agent-assisted analysis, evaluation, human authority, and measurable deployment discipline.');
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', 'EVOLVE | Applied AI Operating Model & Technical Proof');
-    const ogDescription = document.querySelector('meta[property="og:description"]');
-    if (ogDescription) ogDescription.setAttribute('content', 'A technical proof-of-concept for evidence-first enterprise AI workflow design and evaluation.');
-
-    document.querySelectorAll('script[type="application/ld+json"]').forEach(node => {
-      try { if (JSON.parse(node.textContent || '{}')['@type'] === 'Service') node.remove(); } catch (_) {}
-    });
-
-    const eyebrow = document.querySelector('.hero .eyebrow');
-    const heroTitle = document.querySelector('.hero h1');
-    const heroCopy = document.querySelector('.hero .hero-copy');
-    if (eyebrow) eyebrow.textContent = 'EVOLVE / Applied-AI operating model';
-    if (heroTitle) heroTitle.textContent = 'A working proof for how enterprise AI should move from workflow friction to controlled deployment.';
-    if (heroCopy) heroCopy.textContent = 'EVOLVE is a flagship technical proof-of-concept for decomposing workflows, separating deterministic automation from model reasoning, preserving evidence and human authority, evaluating failure modes, and measuring whether an AI-assisted process is actually better.';
-
-    const heroNote = document.querySelector('.hero .muted-note');
-    if (heroNote) heroNote.textContent = 'The browser generates a deterministic opportunity score. When you run the scan, the same non-sensitive intake is also sent to the EVOLVE backend for agent-assisted analysis; the backend is configured not to persist the request. Do not enter classified, export-controlled, proprietary, personal, regulated, credential, or other sensitive information.';
-
-    const heroSide = document.querySelector('.hero-side');
-    if (heroSide) heroSide.innerHTML = '<strong>What this demonstrates</strong><p>Workflow decomposition, evidence handling, deterministic controls, agent-assisted reasoning, human authorization, evaluation, and bounded pilot design.</p><strong>What it is not</strong><p>A claim that every workflow needs an agent, or that a confident model should own consequential decisions.</p><strong>Physical-world proof</strong><p>EVOLVE RF applies the same architecture to distributed sensing, uncertainty, and guarded technical reasoning.</p>';
-
-    document.querySelectorAll('.section-heading .small-kicker').forEach(el => { if (/service lanes/i.test(el.textContent)) el.textContent = 'Enterprise workflow patterns'; });
-    document.querySelectorAll('.section-heading h2').forEach(el => { if (/Where EVOLVE can create value now/i.test(el.textContent)) el.textContent = 'Representative workflow patterns the operating model can support.'; });
-    document.querySelectorAll('.section-heading p').forEach(el => { if (/common pattern is work that mixes information/i.test(el.textContent)) el.textContent = 'These are representative system-design patterns—not a services catalog. The implementation may be deterministic automation, supervised model assistance, evidence retrieval, or a technical agent depending on risk and evidence needs.'; });
-    document.querySelectorAll('.note-panel p').forEach(el => { if (/useful first engagement/i.test(el.textContent)) el.textContent = 'A useful first test is one workflow with enough friction to matter and a small enough scope to measure. The scan below demonstrates how I would frame that problem before any broad platform or autonomy decision.'; });
-
-    const footer = document.querySelector('.site-footer .footer-grid span:first-child');
-    if (footer) footer.textContent = '© 2026 Dan Sleeter. EVOLVE is presented as an applied-AI operating-model and technical proof-of-concept; production, ROI, and client-outcome claims require separate supporting evidence.';
-  }
-
   function findCaseSectionByLabel(label) {
     return Array.from(document.querySelectorAll('.case-section')).find(section => {
       const text = section.querySelector('.case-aside .label')?.textContent || '';
@@ -166,23 +121,6 @@
   }
 
   function applyRecruiterContentQC() {
-    if (currentPath === 'index.html' || currentPath === '') {
-      const rail = document.querySelectorAll('.industrial-metric-rail > div');
-      if (rail[2]) {
-        rail[2].querySelector('strong').textContent = '99.3%';
-        rail[2].querySelector('span').textContent = 'Accepted RF-family accuracy / gated predictions';
-      }
-
-      const fastRead = document.querySelector('.industrial-fast-read .industrial-heading > p');
-      if (fastRead) fastRead.textContent = 'EVOLVE starts with the workflow, decision, evidence, and consequence of being wrong. It then separates deterministic control, model assistance, human authority, and measurable release criteria before increasing automation.';
-
-      const flagshipIntro = document.querySelector('.industrial-dark .industrial-heading.inverse > p');
-      if (flagshipIntro) flagshipIntro.textContent = 'EVOLVE RF is the flagship physical-world proof: distributed sensing, measurement limits, timing quality, localization uncertainty, cooperative sensing, guarded reasoning, and explicit boundaries around what still requires field validation.';
-
-      const flagshipTags = document.querySelector('.flagship-panel .industrial-tag-row');
-      if (flagshipTags) flagshipTags.innerHTML = '<span>Distributed sensing</span><span>Localization uncertainty</span><span>Guarded reasoning</span><span>Cooperative sensing</span><span>Evidence boundaries</span>';
-    }
-
     if (currentPath === 'case-ai-rfml-program.html') {
       document.querySelectorAll('.workflow-detail, .case-content p, .pattern-name, .pattern-card p, .sheet-cell').forEach(el => {
         el.textContent = el.textContent
@@ -221,38 +159,11 @@
     }
 
     if (currentPath === 'resume.html') {
-      const bullets = document.querySelectorAll('.case-content li');
-      bullets.forEach(li => {
+      document.querySelectorAll('.case-content li').forEach(li => {
         if (/Alpha\.14|140\/140 automated tests/i.test(li.textContent)) {
           li.textContent = 'Extended the same evidence-first architecture into EVOLVE RF, a distributed RF-observability proof covering authenticated edge/fusion transport, persistent event correlation, localization uncertainty, cooperative sensing, and automated software validation; physical field-performance claims remain gated pending validation.';
         }
       });
-    }
-
-    if (currentPath === 'contact.html') {
-      const cards = document.querySelectorAll('.case-card');
-      cards.forEach(card => {
-        if (/EVOLVE RF \/ PUBLIC BETA PREVIEW/i.test(card.textContent)) {
-          const num = card.querySelector('.case-num');
-          const h3 = card.querySelector('h3');
-          const p = card.querySelector('p');
-          const link = card.querySelector('.case-link');
-          if (num) num.textContent = 'EVOLVE RF / TECHNICAL PROOF';
-          if (h3) h3.textContent = 'Inspect the distributed RF systems proof';
-          if (p) p.textContent = 'A sanitized engineering view of distributed RF observability, event correlation, localization uncertainty, cooperative sensing, software validation, and evidence boundaries.';
-          if (link) link.textContent = 'Open EVOLVE RF technical proof →';
-        }
-      });
-    }
-  }
-
-  function loadEvolveChat() {
-    loadStylesheet('evolve-chat.css');
-    if (!document.querySelector('script[src$="evolve-chat.js"]') && !window.__evolveChatWidgetLoaded) {
-      const script = document.createElement('script');
-      script.src = 'evolve-chat.js';
-      script.defer = true;
-      document.body.appendChild(script);
     }
   }
 
@@ -268,10 +179,8 @@
       addProjectEvidenceBand();
       addEvaluationBand();
     }
-    alignPublicPortfolioLanguage();
     applyRecruiterContentQC();
     loadStylesheet('contrast-qc.css');
-    loadEvolveChat();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', loadSharedEnhancements, { once: true });
